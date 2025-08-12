@@ -14,7 +14,7 @@
 <meta property="og:description" content="用AI學習伺服器架設by PHP問：我想學伺服器架設by PHP 請你協助我 步驟 1：設定 PHP 開發環境 要用 PHP 架設伺服器，首先需要一個可以運行 PHP 的環境。以下是設定步驟：  安裝 PHPMac：使用 Homebrew 安裝，執行 brew install php  實作：安裝很順利沒有什麼問題  安裝 Web 伺服器PHP 通常需要搭配 Web 伺服器（如 Apache 或">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-08-07T05:47:39.000Z">
-<meta property="article:modified_time" content="2025-08-12T06:39:18.155Z">
+<meta property="article:modified_time" content="2025-08-12T07:54:01.965Z">
 <meta property="article:author" content="Niki_wei">
 <meta property="article:tag" content="diary">
 <meta property="article:tag" content="PHP">
@@ -142,7 +142,7 @@ phpinfo();
 <p>存為 greet.php，然後訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/greet.php?name=Alice%EF%BC%8C%E6%9C%83%E9%A1%AF%E7%A4%BA%E3%80%8CHello">http://localhost:8000/greet.php?name=Alice，會顯示「Hello</a>, Alice!」。</p>
 <p>實作：<br>建立greet.php 檔案，內容如上面所述，<br>我分別使用<br><a target="_blank" rel="noopener" href="http://localhost:8000/greet.php">http://localhost:8000/greet.php</a> 與 <a target="_blank" rel="noopener" href="http://localhost:8000/greet.php?name=Alice">http://localhost:8000/greet.php?name=Alice</a> 各別訪問一次<br>分別得到「Hello, Guest!」與「Hello, Alice!」</p>
 <p>範例 3：簡單 API<br>以下是一個簡單的 RESTful API，返回 JSON 格式資料：<br>php&lt;?php<br>header(‘Content-Type: application&#x2F;json’);</p>
-<p>&#x2F;&#x2F; 模擬資料<br>$data &#x3D; [<br>    ‘id’ &#x3D;&gt; 1,<br>    ‘name’ &#x3D;&gt; ‘John Doe’,<br>    ‘email’ &#x3D;&gt; ‘<a href="mailto:&#x6a;&#x6f;&#104;&#110;&#x40;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#99;&#111;&#109;">&#x6a;&#x6f;&#104;&#110;&#x40;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#99;&#111;&#109;</a>‘<br>];</p>
+<p>&#x2F;&#x2F; 模擬資料<br>$data &#x3D; [<br>    ‘id’ &#x3D;&gt; 1,<br>    ‘name’ &#x3D;&gt; ‘John Doe’,<br>    ‘email’ &#x3D;&gt; ‘<a href="mailto:&#x6a;&#x6f;&#104;&#x6e;&#x40;&#101;&#120;&#97;&#109;&#112;&#108;&#x65;&#46;&#99;&#x6f;&#109;">&#x6a;&#x6f;&#104;&#x6e;&#x40;&#101;&#120;&#97;&#109;&#112;&#108;&#x65;&#46;&#99;&#x6f;&#109;</a>‘<br>];</p>
 <p>&#x2F;&#x2F; 回傳 JSON<br>echo json_encode($data);<br>?&gt;</p>
 <p>存為 api.php，訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/api.php%EF%BC%8C%E6%9C%83%E5%BE%97%E5%88%B0">http://localhost:8000/api.php，會得到</a> JSON 格式的資料。</p>
 <p>延伸：什麼是RESTful API ?</p>
@@ -174,11 +174,16 @@ phpinfo();
 <p>if ($_SERVER[‘REQUEST_METHOD’] &#x3D;&#x3D;&#x3D; ‘POST’) {<br>    $input &#x3D; json_decode(file_get_contents(‘php:&#x2F;&#x2F;input’), true);<br>    $response &#x3D; [‘message’ &#x3D;&gt; ‘Received’, ‘data’ &#x3D;&gt; $input];<br>    echo json_encode($response);<br>} else {<br>    echo json_encode([‘error’ &#x3D;&gt; ‘Only POST requests are allowed’]);<br>}<br>?&gt;</p>
 <p>使用工具如 Postman 發送 POST </p>
 <p>實作：<br>這次是要依請求方法來操作API，<br>用postman方法用post將資料傳進API裡面，當method被檢測為post時，會將表示收到的訊息及傳入的資料包裝好回傳回來<br>但是用其他方法時，則會回傳錯誤，並提示你只能使用post做請求</p>
+<p>路由系統：</p>
+<p>使用簡單的 PHP 路由來模擬框架功能：<br>php&lt;?php<br>header(‘Content-Type: text&#x2F;plain’);</p>
+<p>$path &#x3D; parse_url($_SERVER[‘REQUEST_URI’], PHP_URL_PATH);</p>
+<p>switch ($path) {<br>    case ‘&#x2F;‘:<br>        echo “Welcome to the homepage!”;<br>        break;<br>    case ‘&#x2F;about’:<br>        echo “About us page.”;<br>        break;<br>    default:<br>        http_response_code(404);<br>        echo “404 Not Found”;<br>        break;<br>}<br>?&gt;</p>
+<p>訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/about">http://localhost:8000/about</a> 會顯示「About us page.」。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/" data-id="cme868ezb0003j98zfoo69o48" data-title="用AI學習伺服器架設by PHP-2025.08.07" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/" data-id="cme893ou40001z18zbjfm86cx" data-title="用AI學習伺服器架設by PHP-2025.08.07" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -189,6 +194,15 @@ phpinfo();
   
     
 <nav id="article-nav">
+  
+    <a href="/2025/08/12/%E8%B3%87%E6%96%99%E5%BA%AB%E5%BB%BA%E7%AB%8B-2025-08-12/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          資料庫建立-2025.08.12
+        
+      </div>
+    </a>
   
   
     <a href="/2025/08/06/%E4%BD%95%E8%AC%82%E5%BE%8C%E7%AB%AF-2025-08-06/" id="article-nav-older" class="article-nav-link-wrap">
@@ -245,6 +259,10 @@ phpinfo();
       <ul>
         
           <li>
+            <a href="/2025/08/12/%E8%B3%87%E6%96%99%E5%BA%AB%E5%BB%BA%E7%AB%8B-2025-08-12/">資料庫建立-2025.08.12</a>
+          </li>
+        
+          <li>
             <a href="/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/">用AI學習伺服器架設by PHP-2025.08.07</a>
           </li>
         
@@ -258,10 +276,6 @@ phpinfo();
         
           <li>
             <a href="/2023/06/07/%E9%80%99%E6%98%AF%E8%87%AA%E8%A3%BD%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E9%96%8B%E5%A7%8B/">這是自製部落格的開始</a>
-          </li>
-        
-          <li>
-            <a href="/2023/06/06/hello-world/">Hello World</a>
           </li>
         
       </ul>
