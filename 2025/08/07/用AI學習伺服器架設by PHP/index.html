@@ -14,7 +14,7 @@
 <meta property="og:description" content="用AI學習伺服器架設by PHP問：我想學伺服器架設by PHP 請你協助我 步驟 1：設定 PHP 開發環境 要用 PHP 架設伺服器，首先需要一個可以運行 PHP 的環境。以下是設定步驟：  安裝 PHPMac：使用 Homebrew 安裝，執行 brew install php  實作：安裝很順利沒有什麼問題  安裝 Web 伺服器PHP 通常需要搭配 Web 伺服器（如 Apache 或">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-08-07T05:47:39.000Z">
-<meta property="article:modified_time" content="2025-08-11T09:30:32.290Z">
+<meta property="article:modified_time" content="2025-08-12T06:39:18.155Z">
 <meta property="article:author" content="Niki_wei">
 <meta property="article:tag" content="diary">
 <meta property="article:tag" content="PHP">
@@ -71,10 +71,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
       </div>
     </div>
   </div>
@@ -142,7 +142,7 @@ phpinfo();
 <p>存為 greet.php，然後訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/greet.php?name=Alice%EF%BC%8C%E6%9C%83%E9%A1%AF%E7%A4%BA%E3%80%8CHello">http://localhost:8000/greet.php?name=Alice，會顯示「Hello</a>, Alice!」。</p>
 <p>實作：<br>建立greet.php 檔案，內容如上面所述，<br>我分別使用<br><a target="_blank" rel="noopener" href="http://localhost:8000/greet.php">http://localhost:8000/greet.php</a> 與 <a target="_blank" rel="noopener" href="http://localhost:8000/greet.php?name=Alice">http://localhost:8000/greet.php?name=Alice</a> 各別訪問一次<br>分別得到「Hello, Guest!」與「Hello, Alice!」</p>
 <p>範例 3：簡單 API<br>以下是一個簡單的 RESTful API，返回 JSON 格式資料：<br>php&lt;?php<br>header(‘Content-Type: application&#x2F;json’);</p>
-<p>&#x2F;&#x2F; 模擬資料<br>$data &#x3D; [<br>    ‘id’ &#x3D;&gt; 1,<br>    ‘name’ &#x3D;&gt; ‘John Doe’,<br>    ‘email’ &#x3D;&gt; ‘<a href="mailto:&#106;&#x6f;&#104;&#110;&#x40;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#46;&#x63;&#111;&#x6d;">&#106;&#x6f;&#104;&#110;&#x40;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#46;&#x63;&#111;&#x6d;</a>‘<br>];</p>
+<p>&#x2F;&#x2F; 模擬資料<br>$data &#x3D; [<br>    ‘id’ &#x3D;&gt; 1,<br>    ‘name’ &#x3D;&gt; ‘John Doe’,<br>    ‘email’ &#x3D;&gt; ‘<a href="mailto:&#x6a;&#x6f;&#104;&#110;&#x40;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#99;&#111;&#109;">&#x6a;&#x6f;&#104;&#110;&#x40;&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#99;&#111;&#109;</a>‘<br>];</p>
 <p>&#x2F;&#x2F; 回傳 JSON<br>echo json_encode($data);<br>?&gt;</p>
 <p>存為 api.php，訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/api.php%EF%BC%8C%E6%9C%83%E5%BE%97%E5%88%B0">http://localhost:8000/api.php，會得到</a> JSON 格式的資料。</p>
 <p>延伸：什麼是RESTful API ?</p>
@@ -174,28 +174,11 @@ phpinfo();
 <p>if ($_SERVER[‘REQUEST_METHOD’] &#x3D;&#x3D;&#x3D; ‘POST’) {<br>    $input &#x3D; json_decode(file_get_contents(‘php:&#x2F;&#x2F;input’), true);<br>    $response &#x3D; [‘message’ &#x3D;&gt; ‘Received’, ‘data’ &#x3D;&gt; $input];<br>    echo json_encode($response);<br>} else {<br>    echo json_encode([‘error’ &#x3D;&gt; ‘Only POST requests are allowed’]);<br>}<br>?&gt;</p>
 <p>使用工具如 Postman 發送 POST </p>
 <p>實作：<br>這次是要依請求方法來操作API，<br>用postman方法用post將資料傳進API裡面，當method被檢測為post時，會將表示收到的訊息及傳入的資料包裝好回傳回來<br>但是用其他方法時，則會回傳錯誤，並提示你只能使用post做請求</p>
-<p>連線資料庫：</p>
-<p>安裝 MySQL（可透過 XAMPP 或獨立安裝）。<br>使用 PDO 或 MySQLi 連線資料庫：<br>php&lt;?php<br>$dsn &#x3D; ‘mysql:host&#x3D;localhost;dbname&#x3D;testdb’;<br>$username &#x3D; ‘root’;<br>$password &#x3D; ‘’;</p>
-<p>try {<br>    $pdo &#x3D; new PDO($dsn, $username, $password);<br>    $pdo-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);<br>    echo “Database connected!”;<br>} catch (PDOException $e) {<br>    echo “Connection failed: “ . $e-&gt;getMessage();<br>}<br>?&gt;</p>
-<p>路由系統：</p>
-<p>使用簡單的 PHP 路由來模擬框架功能：<br>php&lt;?php<br>header(‘Content-Type: text&#x2F;plain’);</p>
-<p>$path &#x3D; parse_url($_SERVER[‘REQUEST_URI’], PHP_URL_PATH);</p>
-<p>switch ($path) {<br>    case ‘&#x2F;‘:<br>        echo “Welcome to the homepage!”;<br>        break;<br>    case ‘&#x2F;about’:<br>        echo “About us page.”;<br>        break;<br>    default:<br>        http_response_code(404);<br>        echo “404 Not Found”;<br>        break;<br>}<br>?&gt;</p>
-<p>訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/about">http://localhost:8000/about</a> 會顯示「About us page.」。</p>
-<p>步驟 4：部署到線上伺服器<br>當你完成本地開發後，可以將 PHP 應用部署到線上伺服器：</p>
-<p>選擇主機：如 AWS、Heroku、或共享主機（如 Bluehost、Hostinger）。<br>上傳檔案：使用 FTP&#x2F;SFTP 上傳你的 PHP 檔案到主機的公開目錄（通常是 public_html）。<br>設定環境：確保主機支援 PHP 和所需的擴充套件（如 MySQL）。<br>測試：訪問你的網域，確認應用程式正常運行。</p>
-<p>常見問題與解決方法</p>
-<p>PHP 檔案無法運行？</p>
-<p>檢查 PHP 是否正確安裝（php -v）。<br>確保 Web 伺服器（如 Apache）正在運行。<br>確認檔案副檔名是 .php，並放在正確的資料夾。</p>
-<p>出現 404 錯誤？</p>
-<p>檢查 URL 是否正確。<br>確認伺服器是否啟動（php -S localhost:8000 或 Apache&#x2F;Nginx 服務）。</p>
-<p>需要更多學習資源？</p>
-<p>官方文件：PHP 官方網站。<br>線上課程：如 Codecademy、Udemy 的 PHP 課程。<br>框架：學習 Laravel 或 CodeIgniter，這些框架能簡化伺服器開發。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/" data-id="cme801m060001ul8zee9xgso6" data-title="用AI學習伺服器架設by PHP-2025.08.07" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/" data-id="cme868ezb0003j98zfoo69o48" data-title="用AI學習伺服器架設by PHP-2025.08.07" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -209,7 +192,7 @@ phpinfo();
   
   
     <a href="/2025/08/06/%E4%BD%95%E8%AC%82%E5%BE%8C%E7%AB%AF-2025-08-06/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">何謂後端-2025.08.06</div>
     </a>
   
@@ -247,7 +230,7 @@ phpinfo();
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
     </div>
@@ -257,7 +240,7 @@ phpinfo();
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
