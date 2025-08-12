@@ -67,10 +67,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
       </div>
     </div>
   </div>
@@ -138,15 +138,40 @@ phpinfo();
 <p>範例 2：處理 GET 請求<br>這個範例會根據 URL 參數回傳客製化訊息：<br>&lt;?php<br>header(‘Content-Type: text&#x2F;plain’);</p>
 <p>&#x2F;&#x2F; 取得 GET 參數<br>$name &#x3D; isset($_GET[‘name’]) ? $_GET[‘name’] : ‘Guest’;<br>echo “Hello, $name!”;<br>?&gt;</p>
 <p>存為 greet.php，然後訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/greet.php?name=Alice%EF%BC%8C%E6%9C%83%E9%A1%AF%E7%A4%BA%E3%80%8CHello">http://localhost:8000/greet.php?name=Alice，會顯示「Hello</a>, Alice!」。</p>
-<p>實作：<br>建立greet.php 檔案，內容如上面所述，<br>我分別使用<br><a target="_blank" rel="noopener" href="http://localhost:8000/greet.php%E8%88%87http://localhost:8000/greet.php?name=Alice%E5%90%84%E5%88%A5%E8%A8%AA%E5%95%8F%E4%B8%80%E6%AC%A1">http://localhost:8000/greet.php與http://localhost:8000/greet.php?name=Alice各別訪問一次</a><br>分別得到「Hello, Guest!」與「Hello, Alice!」</p>
+<p>實作：<br>建立greet.php 檔案，內容如上面所述，<br>我分別使用<br><a target="_blank" rel="noopener" href="http://localhost:8000/greet.php">http://localhost:8000/greet.php</a> 與 <a target="_blank" rel="noopener" href="http://localhost:8000/greet.php?name=Alice">http://localhost:8000/greet.php?name=Alice</a> 各別訪問一次<br>分別得到「Hello, Guest!」與「Hello, Alice!」</p>
 <p>範例 3：簡單 API<br>以下是一個簡單的 RESTful API，返回 JSON 格式資料：<br>php&lt;?php<br>header(‘Content-Type: application&#x2F;json’);</p>
-<p>&#x2F;&#x2F; 模擬資料<br>$data &#x3D; [<br>    ‘id’ &#x3D;&gt; 1,<br>    ‘name’ &#x3D;&gt; ‘John Doe’,<br>    ‘email’ &#x3D;&gt; ‘<a href="mailto:&#x6a;&#111;&#104;&#x6e;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;">&#x6a;&#111;&#104;&#x6e;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;</a>‘<br>];</p>
+<p>&#x2F;&#x2F; 模擬資料<br>$data &#x3D; [<br>    ‘id’ &#x3D;&gt; 1,<br>    ‘name’ &#x3D;&gt; ‘John Doe’,<br>    ‘email’ &#x3D;&gt; ‘<a href="mailto:&#106;&#x6f;&#104;&#110;&#x40;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#46;&#x63;&#111;&#x6d;">&#106;&#x6f;&#104;&#110;&#x40;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#46;&#x63;&#111;&#x6d;</a>‘<br>];</p>
 <p>&#x2F;&#x2F; 回傳 JSON<br>echo json_encode($data);<br>?&gt;</p>
 <p>存為 api.php，訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/api.php%EF%BC%8C%E6%9C%83%E5%BE%97%E5%88%B0">http://localhost:8000/api.php，會得到</a> JSON 格式的資料。</p>
+<p>延伸：什麼是RESTful API ?</p>
+<p>REST (Representational State Transfer)是一種軟體架設風格，<br>注意這是風格不是規範，他強調統一的介面，而他的架構約束被非官方稱為RESTful</p>
+<p>正式的 REST 約束如下：</p>
+<p>Client&#x2F;Server – Clients are separated from servers by a well-defined interface<br>用戶端&#x2F;伺服器 – 客戶端通過定義明確的介面與伺服器分開<br>Stateless – A specific client does not consume server storage when the client is “at rest”<br>無狀態 – 當客戶端處於「靜態」狀態時，特定用戶端不會消耗伺服器存儲<br>Cache – Responses indicate their own cacheability<br>緩存 – 回應指示它們自己的可緩存性<br>Uniform interface  統一的介面<br>Layered system – A client cannot ordinarily tell whether it is connected directly to the end server, or to an intermediary along the way<br>分層系統 – 用戶端通常無法判斷它是直接連接到終端伺服器，還是連接到中間人<br>Code on demand (optional) – Servers are able to temporarily extend or customize the functionality of a client by transferring logic to the client that can be executed within a standard virtual machine<br>按需編碼（可選）——伺服器能夠通過將邏輯傳輸到可在標準虛擬機中執行的用戶端來臨時擴展或自定義用戶端的功能</p>
+<p>符合REST設計風格的Web API稱為RESTful API。它從以下三個方面資源進行定義：<br>直觀簡短的資源位址：URI，比如：<a target="_blank" rel="noopener" href="http://example.com/resources%E3%80%82">http://example.com/resources。</a><br>傳輸的資源：Web服務接受與返回的網際網路媒體類型，比如：JSON，XML，YAML等。<br>對資源的操作：Web服務在該資源上所支援的一系列請求方法（比如：POST，GET，PUT或DELETE）。</p>
+<p>RESTful API 需要請求包含以下主要元件：</p>
+<p>唯一資源識別符<br>伺服器使用唯一資源識別符來識別每個資源。針對 REST 服務，伺服器通常使用統一資源定位器 (URL) 來執行資源識別。URL 指定資源的路徑。URL 類似於您在瀏覽器中輸入的網站地址，以瀏覽任何網頁。URL 也稱為請求端點，清晰地向伺服器指定用戶端需要什麼。</p>
+<p>方法<br>開發人員通常使用超文字傳輸協定 (HTTP) 來實作 RESTful API。HTTP 方法告知伺服器需要對資源做什麼。以下是四種常見的 HTTP 方法：</p>
+<p>GET</p>
+<p>用戶端使用 GET 來存取位於伺服器上指定 URL 的資源。他們可以快取 GET 請求，並在 RESTful API 請求中傳送參數，以指示伺服器篩選資料後再傳送。</p>
+<p>POST</p>
+<p>用戶端使用 POST 向伺服器傳送資料。其包含請求中的資料呈現。多次傳送相同 POST 請求的連帶結果是，具有多次建立相同資源的。</p>
+<p>PUT</p>
+<p>用戶端使用 PUT 更新伺服器上的現有資源。與 POST 不同，在 RESTful Web 服務中多次傳送相同的 PUT 請求會得到相同的結果。</p>
+<p>DELETE</p>
+<p>用戶端使用 DELETE 請求來移除資源。DELETE 請求可變更伺服器狀態。但是，如果使用者沒有適當的身分驗證，則請求會失敗。</p>
+<p>HTTP 標頭<br>請求標頭是用戶端與伺服器之間交換的中繼資料。例如，請求標頭會指示請求和回應的格式，提供有關請求狀態的資訊等。</p>
+<p>資料</p>
+<p>REST API 請求可能包含 POST、PUT 和其他 HTTP 方法成功運作的資料。</p>
+<p>參數</p>
+<p>RESTful API 請求可包含參數，為伺服器提供更多關於需要做什麼的詳細資訊。以下是一些不同類型的參數：</p>
+<p>指定 URL 詳細資訊的路徑參數。<br>請求更多資源相關資訊的查詢參數。<br>快速驗證用戶端的 Cookie 參數。</p>
+<p>實作：<br>因為<br>header(‘Content-Type: application&#x2F;json’);<br>的設置</p>
+<p>傳回的資料會是JSON格式，</p>
 <p>步驟 3：進階功能<br>當你熟悉基本伺服器功能後，可以嘗試以下進階應用：</p>
 <p>處理 POST 請求：<br>&lt;?php<br>header(‘Content-Type: application&#x2F;json’);</p>
 <p>if ($_SERVER[‘REQUEST_METHOD’] &#x3D;&#x3D;&#x3D; ‘POST’) {<br>    $input &#x3D; json_decode(file_get_contents(‘php:&#x2F;&#x2F;input’), true);<br>    $response &#x3D; [‘message’ &#x3D;&gt; ‘Received’, ‘data’ &#x3D;&gt; $input];<br>    echo json_encode($response);<br>} else {<br>    echo json_encode([‘error’ &#x3D;&gt; ‘Only POST requests are allowed’]);<br>}<br>?&gt;</p>
-<p>使用工具如 Postman 發送 POST 請求，測試資料接收。</p>
+<p>使用工具如 Postman 發送 POST </p>
+<p>實作：<br>這次是要依請求方法來操作API，<br>用postman方法用post將資料傳進API裡面，當method被檢測為post時，會將表示收到的訊息及傳入的資料包裝好回傳回來<br>但是用其他方法時，則會回傳錯誤，並提示你只能使用post做請求</p>
 <p>連線資料庫：</p>
 <p>安裝 MySQL（可透過 XAMPP 或獨立安裝）。<br>使用 PDO 或 MySQLi 連線資料庫：<br>php&lt;?php<br>$dsn &#x3D; ‘mysql:host&#x3D;localhost;dbname&#x3D;testdb’;<br>$username &#x3D; ‘root’;<br>$password &#x3D; ‘’;</p>
 <p>try {<br>    $pdo &#x3D; new PDO($dsn, $username, $password);<br>    $pdo-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);<br>    echo “Database connected!”;<br>} catch (PDOException $e) {<br>    echo “Connection failed: “ . $e-&gt;getMessage();<br>}<br>?&gt;</p>
@@ -168,11 +193,11 @@ phpinfo();
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/" data-id="cme1am1fj0001hd8z28y4dull" data-title="用AI學習伺服器架設by PHP-2025.08.07" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/" data-id="cme801m060001ul8zee9xgso6" data-title="用AI學習伺服器架設by PHP-2025.08.07" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
 
     </footer>
   </div>
@@ -226,7 +251,7 @@ phpinfo();
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/06/%E4%BD%95%E8%AC%82%E5%BE%8C%E7%AB%AF-2025-08-06/" data-id="cme1am1fg0000hd8zhwvi27i9" data-title="何謂後端-2025.08.06" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/06/%E4%BD%95%E8%AC%82%E5%BE%8C%E7%AB%AF-2025-08-06/" data-id="cme801m080005ul8z8hkk75j9" data-title="何謂後端-2025.08.06" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -271,7 +296,7 @@ phpinfo();
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/05/%E7%B5%90%E6%9D%9F%E4%BA%86%E4%B8%80%E6%AE%B5%E6%BC%AB%E9%95%B7%E7%9A%84%E8%81%B7%E6%A5%AD%E5%88%9D%E9%AB%94%E9%A9%97/" data-id="cme1am1fl0004hd8z8avq2p7j" data-title="結束了一段漫長的職業初體驗" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/05/%E7%B5%90%E6%9D%9F%E4%BA%86%E4%B8%80%E6%AE%B5%E6%BC%AB%E9%95%B7%E7%9A%84%E8%81%B7%E6%A5%AD%E5%88%9D%E9%AB%94%E9%A9%97/" data-id="cme801m070003ul8z3f3q6ak1" data-title="結束了一段漫長的職業初體驗" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -313,7 +338,7 @@ phpinfo();
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2023/06/07/%E9%80%99%E6%98%AF%E8%87%AA%E8%A3%BD%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E9%96%8B%E5%A7%8B/" data-id="cme1am1fm0005hd8z2q0789ax" data-title="這是自製部落格的開始" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2023/06/07/%E9%80%99%E6%98%AF%E8%87%AA%E8%A3%BD%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E9%96%8B%E5%A7%8B/" data-id="cme801m080004ul8z3qjc7nj8" data-title="這是自製部落格的開始" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -366,7 +391,7 @@ phpinfo();
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2023/06/06/hello-world/" data-id="cme1am1fl0003hd8zdswc8xhi" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2023/06/06/hello-world/" data-id="cme801m020000ul8z8grkedoa" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -393,7 +418,7 @@ phpinfo();
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start/" rel="tag">start</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start/" rel="tag">start</a></li></ul>
     </div>
   </div>
 
@@ -403,14 +428,14 @@ phpinfo();
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/diary/" style="font-size: 20px;">diary</a> <a href="/tags/start/" style="font-size: 10px;">start</a>
+      <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/diary/" style="font-size: 20px;">diary</a> <a href="/tags/start/" style="font-size: 10px;">start</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
     </div>
@@ -420,7 +445,7 @@ phpinfo();
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
