@@ -6,16 +6,17 @@
   
   <title>請AI協助我開發-part03 | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="個人試做的部落格">
+  <meta name="description" content="減肥紀錄網站資料庫-part03-運動項目與卡路里計算接著要構思第三個table，運動項目與卡路里的計算其實這部分的內容我有想寫在前端頁面中，但是這樣可擴佔性就會比較差一點而且運動減肥的項目千百種，如果不設計能動態資訊，這樣資料永遠都更新不完 接著是欄位的設計pk先暫定為運動項目名稱接著是該運動的強度(可null)，還有運動計量單位，像是時間、距離或是次數最後是消耗的卡路里，為了管理記錄還要有修改">
 <meta property="og:type" content="article">
 <meta property="og:title" content="請AI協助我開發-part03">
 <meta property="og:url" content="https://nikiweikame.github.io/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part03/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="個人試做的部落格">
+<meta property="og:description" content="減肥紀錄網站資料庫-part03-運動項目與卡路里計算接著要構思第三個table，運動項目與卡路里的計算其實這部分的內容我有想寫在前端頁面中，但是這樣可擴佔性就會比較差一點而且運動減肥的項目千百種，如果不設計能動態資訊，這樣資料永遠都更新不完 接著是欄位的設計pk先暫定為運動項目名稱接著是該運動的強度(可null)，還有運動計量單位，像是時間、距離或是次數最後是消耗的卡路里，為了管理記錄還要有修改">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-08-26T03:07:34.000Z">
-<meta property="article:modified_time" content="2025-08-26T03:07:34.612Z">
+<meta property="article:modified_time" content="2025-08-26T03:58:31.637Z">
 <meta property="article:author" content="Niki_wei">
+<meta property="article:tag" content="diary">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Niki的Blog" type="application/atom+xml">
@@ -101,7 +102,15 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h2 id="減肥紀錄網站資料庫-part03-運動項目與卡路里計算"><a href="#減肥紀錄網站資料庫-part03-運動項目與卡路里計算" class="headerlink" title="減肥紀錄網站資料庫-part03-運動項目與卡路里計算"></a>減肥紀錄網站資料庫-part03-運動項目與卡路里計算</h2><p>接著要構思第三個table，運動項目與卡路里的計算<br>其實這部分的內容我有想寫在前端頁面中，但是這樣可擴佔性就會比較差一點<br>而且運動減肥的項目千百種，如果不設計能動態資訊，這樣資料永遠都更新不完</p>
+<p>接著是欄位的設計<br>pk先暫定為運動項目名稱<br>接著是該運動的強度(可null)，<br>還有運動計量單位，像是時間、距離或是次數<br>最後是消耗的卡路里，為了管理記錄還要有修改人以及修改日期的欄位<br>但是這就會出現另一個問題，運動項目名稱會重複<br>就表示這不適合作pk，pk必須選擇其他項目或是獨立的no</p>
+<p>把我的規劃拿去問問AI，並得到肯定的回覆，並為我建立了table創建的語法</p>
+<ul>
+<li>Table 設計建議：exercise_type<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE exercise_type (</span><br><span class="line">    id INT AUTO_INCREMENT PRIMARY KEY,       -- 流水號，PK</span><br><span class="line">    name VARCHAR(50) NOT NULL,               -- 運動名稱 (跑步、深蹲、游泳…)</span><br><span class="line">    intensity ENUM(&#x27;light&#x27;,&#x27;medium&#x27;,&#x27;high&#x27;) NULL, -- 強度，可為空</span><br><span class="line">    unit ENUM(&#x27;time&#x27;,&#x27;distance&#x27;,&#x27;reps&#x27;) NOT NULL, -- 計量單位</span><br><span class="line">    calories_per_unit DECIMAL(10,2) NOT NULL, -- 每單位消耗卡路里</span><br><span class="line">    updated_by VARCHAR(50) NOT NULL,         -- 修改人</span><br><span class="line">    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP</span><br><span class="line">                                            ON UPDATE CURRENT_TIMESTAMP</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>而且updated_at的欄位設計得比我想的還要完整，<br>如果沒有特別指定 updated_at，系統會自動填入「當下的時間」<br>當這筆資料被更新時（例如修改了運動名稱或卡路里數值），系統會自動把 updated_at 改成「當下的時間」。<br>這樣就不用額外去寫日期</p>
+<p>此外他還建議我要不要再多一個欄位是建立時間</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE exercise_types (</span><br><span class="line">    id INT AUTO_INCREMENT PRIMARY KEY,           -- 運動項目代號</span><br><span class="line">    name VARCHAR(100) NOT NULL,                  -- 運動名稱</span><br><span class="line">    intensity ENUM(&#x27;light&#x27;,&#x27;medium&#x27;,&#x27;high&#x27;) NULL, -- 強度，可為空</span><br><span class="line">    unit ENUM(&#x27;time&#x27;, &#x27;distance&#x27;, &#x27;count&#x27;) NOT NULL, -- 計量單位</span><br><span class="line">    calories_per_unit DECIMAL(6,2) NOT NULL,     -- 每單位消耗的卡路里</span><br><span class="line">    updated_by VARCHAR(50) NOT NULL,             -- 修改人</span><br><span class="line">    </span><br><span class="line">    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,   -- 建立時間</span><br><span class="line">    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP </span><br><span class="line">                                    ON UPDATE CURRENT_TIMESTAMP -- 最後修改時間</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -109,6 +118,8 @@
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+
     </footer>
   </div>
   
