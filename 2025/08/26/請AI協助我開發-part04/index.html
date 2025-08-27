@@ -6,15 +6,15 @@
   
   <title>請AI協助我開發-part04 | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="PHP框架Laravel來進行API的開發-SQLite目前我是使用預設的設置 所以我的.env檔案跟資料的連結是這樣 123456DB_CONNECTION&#x3D;sqlite# DB_HOST&#x3D;127.0.0.1# DB_PORT&#x3D;3306# DB_DATABASE&#x3D;laravel# DB_USERNAME&#x3D;root# DB_PASSWORD&#x3D;  預設的DB使用的是SQLite，跟我原本預計使用的M">
+  <meta name="description" content="PHP框架Laravel來進行API的開發-初始的困惑目前我是使用預設的設置 所以我的.env檔案跟資料的連結是這樣 123456DB_CONNECTION&#x3D;sqlite# DB_HOST&#x3D;127.0.0.1# DB_PORT&#x3D;3306# DB_DATABASE&#x3D;laravel# DB_USERNAME&#x3D;root# DB_PASSWORD&#x3D;  預設的DB使用的是SQLite，跟我原本預計使用的My">
 <meta property="og:type" content="article">
 <meta property="og:title" content="請AI協助我開發-part04">
 <meta property="og:url" content="https://nikiweikame.github.io/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part04/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="PHP框架Laravel來進行API的開發-SQLite目前我是使用預設的設置 所以我的.env檔案跟資料的連結是這樣 123456DB_CONNECTION&#x3D;sqlite# DB_HOST&#x3D;127.0.0.1# DB_PORT&#x3D;3306# DB_DATABASE&#x3D;laravel# DB_USERNAME&#x3D;root# DB_PASSWORD&#x3D;  預設的DB使用的是SQLite，跟我原本預計使用的M">
+<meta property="og:description" content="PHP框架Laravel來進行API的開發-初始的困惑目前我是使用預設的設置 所以我的.env檔案跟資料的連結是這樣 123456DB_CONNECTION&#x3D;sqlite# DB_HOST&#x3D;127.0.0.1# DB_PORT&#x3D;3306# DB_DATABASE&#x3D;laravel# DB_USERNAME&#x3D;root# DB_PASSWORD&#x3D;  預設的DB使用的是SQLite，跟我原本預計使用的My">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-08-26T08:08:31.000Z">
-<meta property="article:modified_time" content="2025-08-27T07:51:08.561Z">
+<meta property="article:modified_time" content="2025-08-27T08:23:25.010Z">
 <meta property="article:author" content="Niki_wei">
 <meta property="article:tag" content="diary">
 <meta name="twitter:card" content="summary">
@@ -102,7 +102,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="PHP框架Laravel來進行API的開發-SQLite"><a href="#PHP框架Laravel來進行API的開發-SQLite" class="headerlink" title="PHP框架Laravel來進行API的開發-SQLite"></a>PHP框架Laravel來進行API的開發-SQLite</h2><p>目前我是使用預設的設置</p>
+        <h2 id="PHP框架Laravel來進行API的開發-初始的困惑"><a href="#PHP框架Laravel來進行API的開發-初始的困惑" class="headerlink" title="PHP框架Laravel來進行API的開發-初始的困惑"></a>PHP框架Laravel來進行API的開發-初始的困惑</h2><p>目前我是使用預設的設置</p>
 <p>所以我的.env檔案跟資料的連結是這樣</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DB_CONNECTION=sqlite</span><br><span class="line"># DB_HOST=127.0.0.1</span><br><span class="line"># DB_PORT=3306</span><br><span class="line"># DB_DATABASE=laravel</span><br><span class="line"># DB_USERNAME=root</span><br><span class="line"># DB_PASSWORD=</span><br></pre></td></tr></table></figure>
 
@@ -118,12 +118,11 @@
 <p>答：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">🔹 1️⃣ SQLite</span><br><span class="line"></span><br><span class="line">適合情境：</span><br><span class="line"></span><br><span class="line">專案規模小、使用者量不大。</span><br><span class="line"></span><br><span class="line">主要用來 開發、測試或單機使用。</span><br><span class="line"></span><br><span class="line">不想安裝 MySQL 伺服器。</span><br><span class="line"></span><br><span class="line">優點：</span><br><span class="line"></span><br><span class="line">安裝超簡單，直接用一個檔案就能跑。</span><br><span class="line"></span><br><span class="line">Laravel 支援很好，快速建立 migration + seeder。</span><br><span class="line"></span><br><span class="line">開發初期可以先用 SQLite，快速驗證 API 功能。</span><br><span class="line"></span><br><span class="line">缺點：</span><br><span class="line"></span><br><span class="line">多人同時寫入（高併發）會有限制。</span><br><span class="line"></span><br><span class="line">大量資料或複雜查詢效能不如 MySQL。</span><br><span class="line"></span><br><span class="line">🔹 2️⃣ MySQL（或 MariaDB）</span><br><span class="line"></span><br><span class="line">適合情境：</span><br><span class="line"></span><br><span class="line">專案可能會上線，預計有多位使用者同時操作。</span><br><span class="line"></span><br><span class="line">資料量逐漸增加，需要穩定和高效能。</span><br><span class="line"></span><br><span class="line">想要完整的使用者權限、備份、監控功能。</span><br><span class="line"></span><br><span class="line">優點：</span><br><span class="line"></span><br><span class="line">支援多人同時操作資料庫，高併發能力強。</span><br><span class="line"></span><br><span class="line">大型專案和複雜查詢表現好。</span><br><span class="line"></span><br><span class="line">容易與各種主機環境、雲端服務整合。</span><br><span class="line"></span><br><span class="line">缺點：</span><br><span class="line"></span><br><span class="line">需要安裝、設定伺服器（MySQL/MariaDB）。</span><br><span class="line"></span><br><span class="line">開發初期比 SQLite 稍微麻煩。</span><br><span class="line"></span><br><span class="line">🔹 我的建議</span><br><span class="line"></span><br><span class="line">開發階段 → SQLite</span><br><span class="line"></span><br><span class="line">快速跑起來測試功能、API。</span><br><span class="line"></span><br><span class="line">migration、seeder 都可以直接用。</span><br><span class="line"></span><br><span class="line">上線 / 部署階段 → MySQL</span><br><span class="line"></span><br><span class="line">三張表不算多，但如果未來使用者增加或想做統計、報表，MySQL 更穩定。</span><br><span class="line"></span><br><span class="line">💡 總結：</span><br><span class="line"></span><br><span class="line">SQLite = 開發方便、快速、單機好用</span><br><span class="line"></span><br><span class="line">MySQL = 上線穩定、多人同時使用、資料安全</span><br></pre></td></tr></table></figure>
 
-<p>如果要使用SQLite就必須先建立一個空的 SQLite 資料庫檔案。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">touch database/database.sqlite</span><br></pre></td></tr></table></figure>
+<p>針對他的建議<br>開發階段 → SQLite<br>上線 &#x2F; 部署階段 → MySQL<br>我就有疑問，<br>業界會這樣做嗎？<br>還是直接就MySQL了</p>
+<p>答：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1️⃣ 為什麼開發階段用 SQLite</span><br><span class="line"></span><br><span class="line">簡單快速：SQLite 不需要啟動資料庫服務，只有一個檔案，開發環境可以直接用，快速測試。</span><br><span class="line"></span><br><span class="line">方便測試 / CI：每個開發者可以有自己的 SQLite 檔案，互不影響。</span><br><span class="line"></span><br><span class="line">零設定：不用管帳號、密碼、網路連線，尤其對小型專案或原型很方便。</span><br><span class="line"></span><br><span class="line">Laravel 官方文檔也常用 SQLite 做開發測試（特別是單元測試）。</span><br><span class="line"></span><br><span class="line">2️⃣ 為什麼部署 / 上線用 MySQL（或其他 Server DB）</span><br><span class="line"></span><br><span class="line">多使用者 / 高併發：SQLite 的鎖定機制不適合多人同時寫入。</span><br><span class="line"></span><br><span class="line">資料安全 / 備份：MySQL 支援更完整的權限管理、備份、replication。</span><br><span class="line"></span><br><span class="line">擴充性：MySQL 可以水平擴展、加入讀寫分離、儲存大量資料。</span><br><span class="line"></span><br><span class="line">3️⃣ 業界做法</span><br><span class="line"></span><br><span class="line">小型專案 / 原型：開發階段用 SQLite，部署階段用 MySQL 或 PostgreSQL。</span><br><span class="line"></span><br><span class="line">中大型專案：直接從開發就用 MySQL / PostgreSQL，確保開發和生產環境一致。</span><br><span class="line"></span><br><span class="line">測試環境：有時候會用 SQLite 做單元測試，但實際開發也連線到 MySQL。</span><br></pre></td></tr></table></figure>
 
-<p>然後在 .env 設定SQLite 資料庫檔案位置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DB_CONNECTION=sqlite</span><br><span class="line">DB_DATABASE=database/database.sqlite</span><br></pre></td></tr></table></figure>
-
+<p>聽了愛醬的分析之後，我先從SQLite開始開發吧！之後再轉為MySQL，也為後續的測試鋪路</p>
 
       
     </div>
@@ -139,6 +138,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          請AI協助我開發-part05
+        
+      </div>
+    </a>
   
   
     <a href="/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part03/" id="article-nav-older" class="article-nav-link-wrap">
@@ -195,6 +203,10 @@
       <ul>
         
           <li>
+            <a href="/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/">請AI協助我開發-part05</a>
+          </li>
+        
+          <li>
             <a href="/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part04/">請AI協助我開發-part04</a>
           </li>
         
@@ -208,10 +220,6 @@
         
           <li>
             <a href="/2025/08/20/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part01/">請AI協助我開發-part01</a>
-          </li>
-        
-          <li>
-            <a href="/2025/08/18/8-18%E6%97%A5%E8%A8%98/">8/18日記</a>
           </li>
         
       </ul>
