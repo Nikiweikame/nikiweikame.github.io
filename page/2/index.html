@@ -79,6 +79,122 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-用AI學習伺服器架設by PHP" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/" class="article-date">
+  <time class="dt-published" datetime="2025-08-07T05:47:39.000Z" itemprop="datePublished">2025-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/">用AI學習伺服器架設by PHP-2025.08.07</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="用AI學習伺服器架設by-PHP"><a href="#用AI學習伺服器架設by-PHP" class="headerlink" title="用AI學習伺服器架設by PHP"></a>用AI學習伺服器架設by PHP</h1><p>問：我想學伺服器架設by PHP 請你協助我</p>
+<p>步驟 1：設定 PHP 開發環境</p>
+<p>要用 PHP 架設伺服器，首先需要一個可以運行 PHP 的環境。以下是設定步驟：</p>
+<ol>
+<li>安裝 PHP<br>Mac：使用 Homebrew 安裝，執行 brew install php</li>
+</ol>
+<p>實作：<br>安裝很順利沒有什麼問題</p>
+<ol start="2">
+<li>安裝 Web 伺服器<br>PHP 通常需要搭配 Web 伺服器（如 Apache 或 Nginx）運行。以下是兩種常見選擇：</li>
+</ol>
+<ul>
+<li>Apache：</li>
+</ul>
+<p>下載並安裝 Apache（或使用 XAMPP&#x2F;WAMP，這些是整合包，包含 Apache、PHP 和 MySQL）。<br>XAMPP 下載：XAMPP 官方網站。<br>安裝後，將 PHP 檔案放在 XAMPP 的 htdocs 資料夾。</p>
+<ul>
+<li>內建 PHP 伺服器（適合開發測試）：</li>
+</ul>
+<p>PHP 自帶一個簡單的開發用伺服器，無需額外安裝 Apache 或 Nginx。<br>在終端機進入你的 PHP 專案資料夾，執行：<br>bashphp -S localhost:8000</p>
+<p>然後在瀏覽器輸入 <a target="_blank" rel="noopener" href="http://localhost:8000/">http://localhost:8000</a> ，即可看到你的 PHP 頁面。</p>
+<p>實作：<br>我這邊先選擇使用：內建 PHP 伺服器，<br>並透過bashphp -S localhost:8000建設PHP內建伺服器，但是目前我創建的PHP資料夾中沒有任何文件，所以無法顯示任何內容</p>
+<ol start="3">
+<li>測試環境</li>
+</ol>
+<p>在你的專案資料夾（例如 htdocs 或自訂資料夾）建立一個 index.php 檔案，內容如下：<br><?php
+phpinfo();
+?></p>
+<p>開啟瀏覽器，輸入 <a target="_blank" rel="noopener" href="http://localhost:8000/">http://localhost:8000</a> （或 Apache 的預設端口 80，如 <a target="_blank" rel="noopener" href="http://localhost)./">http://localhost）。</a><br>如果看到 PHP 資訊頁面，代表環境設定成功！</p>
+<p>實作：<br>我建立index.php 檔案，內容如上面所述，當我進入<a href="http://localhost:8000頁面時">http://localhost:8000頁面時</a> ，可以看到PHP的資訊介面<br>表示我環境設定成功了。</p>
+<p>步驟 2：用 PHP 撰寫簡單伺服器程式<br>以下是一個簡單的 PHP 伺服器範例，用於處理 HTTP 請求並回傳資料。<br>範例 1：基本 Hello World 伺服器</p>
+<p>建立檔案 server.php：<br>&lt;?php<br>&#x2F;&#x2F; 設定回應標頭<br>header(‘Content-Type: text&#x2F;plain’);</p>
+<p>&#x2F;&#x2F; 回傳簡單訊息<br>echo “Hello, World! This is my PHP server.”;<br>?&gt;</p>
+<p>使用 PHP 內建伺服器運行：<br>bashphp -S localhost:8000</p>
+<p>在瀏覽器輸入 <a target="_blank" rel="noopener" href="http://localhost:8000/server.php">http://localhost:8000/server.php</a> ，應該會顯示「Hello, World! This is my PHP server.」。</p>
+<p>實作：<br>我建立server.php 檔案，內容如上面所述，當我進入<a href="http://localhost:8000server.php">http://localhost:8000server.php</a> 頁面時，<br>確實顯示「Hello, World! This is my PHP server.」，所有程式最開始目標「Hello, World」成功完成。</p>
+<p>範例 2：處理 GET 請求<br>這個範例會根據 URL 參數回傳客製化訊息：<br>&lt;?php<br>header(‘Content-Type: text&#x2F;plain’);</p>
+<p>&#x2F;&#x2F; 取得 GET 參數<br>$name &#x3D; isset($_GET[‘name’]) ? $_GET[‘name’] : ‘Guest’;<br>echo “Hello, $name!”;<br>?&gt;</p>
+<p>存為 greet.php，然後訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/greet.php?name=Alice">http://localhost:8000/greet.php?name=Alice</a> ，會顯示「Hello, Alice!」。</p>
+<p>實作：<br>建立greet.php 檔案，內容如上面所述，<br>我分別使用<br><a target="_blank" rel="noopener" href="http://localhost:8000/greet.php">http://localhost:8000/greet.php</a> 與 <a target="_blank" rel="noopener" href="http://localhost:8000/greet.php?name=Alice">http://localhost:8000/greet.php?name=Alice</a> 各別訪問一次<br>分別得到「Hello, Guest!」與「Hello, Alice!」</p>
+<p>範例 3：簡單 API<br>以下是一個簡單的 RESTful API，返回 JSON 格式資料：<br>php&lt;?php<br>header(‘Content-Type: application&#x2F;json’);</p>
+<p>&#x2F;&#x2F; 模擬資料<br>$data &#x3D; [<br>    ‘id’ &#x3D;&gt; 1,<br>    ‘name’ &#x3D;&gt; ‘John Doe’,<br>    ‘email’ &#x3D;&gt; ‘<a href="mailto:&#106;&#111;&#x68;&#110;&#64;&#x65;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#x63;&#111;&#109;">&#106;&#111;&#x68;&#110;&#64;&#x65;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#x63;&#111;&#109;</a>‘<br>];</p>
+<p>&#x2F;&#x2F; 回傳 JSON<br>echo json_encode($data);<br>?&gt;</p>
+<p>存為 api.php，訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/api.php%EF%BC%8C%E6%9C%83%E5%BE%97%E5%88%B0">http://localhost:8000/api.php，會得到</a> JSON 格式的資料。</p>
+<p>延伸：什麼是RESTful API ?</p>
+<p>REST (Representational State Transfer)是一種軟體架設風格，<br>注意這是風格不是規範，他強調統一的介面，而他的架構約束被非官方稱為RESTful</p>
+<p>正式的 REST 約束如下：</p>
+<p>Client&#x2F;Server – Clients are separated from servers by a well-defined interface<br>用戶端&#x2F;伺服器 – 客戶端通過定義明確的介面與伺服器分開<br>Stateless – A specific client does not consume server storage when the client is “at rest”<br>無狀態 – 當客戶端處於「靜態」狀態時，特定用戶端不會消耗伺服器存儲<br>Cache – Responses indicate their own cacheability<br>緩存 – 回應指示它們自己的可緩存性<br>Uniform interface  統一的介面<br>Layered system – A client cannot ordinarily tell whether it is connected directly to the end server, or to an intermediary along the way<br>分層系統 – 用戶端通常無法判斷它是直接連接到終端伺服器，還是連接到中間人<br>Code on demand (optional) – Servers are able to temporarily extend or customize the functionality of a client by transferring logic to the client that can be executed within a standard virtual machine<br>按需編碼（可選）——伺服器能夠通過將邏輯傳輸到可在標準虛擬機中執行的用戶端來臨時擴展或自定義用戶端的功能</p>
+<p>符合REST設計風格的Web API稱為RESTful API。它從以下三個方面資源進行定義：<br>直觀簡短的資源位址：URI，比如：<a target="_blank" rel="noopener" href="http://example.com/resources%E3%80%82">http://example.com/resources。</a><br>傳輸的資源：Web服務接受與返回的網際網路媒體類型，比如：JSON，XML，YAML等。<br>對資源的操作：Web服務在該資源上所支援的一系列請求方法（比如：POST，GET，PUT或DELETE）。</p>
+<p>RESTful API 需要請求包含以下主要元件：</p>
+<p>唯一資源識別符<br>伺服器使用唯一資源識別符來識別每個資源。針對 REST 服務，伺服器通常使用統一資源定位器 (URL) 來執行資源識別。URL 指定資源的路徑。URL 類似於您在瀏覽器中輸入的網站地址，以瀏覽任何網頁。URL 也稱為請求端點，清晰地向伺服器指定用戶端需要什麼。</p>
+<p>方法<br>開發人員通常使用超文字傳輸協定 (HTTP) 來實作 RESTful API。HTTP 方法告知伺服器需要對資源做什麼。以下是四種常見的 HTTP 方法：</p>
+<p>GET</p>
+<p>用戶端使用 GET 來存取位於伺服器上指定 URL 的資源。他們可以快取 GET 請求，並在 RESTful API 請求中傳送參數，以指示伺服器篩選資料後再傳送。</p>
+<p>POST</p>
+<p>用戶端使用 POST 向伺服器傳送資料。其包含請求中的資料呈現。多次傳送相同 POST 請求的連帶結果是，具有多次建立相同資源的。</p>
+<p>PUT</p>
+<p>用戶端使用 PUT 更新伺服器上的現有資源。與 POST 不同，在 RESTful Web 服務中多次傳送相同的 PUT 請求會得到相同的結果。</p>
+<p>DELETE</p>
+<p>用戶端使用 DELETE 請求來移除資源。DELETE 請求可變更伺服器狀態。但是，如果使用者沒有適當的身分驗證，則請求會失敗。</p>
+<p>HTTP 標頭<br>請求標頭是用戶端與伺服器之間交換的中繼資料。例如，請求標頭會指示請求和回應的格式，提供有關請求狀態的資訊等。</p>
+<p>資料</p>
+<p>REST API 請求可能包含 POST、PUT 和其他 HTTP 方法成功運作的資料。</p>
+<p>參數</p>
+<p>RESTful API 請求可包含參數，為伺服器提供更多關於需要做什麼的詳細資訊。以下是一些不同類型的參數：</p>
+<p>指定 URL 詳細資訊的路徑參數。<br>請求更多資源相關資訊的查詢參數。<br>快速驗證用戶端的 Cookie 參數。</p>
+<p>實作：<br>因為<br>header(‘Content-Type: application&#x2F;json’);<br>的設置</p>
+<p>傳回的資料會是JSON格式，</p>
+<p>步驟 3：進階功能<br>當你熟悉基本伺服器功能後，可以嘗試以下進階應用：</p>
+<p>處理 POST 請求：<br>&lt;?php<br>header(‘Content-Type: application&#x2F;json’);</p>
+<p>if ($_SERVER[‘REQUEST_METHOD’] &#x3D;&#x3D;&#x3D; ‘POST’) {<br>    $input &#x3D; json_decode(file_get_contents(‘php:&#x2F;&#x2F;input’), true);<br>    $response &#x3D; [‘message’ &#x3D;&gt; ‘Received’, ‘data’ &#x3D;&gt; $input];<br>    echo json_encode($response);<br>} else {<br>    echo json_encode([‘error’ &#x3D;&gt; ‘Only POST requests are allowed’]);<br>}<br>?&gt;</p>
+<p>使用工具如 Postman 發送 POST </p>
+<p>實作：<br>這次是要依請求方法來操作API，<br>用postman方法用post將資料傳進API裡面，當method被檢測為post時，會將表示收到的訊息及傳入的資料包裝好回傳回來<br>但是用其他方法時，則會回傳錯誤，並提示你只能使用post做請求</p>
+<p>路由系統：</p>
+<p>使用簡單的 PHP 路由來模擬框架功能：<br>php&lt;?php<br>header(‘Content-Type: text&#x2F;plain’);</p>
+<p>$path &#x3D; parse_url($_SERVER[‘REQUEST_URI’], PHP_URL_PATH);</p>
+<p>switch ($path) {<br>    case ‘&#x2F;‘:<br>        echo “Welcome to the homepage!”;<br>        break;<br>    case ‘&#x2F;about’:<br>        echo “About us page.”;<br>        break;<br>    default:<br>        http_response_code(404);<br>        echo “404 Not Found”;<br>        break;<br>}<br>?&gt;</p>
+<p>訪問 <a target="_blank" rel="noopener" href="http://localhost:8000/about">http://localhost:8000/about</a> 會顯示「About us page.」。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/" data-id="cme8961z200032w8z6nlz7ahw" data-title="用AI學習伺服器架設by PHP-2025.08.07" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-何謂後端-2025-08-06" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/08/06/%E4%BD%95%E8%AC%82%E5%BE%8C%E7%AB%AF-2025-08-06/" class="article-date">
@@ -327,6 +443,10 @@
       <ul>
         
           <li>
+            <a href="/2025/08/30/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/">請AI協助我開發-part07</a>
+          </li>
+        
+          <li>
             <a href="/2025/08/28/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part06/">請AI協助我開發-part06</a>
           </li>
         
@@ -340,10 +460,6 @@
         
           <li>
             <a href="/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part03/">請AI協助我開發-part03</a>
-          </li>
-        
-          <li>
-            <a href="/2025/08/21/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part02/">請AI協助我開發-part02</a>
           </li>
         
       </ul>
