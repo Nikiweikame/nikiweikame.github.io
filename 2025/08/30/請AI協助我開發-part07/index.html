@@ -6,15 +6,15 @@
   
   <title>請AI協助我開發-part07 | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="個人試做的部落格">
+  <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041&lt;?phpuse Illuminate\Database\Migrations\Migration;use Illuminate\Database\Schema\Blueprint;use Illuminate\Support\Facades\Sc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="請AI協助我開發-part07">
 <meta property="og:url" content="https://nikiweikame.github.io/2025/08/30/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="個人試做的部落格">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041&lt;?phpuse Illuminate\Database\Migrations\Migration;use Illuminate\Database\Schema\Blueprint;use Illuminate\Support\Facades\Sc">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-08-30T07:16:22.000Z">
-<meta property="article:modified_time" content="2025-08-30T07:16:22.330Z">
+<meta property="article:modified_time" content="2025-09-01T08:20:24.893Z">
 <meta property="article:author" content="Niki_wei">
 <meta name="twitter:card" content="summary">
   
@@ -101,7 +101,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Migrations\Migration;</span><br><span class="line">use Illuminate\Database\Schema\Blueprint;</span><br><span class="line">use Illuminate\Support\Facades\Schema;</span><br><span class="line"></span><br><span class="line">return new class extends Migration</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Run the migrations.</span><br><span class="line">     */</span><br><span class="line">    public function up(): void</span><br><span class="line">    &#123;</span><br><span class="line">    Schema::create(&#x27;exercise_types&#x27;, function (Blueprint $table) &#123;</span><br><span class="line">        $table-&gt;id(); // id INT AUTO_INCREMENT PRIMARY KEY</span><br><span class="line"></span><br><span class="line">        $table-&gt;string(&#x27;name&#x27;, 100); // 運動名稱</span><br><span class="line"></span><br><span class="line">        $table-&gt;string(&#x27;intensity&#x27;, 20)-&gt;nullable();</span><br><span class="line"></span><br><span class="line">        $table-&gt;string(&#x27;unit&#x27;, 20);</span><br><span class="line">        // calories_per_unit</span><br><span class="line">        $table-&gt;decimal(&#x27;calories_per_unit&#x27;, 6, 2);</span><br><span class="line"></span><br><span class="line">        $table-&gt;text(&#x27;description&#x27;)-&gt;nullable();</span><br><span class="line"></span><br><span class="line">        $table-&gt;string(&#x27;updated_by&#x27;, 50);</span><br><span class="line"></span><br><span class="line">        // created_at, updated_at</span><br><span class="line">        $table-&gt;timestamps();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Reverse the migrations.</span><br><span class="line">     */</span><br><span class="line">    public function down(): void</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::dropIfExists(&#x27;exercise_types&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
