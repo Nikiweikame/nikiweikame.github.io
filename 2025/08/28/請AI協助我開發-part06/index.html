@@ -6,19 +6,19 @@
   
   <title>請AI協助我開發-part06 | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="嘗試製作這次系統設計文件其實我也不確定這算不算是企劃書，我只是先把想的東西以及該有的東西做一次整理， 這樣也比較容易向他人展示我在做什麼，也方便做意見交流以及獲取建議 這次專案的主題是好像做運動  主要功能   帳號登入 使用者記錄運動項目與時間 依區間查閱使用者記錄的內容 新增運動項目與消耗的卡路里   運用到的Table   帳號表（user）─────────────────────────">
+  <meta name="description" content="嘗試製作這次系統設計文件其實我也不確定這算是哪一種文件，我只是先把想的東西以及該有的東西做一次整理， 這樣也比較容易向他人展示我在做什麼，也方便做意見交流以及獲取建議 這次專案的主題叫做–好想做運動  主要功能   帳號登入 使用者記錄運動項目與時間 依區間查閱使用者記錄的內容 新增運動項目與消耗的卡路里   運用到的Table   帳號表（user）───────────────────────">
 <meta property="og:type" content="article">
 <meta property="og:title" content="請AI協助我開發-part06">
 <meta property="og:url" content="https://nikiweikame.github.io/2025/08/28/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part06/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="嘗試製作這次系統設計文件其實我也不確定這算不算是企劃書，我只是先把想的東西以及該有的東西做一次整理， 這樣也比較容易向他人展示我在做什麼，也方便做意見交流以及獲取建議 這次專案的主題是好像做運動  主要功能   帳號登入 使用者記錄運動項目與時間 依區間查閱使用者記錄的內容 新增運動項目與消耗的卡路里   運用到的Table   帳號表（user）─────────────────────────">
+<meta property="og:description" content="嘗試製作這次系統設計文件其實我也不確定這算是哪一種文件，我只是先把想的東西以及該有的東西做一次整理， 這樣也比較容易向他人展示我在做什麼，也方便做意見交流以及獲取建議 這次專案的主題叫做–好想做運動  主要功能   帳號登入 使用者記錄運動項目與時間 依區間查閱使用者記錄的內容 新增運動項目與消耗的卡路里   運用到的Table   帳號表（user）───────────────────────">
 <meta property="og:locale">
-<meta property="og:image" content="https://nikiweikame.github.io/images/ERD_ver.01.png">
+<meta property="og:image" content="https://nikiweikame.github.io/images/ERD_ver.init.png">
 <meta property="article:published_time" content="2025-08-28T08:45:31.000Z">
-<meta property="article:modified_time" content="2025-09-02T03:51:26.168Z">
+<meta property="article:modified_time" content="2025-09-03T07:12:54.447Z">
 <meta property="article:author" content="Niki_wei">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://nikiweikame.github.io/images/ERD_ver.01.png">
+<meta name="twitter:image" content="https://nikiweikame.github.io/images/ERD_ver.init.png">
   
     <link rel="alternate" href="/atom.xml" title="Niki的Blog" type="application/atom+xml">
   
@@ -71,10 +71,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
       </div>
     </div>
   </div>
@@ -103,9 +103,9 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="嘗試製作這次系統設計文件"><a href="#嘗試製作這次系統設計文件" class="headerlink" title="嘗試製作這次系統設計文件"></a>嘗試製作這次系統設計文件</h2><p>其實我也不確定這算不算是企劃書，我只是先把想的東西以及該有的東西做一次整理，</p>
+        <h2 id="嘗試製作這次系統設計文件"><a href="#嘗試製作這次系統設計文件" class="headerlink" title="嘗試製作這次系統設計文件"></a>嘗試製作這次系統設計文件</h2><p>其實我也不確定這算是哪一種文件，我只是先把想的東西以及該有的東西做一次整理，</p>
 <p>這樣也比較容易向他人展示我在做什麼，也方便做意見交流以及獲取建議</p>
-<p>這次專案的主題是好像做運動</p>
+<p>這次專案的主題叫做–好想做運動</p>
 <ol>
 <li>主要功能</li>
 </ol>
@@ -124,17 +124,12 @@
 <li><p>運動紀錄表（exercise_record）<br>exercise_record<br>────────────────────────────────────────────<br>欄位名稱            型別            備註<br>────────────────────────────────────────────<br>id                 INT(AI)         PK (流水號)</p>
 </li>
 </ul>
-<p>user_id            VARCHAR(50)     使用者名稱<br>exercise_type      INT             運動項目<br>record_time        DATETIME        紀錄時間<br>duration_minutes   DECIMAL(10,2)   運動持續時間(分鐘)<br>distance_km        DECIMAL(10,2)   距離(公里)<br>count              INT             次數<br>calories           INT             消耗卡路里</p>
+<p>user_id            VARCHAR(50)     使用者名稱<br>exercise_type      VARCHAR(100)    運動項目<br>record_time        DATETIME        紀錄時間<br>duration_minutes   DECIMAL(10,2)   運動持續時間(分鐘)<br>distance_km        DECIMAL(10,2)   距離(公里)<br>count              INT             次數<br>calories           INT             消耗卡路里</p>
 <ul>
 <li>運動項目表（exercise_type）<br>exercise_type<br>────────────────────────────────────────────<br>欄位名稱            型別            備註<br>────────────────────────────────────────────<br>id                 INT(AI)         PK (流水號)</li>
 </ul>
 <p>name               VARCHAR(100)    項目名稱 (e.g. 跑步)<br>intensity          VARCHAR(100)    強度 (high&#x2F;medium&#x2F;low)<br>unit               VARCHAR(100)    單位 (time&#x2F;distance&#x2F;count)<br>calories_per_unit  DECIMAL(6,2)    單位消耗卡路里<br>description        TEXT            說明<br>updated_by         VARCHAR(50)     修改者<br>created_at         DATETIME        建立時間<br>updated_at         DATETIME        修改時間</p>
-<ul>
-<li>透過dbdiagram.io工具產生ERD</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Table user &#123;</span><br><span class="line">  user_id varchar(50) [primary key]</span><br><span class="line">  password_hash varchar(255)</span><br><span class="line">  nickname varchar(50)</span><br><span class="line">  status varchar(50)</span><br><span class="line">  last_login_at datetime</span><br><span class="line">  password_change_at datetime</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Table exercise_record &#123;</span><br><span class="line">  id int [primary key, increment]</span><br><span class="line">  user_id varchar(50) [ref: &gt; user.user_id]</span><br><span class="line">  exercise_type int [ref: &gt; exercise_type.name]</span><br><span class="line">  record_time datetime</span><br><span class="line">  duration_minutes decimal(10,2)</span><br><span class="line">  distance_km decimal(10,2)</span><br><span class="line">  count int</span><br><span class="line">  calories int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Table exercise_type &#123;</span><br><span class="line">  id int [primary key, increment]</span><br><span class="line">  name varchar(100)</span><br><span class="line">  intensity varchar(100)</span><br><span class="line">  unit varchar(100)</span><br><span class="line">  calories_per_unit decimal(6,2)</span><br><span class="line">  description text</span><br><span class="line">  updated_by varchar(50)</span><br><span class="line">  created_at datetime</span><br><span class="line">  updated_at datetime</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/ERD_ver.01.png" alt="ERD初版"></p>
+<p><img src="/images/ERD_ver.init.png" alt="ERD初版-土法煉鋼版"></p>
 <p>資料庫結構是這個專案很重要的核心部分，原本後續還有先嘗試著寫API文件<br>不過當我拿這份文件去跟其他人交流的時候，發現問題蠻多的API文件的部分要整個重寫</p>
 <h2 id="不要閉門造車，嘗試與人交流聆聽不同的意見"><a href="#不要閉門造車，嘗試與人交流聆聽不同的意見" class="headerlink" title="不要閉門造車，嘗試與人交流聆聽不同的意見"></a>不要閉門造車，嘗試與人交流聆聽不同的意見</h2><p>其實這上面的結果除了自己的思維之外，還透過跟愛醬的討論<br>但是在業界實際運用上，就有可能會有一些的出入<br>與不同人討論可以得到不同的觀點與收穫</p>
 <h3 id="得到的建議"><a href="#得到的建議" class="headerlink" title="得到的建議"></a>得到的建議</h3><ul>
@@ -156,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/28/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part06/" data-id="cmev5ubdp0000nhbo5ok38vjd" data-title="請AI協助我開發-part06" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/28/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part06/" data-id="cmev5ubdp0000nhbo5ok38vjd" data-title="請AI協助我開發-part06" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -167,7 +162,7 @@
 <nav id="article-nav">
   
     <a href="/2025/08/30/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           請AI協助我開發-part07
@@ -177,7 +172,7 @@
   
   
     <a href="/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">請AI協助我開發-part05</div>
     </a>
   
@@ -215,7 +210,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
     </div>
@@ -225,7 +220,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
