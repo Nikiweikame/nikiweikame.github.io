@@ -15,7 +15,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://nikiweikame.github.io/images/ERD_ver.init.png">
 <meta property="article:published_time" content="2025-08-28T08:45:31.000Z">
-<meta property="article:modified_time" content="2025-09-03T07:12:54.447Z">
+<meta property="article:modified_time" content="2025-09-04T06:51:56.325Z">
 <meta property="article:author" content="Niki_wei">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://nikiweikame.github.io/images/ERD_ver.init.png">
@@ -147,7 +147,11 @@
 <li>複雜度高、效能吃重的 → 後端更合適</li>
 </ul>
 <p>與有經驗的人交流可以獲得不少資訊，雖然我偏向I人，但是我還是覺得這部分多多跟人交流不會有壞處，不過之前寫的API全部都要做些修正了</p>
-
+<h2 id="新工具的得知與掌握"><a href="#新工具的得知與掌握" class="headerlink" title="新工具的得知與掌握"></a>新工具的得知與掌握</h2><p>與人討論的過程中我也得知了一個新工具dbdiagram.io，<br>這可以幫你產出ERD</p>
+<ul>
+<li>透過dbdiagram.io工具產生ERD</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Table user &#123;</span><br><span class="line">  id int [primary key, increment]</span><br><span class="line">  user_id varchar(50)</span><br><span class="line">  password_hash varchar(255)</span><br><span class="line">  nickname varchar(50)</span><br><span class="line">  weight decimal(10,2)</span><br><span class="line">  status varchar(50)</span><br><span class="line">  last_login_at datetime</span><br><span class="line">  password_change_at datetime</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Table exercise_record &#123;</span><br><span class="line">  id int [primary key, increment]</span><br><span class="line">  user_id varchar(50) [ref: &gt; user.id]</span><br><span class="line">  exercise_type_id varchar(100) [ref: &gt; exercise_type.id]</span><br><span class="line">  record_time datetime</span><br><span class="line">  count int</span><br><span class="line">  unit varchar(100)</span><br><span class="line">  calories int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Table exercise_type &#123;</span><br><span class="line">  id int [primary key, increment]</span><br><span class="line">  name varchar(100)</span><br><span class="line">  weight_unit varchar(1)</span><br><span class="line">  calories_per_unit decimal(6,2)</span><br><span class="line">  description text</span><br><span class="line">  updated_by varchar(50)</span><br><span class="line">  created_at datetime</span><br><span class="line">  updated_at datetime</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -161,11 +165,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2025/08/30/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          請AI協助我開發-part07
+          請AI協助我開發-part08
         
       </div>
     </a>
@@ -212,7 +216,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
     </div>
   </div>
 
@@ -225,7 +229,15 @@
       <ul>
         
           <li>
-            <a href="/2025/08/30/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/">請AI協助我開發-part07</a>
+            <a href="/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/">停止內耗與焦慮，讓心平靜下來</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/">請AI協助我開發-part07</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/">請AI協助我開發-part08</a>
           </li>
         
           <li>
@@ -234,14 +246,6 @@
         
           <li>
             <a href="/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/">請AI協助我開發-part05</a>
-          </li>
-        
-          <li>
-            <a href="/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part04/">請AI協助我開發-part04</a>
-          </li>
-        
-          <li>
-            <a href="/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part03/">請AI協助我開發-part03</a>
           </li>
         
       </ul>
