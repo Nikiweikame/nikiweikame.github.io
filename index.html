@@ -67,10 +67,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
       </div>
     </div>
   </div>
@@ -104,11 +104,12 @@
         <h1 id="一週的目標"><a href="#一週的目標" class="headerlink" title="一週的目標"></a>一週的目標</h1><p>這週的工作天僅有四天，我想先透過laravel完成SQLite資料庫的設定，以及api的設定<br>完成之後再去做MySQL的資料庫綁定</p>
 <p>加油吧，堅定自己的方向，不要放棄，即使迷惘也沒有關係，</p>
 <p>知道迷惘、面對迷惘、最後克服迷惘</p>
+<h1 id="放下鐵人賽"><a href="#放下鐵人賽" class="headerlink" title="放下鐵人賽"></a>放下鐵人賽</h1><p>雖然參加鐵人賽可以強迫自己每天都有所前進，我個人其實蠻認同的，<br>但是總覺得不適合現在的我，我的文章比較隨性一點，不一定每一篇都能滿足參賽的基本格式需求<br>我決定不參加這次的鐵人賽，但是我的文章還是會繼續寫下去，可能幾天都在寫同一篇文章，或是一篇文章就短短一篇</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/08/20250908%E4%B8%80%E9%80%B1%E7%9A%84%E8%B5%B7%E5%A7%8B/" data-id="cmfapv4ms0000kqbo4r88awye" data-title="20250908一週的起始" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/08/20250908%E4%B8%80%E9%80%B1%E7%9A%84%E8%B5%B7%E5%A7%8B/" data-id="cmfapv4ms0000kqbo4r88awye" data-title="20250908一週的起始" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -151,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/06/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" data-id="cmf6aoe680000jzbo6k7v2fw2" data-title="請AI協助我開發-part08" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/06/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" data-id="cmf6aoe680000jzbo6k7v2fw2" data-title="請AI協助我開發-part08" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -192,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/" data-id="cmf6aoe680002jzbof5seh35p" data-title="停止內耗與焦慮，讓心平靜下來" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/" data-id="cmf6aoe680002jzbof5seh35p" data-title="停止內耗與焦慮，讓心平靜下來" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -249,18 +250,11 @@
 <li>在建立時設定限制</li>
 <li>修改時增加限制</li>
 </ul>
-<p>這部分會依資料庫的軟體有所差異</p>
-<h3 id="在建立時設定限制"><a href="#在建立時設定限制" class="headerlink" title="在建立時設定限制"></a>在建立時設定限制</h3><h4 id="NOT-NULL、UNIQUE、DEFAULT"><a href="#NOT-NULL、UNIQUE、DEFAULT" class="headerlink" title="NOT NULL、UNIQUE、DEFAULT"></a>NOT NULL、UNIQUE、DEFAULT</h4><p>CREATE TABLE Users (<br>    ID int NOT NULL,<br>);</p>
-<h3 id="修改時增加限制"><a href="#修改時增加限制" class="headerlink" title="修改時增加限制"></a>修改時增加限制</h3><h4 id="NOT-NULL、UNIQUE、DEFAULT-1"><a href="#NOT-NULL、UNIQUE、DEFAULT-1" class="headerlink" title="NOT NULL、UNIQUE、DEFAULT"></a>NOT NULL、UNIQUE、DEFAULT</h4><p>SQL Server &#x2F; MS Access:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE Users</span><br><span class="line">ALTER COLUMN ID int NOT NULL;</span><br></pre></td></tr></table></figure>
-<p>My SQL &#x2F; Oracle (prior version 10G):</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE Users</span><br><span class="line">MODIFY COLUMN ID int NOT NULL;</span><br></pre></td></tr></table></figure>
-<p>Oracle 10G and later:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE Users</span><br><span class="line">MODIFY ID int NOT NULL;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/" data-id="cmey1xg4q00000abo2lp47ht1" data-title="請AI協助我開發-part07" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/" data-id="cmey1xg4q00000abo2lp47ht1" data-title="請AI協助我開發-part07" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -352,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/28/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part06/" data-id="cmev5ubdp0000nhbo5ok38vjd" data-title="請AI協助我開發-part06" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/28/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part06/" data-id="cmev5ubdp0000nhbo5ok38vjd" data-title="請AI協助我開發-part06" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -419,7 +413,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/" data-id="cmetpkl8k0000mhbohgyg3ghm" data-title="請AI協助我開發-part05" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/" data-id="cmetpkl8k0000mhbohgyg3ghm" data-title="請AI協助我開發-part05" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -480,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part04/" data-id="cmetoenai00005pbo6gvw1022" data-title="請AI協助我開發-part04" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part04/" data-id="cmetoenai00005pbo6gvw1022" data-title="請AI協助我開發-part04" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -535,7 +529,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part03/" data-id="cmeryv2e70000yobog6f7c362" data-title="請AI協助我開發-part03" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part03/" data-id="cmeryv2e70000yobog6f7c362" data-title="請AI協助我開發-part03" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -615,7 +609,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/21/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part02/" data-id="cmeqxufn40000kv8zbgn1a67t" data-title="請AI協助我開發-part02" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/21/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part02/" data-id="cmeqxufn40000kv8zbgn1a67t" data-title="請AI協助我開發-part02" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -680,7 +674,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/20/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part01/" data-id="cmejmjhh40000a18z1un6cm22" data-title="請AI協助我開發-part01" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/20/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part01/" data-id="cmejmjhh40000a18z1un6cm22" data-title="請AI協助我開發-part01" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -698,7 +692,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -729,7 +723,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
     </div>
@@ -739,7 +733,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         

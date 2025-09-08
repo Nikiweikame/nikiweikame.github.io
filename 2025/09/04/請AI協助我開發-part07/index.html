@@ -14,7 +14,7 @@
 <meta property="og:description" content="SQL 建立限制(SQL Create Constraints)當我在做資料庫規劃的時候，想要在id做pk但是又擔心帳號欄位會有重複的問題， 在與人討論之後得知可以在資料表建立時的設定欄位屬性設定，就可以完美的解決問題 趁此來深入探討這部分的相關知識 SQL Constraints 欄位限制介紹一個資料表除了資料表名稱與欄位名稱、資料型別之外，其實還有一個不容易會注意到的屬性該屬性被稱為const">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-09-04T07:19:53.000Z">
-<meta property="article:modified_time" content="2025-09-06T09:45:24.256Z">
+<meta property="article:modified_time" content="2025-09-08T06:07:27.339Z">
 <meta property="article:author" content="Niki_wei">
 <meta property="article:tag" content="diary">
 <meta name="twitter:card" content="summary">
@@ -70,10 +70,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
       </div>
     </div>
   </div>
@@ -123,18 +123,11 @@
 <li>在建立時設定限制</li>
 <li>修改時增加限制</li>
 </ul>
-<p>這部分會依資料庫的軟體有所差異</p>
-<h3 id="在建立時設定限制"><a href="#在建立時設定限制" class="headerlink" title="在建立時設定限制"></a>在建立時設定限制</h3><h4 id="NOT-NULL、UNIQUE、DEFAULT"><a href="#NOT-NULL、UNIQUE、DEFAULT" class="headerlink" title="NOT NULL、UNIQUE、DEFAULT"></a>NOT NULL、UNIQUE、DEFAULT</h4><p>CREATE TABLE Users (<br>    ID int NOT NULL,<br>);</p>
-<h3 id="修改時增加限制"><a href="#修改時增加限制" class="headerlink" title="修改時增加限制"></a>修改時增加限制</h3><h4 id="NOT-NULL、UNIQUE、DEFAULT-1"><a href="#NOT-NULL、UNIQUE、DEFAULT-1" class="headerlink" title="NOT NULL、UNIQUE、DEFAULT"></a>NOT NULL、UNIQUE、DEFAULT</h4><p>SQL Server &#x2F; MS Access:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE Users</span><br><span class="line">ALTER COLUMN ID int NOT NULL;</span><br></pre></td></tr></table></figure>
-<p>My SQL &#x2F; Oracle (prior version 10G):</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE Users</span><br><span class="line">MODIFY COLUMN ID int NOT NULL;</span><br></pre></td></tr></table></figure>
-<p>Oracle 10G and later:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE Users</span><br><span class="line">MODIFY ID int NOT NULL;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/" data-id="cmey1xg4q00000abo2lp47ht1" data-title="請AI協助我開發-part07" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/" data-id="cmey1xg4q00000abo2lp47ht1" data-title="請AI協助我開發-part07" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -147,7 +140,7 @@
 <nav id="article-nav">
   
     <a href="/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
           停止內耗與焦慮，讓心平靜下來
@@ -157,7 +150,7 @@
   
   
     <a href="/2025/08/28/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part06/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">請AI協助我開發-part06</div>
     </a>
   
@@ -195,7 +188,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
     </div>
@@ -205,7 +198,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
