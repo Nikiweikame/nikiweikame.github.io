@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>請AI協助我開發-part08 | Niki的Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="延續part-05的內容-認識migration-續延續上次說到的我在規劃好資料庫之後，透過下面三個laravel內建的指令，在migration資料夾建立了三個檔案(嚴格來說是兩個user是已經內建的) 1234&#x2F;&#x2F;終端機php artisan make:model User -mphp artisan make:model ExerciseType -mphp artisan make:mod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="請AI協助我開發-part08">
+<meta property="og:url" content="https://nikiweikame.github.io/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/index.html">
+<meta property="og:site_name" content="Niki的Blog">
+<meta property="og:description" content="延續part-05的內容-認識migration-續延續上次說到的我在規劃好資料庫之後，透過下面三個laravel內建的指令，在migration資料夾建立了三個檔案(嚴格來說是兩個user是已經內建的) 1234&#x2F;&#x2F;終端機php artisan make:model User -mphp artisan make:model ExerciseType -mphp artisan make:mod">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-09-08T09:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-08T08:59:24.262Z">
+<meta property="article:author" content="Niki_wei">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Niki的Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Niki的Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">紀錄了Niki成長的點點滴滴</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-請AI協助我開發-part08" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" class="article-date">
+  <time class="dt-published" datetime="2025-09-08T09:00:00.000Z" itemprop="datePublished">2025-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      請AI協助我開發-part08
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="延續part-05的內容-認識migration-續"><a href="#延續part-05的內容-認識migration-續" class="headerlink" title="延續part-05的內容-認識migration-續"></a>延續part-05的內容-認識migration-續</h2><p>延續上次說到的我在規劃好資料庫之後，透過下面三個laravel內建的指令，在migration資料夾建立了三個檔案(嚴格來說是兩個user是已經內建的)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">php artisan make:model User -m</span><br><span class="line">php artisan make:model ExerciseType -m</span><br><span class="line">php artisan make:model ExerciseRecord -m</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Migrations\Migration;</span><br><span class="line">use Illuminate\Database\Schema\Blueprint;</span><br><span class="line">use Illuminate\Support\Facades\Schema;</span><br><span class="line"></span><br><span class="line">return new class extends Migration</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Run the migrations.</span><br><span class="line">     */</span><br><span class="line">    public function up(): void</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::create(&#x27;exercise_records&#x27;, function (Blueprint $table) &#123;</span><br><span class="line">            $table-&gt;id();</span><br><span class="line">            $table-&gt;timestamps();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Reverse the migrations.</span><br><span class="line">     */</span><br><span class="line">    public function down(): void</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::dropIfExists(&#x27;exercise_records&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>先面有提到up()跟down()的用途<br>現在接著說他們實際上做了什麼</p>
+<p>首先先創立一個table</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Schema::create(&#x27;table名稱&#x27;,&#x27;建立table欄位資料的細部動作&#x27;)</span><br></pre></td></tr></table></figure>
+<p>之後在規範這個table裡面有那些欄位，欄位的型別與限制，也就是後面的function</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function (Blueprint $table) &#123;</span><br><span class="line">            $table-&gt;id();</span><br><span class="line">            $table-&gt;timestamps();</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+<p>一開始他先規範參數 $table 是一個 Blueprint 物件，<br>這樣函式內部就能使用Blueprint的method<br>再來就是兩個比較常看的method id()跟timestamps()<br>這兩個都是語法糖，把常用欄位的建立，封裝成一個方便的方法<br>id()其實是bigIncrements(‘id’);<br>相當於SQL建立欄位時的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY</span><br></pre></td></tr></table></figure>
+<p>而timestamps()是建立created_at 與 updated_at兩個欄位且可以存放NULL值，<br>等價於：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$table-&gt;timestamp(&#x27;created_at&#x27;)-&gt;nullable();</span><br><span class="line">$table-&gt;timestamp(&#x27;updated_at&#x27;)-&gt;nullable();</span><br></pre></td></tr></table></figure>
+<p>再來就是其他沒有在預設中的method</p>
+<p>我依據我要建立table來看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Table exercise_record &#123;</span><br><span class="line">  id int [primary key, increment]</span><br><span class="line">  user_id varchar(50) [ref: &gt; user.id]</span><br><span class="line">  exercise_type_id varchar(100) [ref: &gt; exercise_type.id]</span><br><span class="line">  record_time datetime</span><br><span class="line">  count int</span><br><span class="line">  unit varchar(100)</span><br><span class="line">  calories decimal(10,2)</span><br><span class="line">  created_at datetime</span><br><span class="line">  updated_at datetime</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目前有四種類別varchar、decimal、int、datetime</p>
+<p>他們對應的method是string、decimal、integer、dateTime</p>
+<p>他們method的第一個參數是欄位名稱，後面就是其他的限制</p>
+<p>像是<br>user_id varchar(50)<br>就是<br>$table-&gt;string(‘user_id’, 50);<br>後面的50就是長度限制50</p>
+<p>轉換後會變成這樣，當然也可以請愛醬幫忙轉換</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public function up(): void</span><br><span class="line">&#123;</span><br><span class="line">    Schema::create(&#x27;exercise_record&#x27;, function (Blueprint $table) &#123;</span><br><span class="line">        $table-&gt;id(); // id INT AUTO_INCREMENT PRIMARY KEY</span><br><span class="line">        $table-&gt;string(&#x27;user_id&#x27;, 50);</span><br><span class="line">        $table-&gt;string(&#x27;exercise_type_id&#x27;, 100);</span><br><span class="line">        $table-&gt;dateTime(&#x27;record_time&#x27;);</span><br><span class="line">        $table-&gt;integer(&#x27;count&#x27;);</span><br><span class="line">        $table-&gt;string(&#x27;unit&#x27;, 100);</span><br><span class="line">        $table-&gt;decimal(&#x27;calories&#x27;, 10, 2);</span><br><span class="line">        $table-&gt;timestamps(); // created_at, updated_at</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之後外鍵的設定，這邊分為四個部分<br>$table-&gt;foreign(‘user_id’)	將 exercise_record 的 user_id 欄位設定為外鍵<br>-&gt;references(‘id’)	指定這個外鍵要對應到 users 表的 id 欄位<br>-&gt;on(‘users’)	指定對應的資料表是 users<br>-&gt;onDelete(‘cascade’)	刪除行為：當 users 表中對應的 id 被刪除時，exercise_record 裡對應的資料也會被自動刪掉（cascade 刪除）</p>
+<p>整合起來就變這樣</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public function up(): void</span><br><span class="line">&#123;</span><br><span class="line">    Schema::create(&#x27;exercise_record&#x27;, function (Blueprint $table) &#123;</span><br><span class="line">        $table-&gt;id(); // id INT AUTO_INCREMENT PRIMARY KEY</span><br><span class="line">        $table-&gt;string(&#x27;user_id&#x27;, 50);</span><br><span class="line">        $table-&gt;string(&#x27;exercise_type_id&#x27;, 100);</span><br><span class="line">        $table-&gt;dateTime(&#x27;record_time&#x27;);</span><br><span class="line">        $table-&gt;integer(&#x27;count&#x27;);</span><br><span class="line">        $table-&gt;string(&#x27;unit&#x27;, 100);</span><br><span class="line">        $table-&gt;decimal(&#x27;calories&#x27;, 10, 2);</span><br><span class="line">        $table-&gt;timestamps(); // created_at, updated_at</span><br><span class="line"></span><br><span class="line">        // 外鍵約束</span><br><span class="line">        $table-&gt;foreign(&#x27;user_id&#x27;)-&gt;references(&#x27;id&#x27;)-&gt;on(&#x27;users&#x27;)-&gt;onDelete(&#x27;cascade&#x27;);</span><br><span class="line">        $table-&gt;foreign(&#x27;exercise_type_id&#x27;)-&gt;references(&#x27;id&#x27;)-&gt;on(&#x27;exercise_types&#x27;)-&gt;onDelete(&#x27;cascade&#x27;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>語法建立的時候愛醬有將三個表格都加上$table-&gt;timestamps()<br>但是我不是所有欄位都需要這兩個項目，<br>對此愛醬是這樣給予我建議的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">對大多數應用程式來說，保留 $table-&gt;timestamps() 是很方便的</span><br><span class="line">可以用來排序、查詢最新資料、做審計紀錄</span><br><span class="line">若真的不需要時間追蹤，可以不加，migration 也會正常運作</span><br></pre></td></tr></table></figure>
+
+<p>簡單說就是雖然不是必要，但是建議加，或許會有意想不到的用處</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" data-id="cmf6aoe680000jzbo6k7v2fw2" data-title="請AI協助我開發-part08" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/09/08/20250908%E4%B8%80%E9%80%B1%E7%9A%84%E8%B5%B7%E5%A7%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">20250908一週的起始</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notes/" rel="tag">notes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start/" rel="tag">start</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/diary/" style="font-size: 20px;">diary</a> <a href="/tags/notes/" style="font-size: 10px;">notes</a> <a href="/tags/start/" style="font-size: 10px;">start</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/">請AI協助我開發-part08</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/08/20250908%E4%B8%80%E9%80%B1%E7%9A%84%E8%B5%B7%E5%A7%8B/">20250908一週的起始</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/">停止內耗與焦慮，讓心平靜下來</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/">請AI協助我開發-part07</a>
+          </li>
+        
+          <li>
+            <a href="/2025/08/28/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part06/">請AI協助我開發-part06</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Niki_wei<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
