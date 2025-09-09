@@ -4,16 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Tag: notes | Niki的Blog</title>
+  <title>請AI協助我開發-part09 | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="個人試做的部落格">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Niki的Blog">
-<meta property="og:url" content="https://nikiweikame.github.io/tags/notes/index.html">
+  <meta name="description" content="建立database.sqlite設定好 Migrations檔案之後，就要開始建立database.sqlite的內容了 12&#x2F;&#x2F;終端機php artisan migrate  這邊可能會遇上的問題 12&#x2F;&#x2F;終端機回應2025_08_28_030252_create_exercise_records_table ..........................................">
+<meta property="og:type" content="article">
+<meta property="og:title" content="請AI協助我開發-part09">
+<meta property="og:url" content="https://nikiweikame.github.io/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="個人試做的部落格">
+<meta property="og:description" content="建立database.sqlite設定好 Migrations檔案之後，就要開始建立database.sqlite的內容了 12&#x2F;&#x2F;終端機php artisan migrate  這邊可能會遇上的問題 12&#x2F;&#x2F;終端機回應2025_08_28_030252_create_exercise_records_table ..........................................">
 <meta property="og:locale">
+<meta property="article:published_time" content="2025-09-09T02:44:08.000Z">
+<meta property="article:modified_time" content="2025-09-09T08:41:49.253Z">
 <meta property="article:author" content="Niki_wei">
+<meta property="article:tag" content="diary">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Niki的Blog" type="application/atom+xml">
@@ -77,39 +80,65 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/08/15/%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%9F%BA%E7%A4%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-08-15T07:28:47.000Z" itemprop="datePublished">Aug 15</time>
+        <section id="main"><article id="post-請AI協助我開發-part09" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/" class="article-date">
+  <time class="dt-published" datetime="2025-09-09T02:44:08.000Z" itemprop="datePublished">2025-09-09</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/08/15/%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%9F%BA%E7%A4%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/">後端工程師基礎工作流程</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      請AI協助我開發-part09
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="建立database-sqlite"><a href="#建立database-sqlite" class="headerlink" title="建立database.sqlite"></a>建立database.sqlite</h1><p>設定好 Migrations檔案之後，就要開始建立database.sqlite的內容了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
+
+<p>這邊可能會遇上的問題</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//終端機回應</span><br><span class="line">2025_08_28_030252_create_exercise_records_table ........................................................... 2.85ms DONE 2025_08_28_030252_create_exercise_types_table ............................................................. 0.48ms DONE</span><br></pre></td></tr></table></figure>
+
+<p>仔細看終端機的回覆可以發現，只有建立兩個table的訊息</p>
+<p>我用 sqlite3 檢查 database.sqlite內的table，發現user table是有建立的，但是內容是laravel建立的預設內容<br>還有一些不認識的table，想必這些都是原本預設建立的table，此時回去看Migrations資料夾內的檔案，那些不認識的table name跟都對上了</p>
+<p>這時候愛醬建議我下達php artisan migrate:refresh指令，<br>問題來了，因為我的migrate檔案有動過一些該drop的table沒寫進指令裡面，會讓這個操作不完整甚至會出現錯誤<br>正確的流程這可能要對migrate進行修改前，先把預設的table給drop掉才是<br>現在因為是剛開發階段，可以直接把資料砍掉重建</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm database/database.sqlite</span><br><span class="line">touch database/database.sqlite</span><br><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
+<p>這樣我的database.sqlite也算是建立好了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/" data-id="cmfcay0qr0000jbbohb9v0kvm" data-title="請AI協助我開發-part09" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">請AI協助我開發-part08</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
