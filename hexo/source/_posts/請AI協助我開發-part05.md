@@ -56,7 +56,7 @@ database/migrations/也會有三個檔案
 │ xxxx_xx_xx_xxxxxx_create_exercise_records_table.php
 └ xxxx_xx_xx_xxxxxx_create_exercise_types_table.php
 
-而一般開發的步驟（先 migration 再 model）
+而一般開發的步驟（先 migration 後 model）
 
 ### migrations設定
 
