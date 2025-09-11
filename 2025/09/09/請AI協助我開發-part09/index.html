@@ -6,15 +6,15 @@
   
   <title>請AI協助我開發-part09 | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="建立database.sqlite設定好 Migrations檔案之後，就要開始建立database.sqlite的內容了 12&#x2F;&#x2F;終端機php artisan migrate  這邊可能會遇上的問題 123&#x2F;&#x2F;終端機回應2025_08_28_030252_create_exercise_records_table .........................................">
+  <meta name="description" content="建立database.sqlite設定好 Migrations檔案之後，就要開始建立database.sqlite的內容了 12&#x2F;&#x2F;終端機php artisan migrate  這邊可能會遇上的問題 123&#x2F;&#x2F;終端機回應2025_08_28_030252_create_exercise_records_table ............................ 2.85ms DONE2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="請AI協助我開發-part09">
 <meta property="og:url" content="https://nikiweikame.github.io/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="建立database.sqlite設定好 Migrations檔案之後，就要開始建立database.sqlite的內容了 12&#x2F;&#x2F;終端機php artisan migrate  這邊可能會遇上的問題 123&#x2F;&#x2F;終端機回應2025_08_28_030252_create_exercise_records_table .........................................">
+<meta property="og:description" content="建立database.sqlite設定好 Migrations檔案之後，就要開始建立database.sqlite的內容了 12&#x2F;&#x2F;終端機php artisan migrate  這邊可能會遇上的問題 123&#x2F;&#x2F;終端機回應2025_08_28_030252_create_exercise_records_table ............................ 2.85ms DONE2">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-09-09T02:44:08.000Z">
-<meta property="article:modified_time" content="2025-09-11T03:28:13.586Z">
+<meta property="article:modified_time" content="2025-09-11T03:32:16.213Z">
 <meta property="article:author" content="Niki_wei">
 <meta property="article:tag" content="diary">
 <meta name="twitter:card" content="summary">
@@ -106,7 +106,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
 
 <p>這邊可能會遇上的問題</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//終端機回應</span><br><span class="line">2025_08_28_030252_create_exercise_records_table ........................................................... 2.85ms DONE</span><br><span class="line">2025_08_28_030252_create_exercise_types_table ............................................................. 0.48ms DONE</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//終端機回應</span><br><span class="line">2025_08_28_030252_create_exercise_records_table ............................ 2.85ms DONE</span><br><span class="line">2025_08_28_030252_create_exercise_types_table .............................. 0.48ms DONE</span><br></pre></td></tr></table></figure>
 
 <p>仔細看終端機的回覆可以發現，只有建立兩個table的訊息</p>
 <p>我用 sqlite3 檢查 database.sqlite內的table，發現user table是有建立的，但是內容是laravel建立的預設內容<br>還有一些不認識的table，想必這些都是原本預設建立的table，此時回去看Migrations資料夾內的檔案，那些不認識的table name跟都對上了</p>

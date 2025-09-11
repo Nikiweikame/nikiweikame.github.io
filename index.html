@@ -105,7 +105,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
 
 <p>這邊可能會遇上的問題</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//終端機回應</span><br><span class="line">2025_08_28_030252_create_exercise_records_table ........................................................... 2.85ms DONE</span><br><span class="line">2025_08_28_030252_create_exercise_types_table ............................................................. 0.48ms DONE</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//終端機回應</span><br><span class="line">2025_08_28_030252_create_exercise_records_table ............................ 2.85ms DONE</span><br><span class="line">2025_08_28_030252_create_exercise_types_table .............................. 0.48ms DONE</span><br></pre></td></tr></table></figure>
 
 <p>仔細看終端機的回覆可以發現，只有建立兩個table的訊息</p>
 <p>我用 sqlite3 檢查 database.sqlite內的table，發現user table是有建立的，但是內容是laravel建立的預設內容<br>還有一些不認識的table，想必這些都是原本預設建立的table，此時回去看Migrations資料夾內的檔案，那些不認識的table name跟都對上了</p>
