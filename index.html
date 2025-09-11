@@ -67,10 +67,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
       </div>
     </div>
   </div>
@@ -78,6 +78,59 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-請AI協助我開發-part10" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/11/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part10/" class="article-date">
+  <time class="dt-published" datetime="2025-09-11T04:52:35.000Z" itemprop="datePublished">2025-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/11/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part10/">請AI協助我開發-part10</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Seeder建立資料"><a href="#Seeder建立資料" class="headerlink" title="Seeder建立資料"></a>Seeder建立資料</h1><p>之後就是建立測試用資料</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 終端機</span><br><span class="line">php artisan make:seeder UserSeeder</span><br><span class="line">php artisan make:factory UserFactory</span><br><span class="line">php artisan db:seed</span><br></pre></td></tr></table></figure>
+
+<p>這部分有三個指令</p>
+<ul>
+<li>php artisan make:seeder UserSeeder<br>➡️ 建立一個 Seeder 類別，用來定義要塞進資料庫的「假資料」。<br>產生後會在 database&#x2F;seeders&#x2F;UserSeeder.php 裡面，通常用來建立第一筆的管理者資料</li>
+<li>php artisan make:factory UserFactory<br>➡️ 建立一個 Factory 類別，用來自動生成大量的假資料（通常搭配 Faker 套件）。</li>
+<li>php artisan db:seed<br>➡️ 執行 所有 Seeder（或指定 Seeder）來把資料寫進資料庫。</li>
+</ul>
+<p>這是我建立第一筆資料的Seeder</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace Database\Seeders;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Console\Seeds\WithoutModelEvents;</span><br><span class="line">use Illuminate\Database\Seeder;</span><br><span class="line"></span><br><span class="line">class UserSeeder extends Seeder</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Run the database seeds.</span><br><span class="line">     */</span><br><span class="line">    public function run(): void</span><br><span class="line">    &#123;</span><br><span class="line">        User::create([</span><br><span class="line">            &#x27;user_id&#x27; =&gt; &#x27;niki&#x27;,</span><br><span class="line">            &#x27;password_hash&#x27; =&gt; bcrypt(&#x27;123456&#x27;),</span><br><span class="line">            &#x27;nickname&#x27; =&gt; &#x27;烏龜&#x27;,</span><br><span class="line">            &#x27;weight&#x27; =&gt; 77.5,</span><br><span class="line">            &#x27;status&#x27; =&gt; &#x27;active&#x27;,</span><br><span class="line">            &#x27;last_login_at&#x27; =&gt; now(),</span><br><span class="line">            &#x27;password_change_at&#x27; =&gt; now(),</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這時候出現了意外的插曲，時間與我建立的時間不同<br>時間差了8小時，感覺應該是時區設定問題</p>
+<p>愛醬表示我推測的沒錯是config&#x2F;app.php的時區設定問題<br>將<br>‘timezone’ &#x3D;&gt; ‘UTC’,<br>改為<br>‘timezone’ &#x3D;&gt; ‘Asia&#x2F;Taipei’,</p>
+<p>這樣建立的資料時間就是我指定時區的時間了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/09/11/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part10/" data-id="cmff06xkv0000fdbo1mym9i5s" data-title="請AI協助我開發-part10" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-請AI協助我開發-part09" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -122,7 +175,7 @@
 </ul>
 <p>現在app&#x2F;Model資料夾有三個檔案<br>此時app&#x2F;Model就會有三個檔案<br>┌ ExerciseRecord.php<br>│ ExerciseType.php<br>└ User.php</p>
 <p>這時候要分兩部分來學習，user跟user以外的<br>因為User Model 比普通 Model 多了 登入&#x2F;認證功能。<br>學習User Model前我會建議先學習普通的model</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    //</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="一般的Model"><a href="#一般的Model" class="headerlink" title="一般的Model"></a>一般的Model</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    //</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>這是預設的model樣式，建立一個class並繼承Model(Illuminate\Database\Eloquent\Model)</p>
 <ul>
 <li>允許建立假資料use HasFactory</li>
@@ -153,26 +206,21 @@
 <p>這就像ERD表示table間的關係，也是說明外鍵的連結</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line">// Factory假資料</span><br><span class="line">use Illuminate\Database\Eloquent\Factories\HasFactory;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    use HasFactory;</span><br><span class="line"></span><br><span class="line">    protected $fillable = [&#x27;name&#x27;, &#x27;weight_unit&#x27;, &#x27;calories_per_unit&#x27;, &#x27;description&#x27;, &#x27;updated_by&#x27;];</span><br><span class="line"></span><br><span class="line">    protected $table = &#x27;exercise_types&#x27;;</span><br><span class="line"></span><br><span class="line">    public function exerciseRecords()</span><br><span class="line">    &#123;</span><br><span class="line">      return $this-&gt;hasMany(ExerciseRecord::class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Seeder建立資料"><a href="#Seeder建立資料" class="headerlink" title="Seeder建立資料"></a>Seeder建立資料</h1><p>之後就是建立測試用資料</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 終端機</span><br><span class="line">php artisan make:seeder UserSeeder</span><br><span class="line">php artisan make:factory UserFactory</span><br><span class="line">php artisan db:seed</span><br></pre></td></tr></table></figure>
-
-<p>這部分有三個指令</p>
-<ul>
-<li>php artisan make:seeder UserSeeder<br>➡️ 建立一個 Seeder 類別，用來定義要塞進資料庫的「假資料」。<br>產生後會在 database&#x2F;seeders&#x2F;UserSeeder.php 裡面，通常用來建立第一筆的管理者資料</li>
-<li>php artisan make:factory UserFactory<br>➡️ 建立一個 Factory 類別，用來自動生成大量的假資料（通常搭配 Faker 套件）。</li>
-<li>php artisan db:seed<br>➡️ 執行 所有 Seeder（或指定 Seeder）來把資料寫進資料庫。</li>
+<h2 id="user的Model"><a href="#user的Model" class="headerlink" title="user的Model"></a>user的Model</h2><ul>
+<li>$hidden 設定</li>
 </ul>
-<p>這是我建立第一筆資料的Seeder</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace Database\Seeders;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Console\Seeds\WithoutModelEvents;</span><br><span class="line">use Illuminate\Database\Seeder;</span><br><span class="line"></span><br><span class="line">class UserSeeder extends Seeder</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Run the database seeds.</span><br><span class="line">     */</span><br><span class="line">    public function run(): void</span><br><span class="line">    &#123;</span><br><span class="line">        User::create([</span><br><span class="line">            &#x27;user_id&#x27; =&gt; &#x27;niki&#x27;,</span><br><span class="line">            &#x27;password_hash&#x27; =&gt; bcrypt(&#x27;123456&#x27;),</span><br><span class="line">            &#x27;nickname&#x27; =&gt; &#x27;烏龜&#x27;,</span><br><span class="line">            &#x27;weight&#x27; =&gt; 77.5,</span><br><span class="line">            &#x27;status&#x27; =&gt; &#x27;active&#x27;,</span><br><span class="line">            &#x27;last_login_at&#x27; =&gt; now(),</span><br><span class="line">            &#x27;password_change_at&#x27; =&gt; now(),</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>user這是管控使用漲登入資訊的table，會有一些安全的機制</p>
+<p>像是 不會被序列化的欄位 $hidden</p>
+<p>這邊會規範哪些欄位不會被序列化，也就是無法轉換成JSON外傳</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected $hidden = [&#x27;password_hash&#x27;];</span><br></pre></td></tr></table></figure>
 
-<p>這時候出現了意外的插曲，時間與我建立的時間不同<br>時間差了8小時，感覺應該是時區設定問題</p>
-<p>愛醬表示我推測的沒錯是config&#x2F;app.php的時區設定問題<br>將<br>‘timezone’ &#x3D;&gt; ‘UTC’,<br>改為<br>‘timezone’ &#x3D;&gt; ‘Asia&#x2F;Taipei’,</p>
-<p>這樣建立的資料時間就是我指定時區的時間了</p>
 
+<h2 id="其他沒有提到的-Casts-型別轉換"><a href="#其他沒有提到的-Casts-型別轉換" class="headerlink" title="其他沒有提到的 Casts 型別轉換"></a>其他沒有提到的 Casts 型別轉換</h2><p>確保某些欄位，在寫入資料的時候會自動轉換型別</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">protected function casts(): array</span><br><span class="line">&#123;</span><br><span class="line">    return [</span><br><span class="line">        &#x27;last_login_at&#x27; =&gt; &#x27;datetime&#x27;,</span><br><span class="line">        &#x27;password_change_at&#x27; =&gt; &#x27;datetime&#x27;,</span><br><span class="line">        &#x27;weight&#x27; =&gt; &#x27;decimal:2&#x27;,</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/" data-id="cmfcay0qr0000jbbohb9v0kvm" data-title="請AI協助我開發-part09" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/" data-id="cmfcay0qr0000jbbohb9v0kvm" data-title="請AI協助我開發-part09" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -244,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" data-id="cmf6aoe680000jzbo6k7v2fw2" data-title="請AI協助我開發-part08" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" data-id="cmf6aoe680000jzbo6k7v2fw2" data-title="請AI協助我開發-part08" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -288,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/08/20250908%E4%B8%80%E9%80%B1%E7%9A%84%E8%B5%B7%E5%A7%8B/" data-id="cmfapv4ms0000kqbo4r88awye" data-title="20250908一週的起始" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/08/20250908%E4%B8%80%E9%80%B1%E7%9A%84%E8%B5%B7%E5%A7%8B/" data-id="cmfapv4ms0000kqbo4r88awye" data-title="20250908一週的起始" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -331,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/" data-id="cmf6aoe680002jzbof5seh35p" data-title="停止內耗與焦慮，讓心平靜下來" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/" data-id="cmf6aoe680002jzbof5seh35p" data-title="停止內耗與焦慮，讓心平靜下來" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -392,7 +440,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/" data-id="cmey1xg4q00000abo2lp47ht1" data-title="請AI協助我開發-part07" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/" data-id="cmey1xg4q00000abo2lp47ht1" data-title="請AI協助我開發-part07" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -484,7 +532,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/28/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part06/" data-id="cmev5ubdp0000nhbo5ok38vjd" data-title="請AI協助我開發-part06" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/28/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part06/" data-id="cmev5ubdp0000nhbo5ok38vjd" data-title="請AI協助我開發-part06" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -551,7 +599,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/" data-id="cmetpkl8k0000mhbohgyg3ghm" data-title="請AI協助我開發-part05" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/" data-id="cmetpkl8k0000mhbohgyg3ghm" data-title="請AI協助我開發-part05" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -612,7 +660,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part04/" data-id="cmetoenai00005pbo6gvw1022" data-title="請AI協助我開發-part04" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part04/" data-id="cmetoenai00005pbo6gvw1022" data-title="請AI協助我開發-part04" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -667,87 +715,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part03/" data-id="cmeryv2e70000yobog6f7c362" data-title="請AI協助我開發-part03" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-請AI協助我開發-part02" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/08/21/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part02/" class="article-date">
-  <time class="dt-published" datetime="2025-08-21T05:44:18.000Z" itemprop="datePublished">2025-08-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/08/21/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part02/">請AI協助我開發-part02</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="減肥紀錄網站資料庫-part01-帳號管理"><a href="#減肥紀錄網站資料庫-part01-帳號管理" class="headerlink" title="減肥紀錄網站資料庫-part01-帳號管理"></a>減肥紀錄網站資料庫-part01-帳號管理</h2><p>不管是透過線上的資料庫或是本機的機料庫，我都需要設計一個這個網站需要的資料庫資料，<br>如果可以的話，我希望能分三種模式，<br>第一種是本地建立的資料庫，也就是自記開發API來串接錢後端<br>第二種是運用線上資料庫，透過該網站提供的API來串接線上資料庫，達成資料皆換<br>第三種就是僅在本地使用，將內容儲存在瀏覽器的內部站純空間，不過資料儲存受瀏覽器的約約數比較沒有長久性</p>
-<p>首先進入我的網頁，必須先註冊&#x2F;登入才能建立&#x2F;讀取個人的資料<br>就要有帳號管理的table<br>pk欄位就設定帳號<br>再來就是密碼、帳號狀態</p>
-<p>安全規範設置<br>登入時要顯示出上次登入的日期，讓使用者查核是否有異常登入狀況，<br>再來要記錄密碼使用是否超過三個月，所以table上還要有上次密碼變更日期<br>如果超過三個月要提醒是否更換密碼或是沿用舊密碼</p>
-<p>後來想到，要怎麼稱呼使用者，總不能用帳號來稱呼使用者，所以要在欄位加上暱稱的欄位</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE users (</span><br><span class="line">    user_id VARCHAR(50) PRIMARY KEY, -- 帳號（主鍵）</span><br><span class="line">    password_hash VARCHAR(255) NOT NULL, -- 加密後的密碼</span><br><span class="line">    nickname VARCHAR(50), -- 暱稱</span><br><span class="line">    status ENUM(&#x27;active&#x27;, &#x27;inactive&#x27;, &#x27;locked&#x27;) DEFAULT &#x27;active&#x27;, -- 帳號狀態</span><br><span class="line">    last_login_at DATETIME, -- 上次登入時間</span><br><span class="line">    password_changed_at DATETIME -- 上次密碼變更時間</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h2 id="減肥紀錄網站資料庫-part02-資料紀錄"><a href="#減肥紀錄網站資料庫-part02-資料紀錄" class="headerlink" title="減肥紀錄網站資料庫-part02-資料紀錄"></a>減肥紀錄網站資料庫-part02-資料紀錄</h2><p>再來就是核心的功能，要記錄使用者運動記錄以及消耗的卡路里<br>首先是pk這個就沒有特定的項目就用no來表示，讓系統自動填入<br>之後就是使用者id，以及記錄的時間要區分年月日年月日各一個欄位，後續篩選比較方便<br>這部分要問問AI通常會用什麼方式做記錄</p>
-<p>AI回答<br>如果是設計資料庫的話，通常會這樣考量：</p>
-<p>直接用一個 DATETIME 或 DATE 欄位</p>
-<p>資料庫（例如 MySQL、PostgreSQL）原生支援 DATE &#x2F; DATETIME 型別，可以同時儲存年月日（甚至時分秒）。</p>
-<p>篩選的時候可以透過 SQL 函數抽取特定部分，例如：</p>
-<p>SELECT * FROM record WHERE YEAR(record_time) &#x3D; 2025;<br>SELECT * FROM record WHERE MONTH(record_time) &#x3D; 8;</p>
-<p>這樣比較直覺，程式處理也方便。</p>
-<p>把年、月、日分開各一個欄位</p>
-<p>好處：後續要做篩選、統計（例如月報表、年報表）可能會快一點，不需要額外用函數拆解日期。</p>
-<p>壞處：資料冗長（要三個欄位）、維護比較麻煩，尤其跨日期計算（例如計算兩次運動相隔幾天）會很不方便。</p>
-<p>👉 一般業界做法：</p>
-<p>建議用一個 DATE &#x2F; DATETIME 欄位就好，必要時再透過 SQL 或應用層把年月日拆出來。</p>
-<p>如果真的很常用到「只看年月日各自的篩選」，可以額外建立 索引或是產生計算欄位（Generated Column）來加速查詢，而不是一開始就拆成三個欄位。</p>
-<p>這個回答時墳具有建設，也彌補了我經驗上的不足，這樣欄位就只剩下no、使用者id跟日期</p>
-<p>之後就是要記錄的運動項目，運動的次數或是時間，再來就是消耗的卡路里三個的欄位</p>
-<p>拿著我規劃的結果問問AI看看還有什麼需要補足的地方</p>
-<p>AI回答：</p>
-<ul>
-<li>運動次數&#x2F;時間的設計</li>
-</ul>
-<p>「次數」和「時間」本質上是不同單位（整數次數 vs. 時間長度）。</p>
-<p>如果都塞在一個欄位，未來處理會麻煩（例如統計「總時長」或「總次數」會混在一起）。</p>
-<p>建議改成兩個欄位：</p>
-<p>duration_minutes（運動時間，分鐘數）</p>
-<p>reps（次數，若不適用則填 NULL）</p>
-<ul>
-<li>日期欄位</li>
-</ul>
-<p>如果只記錄「一天一筆」就用 DATE。</p>
-<p>如果要記錄「一天多筆」（例如早上跑步，晚上游泳），建議用 DATETIME，這樣才能區分時間點。</p>
-<p>運動次數&#x2F;時間的設計，建議我把欄位分開，這樣我區分為時長，距離以及次數三項</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE exercise_record (</span><br><span class="line">    id INT AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">    user_id VARCHAR(50) NOT NULL,</span><br><span class="line">    exercise_type_id INT NOT NULL,   -- 運動種類（跑步、舉重、瑜伽…）</span><br><span class="line">    record_time DATETIME NOT NULL,   -- 紀錄時間</span><br><span class="line">    duration_minutes DECIMAL(10,2) NULL, -- 運動時間（分鐘）</span><br><span class="line">    distance_km DECIMAL(10,2) NULL,      -- 運動距離（公里）</span><br><span class="line">    count INT NULL,                        -- 次數（舉重、深蹲等）</span><br><span class="line">    calories INT NOT NULL,                -- 消耗卡路里</span><br><span class="line">    FOREIGN KEY (user_id) REFERENCES users(user_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>這樣兩個核心table就完成了，隨然中間出了點小問題<br>像是user_id欄位的屬性沒有一致，導致創建時出現型態不同 → MySQL 3780 錯誤</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/21/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part02/" data-id="cmeqxufn40000kv8zbgn1a67t" data-title="請AI協助我開發-part02" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part03/" data-id="cmeryv2e70000yobog6f7c362" data-title="請AI協助我開發-part03" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -765,7 +733,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -796,7 +764,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
     </div>
@@ -806,9 +774,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/09/11/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part10/">請AI協助我開發-part10</a>
+          </li>
         
           <li>
             <a href="/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/">請AI協助我開發-part09</a>
@@ -824,10 +796,6 @@
         
           <li>
             <a href="/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/">停止內耗與焦慮，讓心平靜下來</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/">請AI協助我開發-part07</a>
           </li>
         
       </ul>

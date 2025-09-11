@@ -14,7 +14,7 @@
 <meta property="og:description" content="建立database.sqlite設定好 Migrations檔案之後，就要開始建立database.sqlite的內容了 12&#x2F;&#x2F;終端機php artisan migrate  這邊可能會遇上的問題 123&#x2F;&#x2F;終端機回應2025_08_28_030252_create_exercise_records_table ............................ 2.85ms DONE2">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-09-09T02:44:08.000Z">
-<meta property="article:modified_time" content="2025-09-11T03:32:16.213Z">
+<meta property="article:modified_time" content="2025-09-11T06:04:12.217Z">
 <meta property="article:author" content="Niki_wei">
 <meta property="article:tag" content="diary">
 <meta name="twitter:card" content="summary">
@@ -70,10 +70,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
       </div>
     </div>
   </div>
@@ -123,7 +123,7 @@
 </ul>
 <p>現在app&#x2F;Model資料夾有三個檔案<br>此時app&#x2F;Model就會有三個檔案<br>┌ ExerciseRecord.php<br>│ ExerciseType.php<br>└ User.php</p>
 <p>這時候要分兩部分來學習，user跟user以外的<br>因為User Model 比普通 Model 多了 登入&#x2F;認證功能。<br>學習User Model前我會建議先學習普通的model</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    //</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="一般的Model"><a href="#一般的Model" class="headerlink" title="一般的Model"></a>一般的Model</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    //</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>這是預設的model樣式，建立一個class並繼承Model(Illuminate\Database\Eloquent\Model)</p>
 <ul>
 <li>允許建立假資料use HasFactory</li>
@@ -154,26 +154,21 @@
 <p>這就像ERD表示table間的關係，也是說明外鍵的連結</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line">// Factory假資料</span><br><span class="line">use Illuminate\Database\Eloquent\Factories\HasFactory;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    use HasFactory;</span><br><span class="line"></span><br><span class="line">    protected $fillable = [&#x27;name&#x27;, &#x27;weight_unit&#x27;, &#x27;calories_per_unit&#x27;, &#x27;description&#x27;, &#x27;updated_by&#x27;];</span><br><span class="line"></span><br><span class="line">    protected $table = &#x27;exercise_types&#x27;;</span><br><span class="line"></span><br><span class="line">    public function exerciseRecords()</span><br><span class="line">    &#123;</span><br><span class="line">      return $this-&gt;hasMany(ExerciseRecord::class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Seeder建立資料"><a href="#Seeder建立資料" class="headerlink" title="Seeder建立資料"></a>Seeder建立資料</h1><p>之後就是建立測試用資料</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 終端機</span><br><span class="line">php artisan make:seeder UserSeeder</span><br><span class="line">php artisan make:factory UserFactory</span><br><span class="line">php artisan db:seed</span><br></pre></td></tr></table></figure>
-
-<p>這部分有三個指令</p>
-<ul>
-<li>php artisan make:seeder UserSeeder<br>➡️ 建立一個 Seeder 類別，用來定義要塞進資料庫的「假資料」。<br>產生後會在 database&#x2F;seeders&#x2F;UserSeeder.php 裡面，通常用來建立第一筆的管理者資料</li>
-<li>php artisan make:factory UserFactory<br>➡️ 建立一個 Factory 類別，用來自動生成大量的假資料（通常搭配 Faker 套件）。</li>
-<li>php artisan db:seed<br>➡️ 執行 所有 Seeder（或指定 Seeder）來把資料寫進資料庫。</li>
+<h2 id="user的Model"><a href="#user的Model" class="headerlink" title="user的Model"></a>user的Model</h2><ul>
+<li>$hidden 設定</li>
 </ul>
-<p>這是我建立第一筆資料的Seeder</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace Database\Seeders;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Console\Seeds\WithoutModelEvents;</span><br><span class="line">use Illuminate\Database\Seeder;</span><br><span class="line"></span><br><span class="line">class UserSeeder extends Seeder</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Run the database seeds.</span><br><span class="line">     */</span><br><span class="line">    public function run(): void</span><br><span class="line">    &#123;</span><br><span class="line">        User::create([</span><br><span class="line">            &#x27;user_id&#x27; =&gt; &#x27;niki&#x27;,</span><br><span class="line">            &#x27;password_hash&#x27; =&gt; bcrypt(&#x27;123456&#x27;),</span><br><span class="line">            &#x27;nickname&#x27; =&gt; &#x27;烏龜&#x27;,</span><br><span class="line">            &#x27;weight&#x27; =&gt; 77.5,</span><br><span class="line">            &#x27;status&#x27; =&gt; &#x27;active&#x27;,</span><br><span class="line">            &#x27;last_login_at&#x27; =&gt; now(),</span><br><span class="line">            &#x27;password_change_at&#x27; =&gt; now(),</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>user這是管控使用漲登入資訊的table，會有一些安全的機制</p>
+<p>像是 不會被序列化的欄位 $hidden</p>
+<p>這邊會規範哪些欄位不會被序列化，也就是無法轉換成JSON外傳</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected $hidden = [&#x27;password_hash&#x27;];</span><br></pre></td></tr></table></figure>
 
-<p>這時候出現了意外的插曲，時間與我建立的時間不同<br>時間差了8小時，感覺應該是時區設定問題</p>
-<p>愛醬表示我推測的沒錯是config&#x2F;app.php的時區設定問題<br>將<br>‘timezone’ &#x3D;&gt; ‘UTC’,<br>改為<br>‘timezone’ &#x3D;&gt; ‘Asia&#x2F;Taipei’,</p>
-<p>這樣建立的資料時間就是我指定時區的時間了</p>
 
+<h2 id="其他沒有提到的-Casts-型別轉換"><a href="#其他沒有提到的-Casts-型別轉換" class="headerlink" title="其他沒有提到的 Casts 型別轉換"></a>其他沒有提到的 Casts 型別轉換</h2><p>確保某些欄位，在寫入資料的時候會自動轉換型別</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">protected function casts(): array</span><br><span class="line">&#123;</span><br><span class="line">    return [</span><br><span class="line">        &#x27;last_login_at&#x27; =&gt; &#x27;datetime&#x27;,</span><br><span class="line">        &#x27;password_change_at&#x27; =&gt; &#x27;datetime&#x27;,</span><br><span class="line">        &#x27;weight&#x27; =&gt; &#x27;decimal:2&#x27;,</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/" data-id="cmfcay0qr0000jbbohb9v0kvm" data-title="請AI協助我開發-part09" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/" data-id="cmfcay0qr0000jbbohb9v0kvm" data-title="請AI協助我開發-part09" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -185,9 +180,18 @@
     
 <nav id="article-nav">
   
+    <a href="/2025/09/11/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part10/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          請AI協助我開發-part10
+        
+      </div>
+    </a>
+  
   
     <a href="/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">請AI協助我開發-part08</div>
     </a>
   
@@ -225,7 +229,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
     </div>
@@ -235,9 +239,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/09/11/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part10/">請AI協助我開發-part10</a>
+          </li>
         
           <li>
             <a href="/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/">請AI協助我開發-part09</a>
@@ -253,10 +261,6 @@
         
           <li>
             <a href="/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/">停止內耗與焦慮，讓心平靜下來</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/04/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part07/">請AI協助我開發-part07</a>
           </li>
         
       </ul>
