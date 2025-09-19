@@ -1,7 +1,7 @@
 ---
 title: 請AI協助我開發-part01
 date: 2025-08-20 11:00:12
-tags: [diary]
+tags: [AI , back-end]
 ---
 
 ## 實作是最好的技術磨練

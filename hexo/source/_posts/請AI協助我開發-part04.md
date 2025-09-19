@@ -1,7 +1,7 @@
 ---
 title: 請AI協助我開發-part04
 date: 2025-08-26 16:08:31
-tags: [diary]
+tags: [AI , back-end]
 ---
 
 ## PHP框架Laravel來進行API的開發-初始的困惑

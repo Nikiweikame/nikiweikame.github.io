@@ -1,7 +1,7 @@
 ---
 title: 請AI協助我開發-part08
 date: 2025-09-08 17:00:00
-tags: [diary]
+tags: [AI , back-end]
 ---
 
 ## 延續part-05的內容-認識migration-續

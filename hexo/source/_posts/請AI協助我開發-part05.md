@@ -1,7 +1,7 @@
 ---
 title: 請AI協助我開發-part05
 date: 2025-08-27 16:23:33
-tags: [diary]
+tags: [AI , back-end]
 ---
 
 ## 從SQLite開始的API製作

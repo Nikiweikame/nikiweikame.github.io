@@ -1,7 +1,7 @@
 ---
 title: 用AI學習伺服器架設by PHP-2025.08.07
 date: 2025-08-07 13:47:39
-tags: [diary,PHP]
+tags: [PHP]
 ---
 
 # 用AI學習伺服器架設by PHP

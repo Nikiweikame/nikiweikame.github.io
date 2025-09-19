@@ -1,7 +1,7 @@
 ---
 title: 請AI協助我開發-part07
 date: 2025-09-04 15:19:53
-tags: [diary]
+tags: [AI , back-end]
 ---
 
 ## SQL 建立限制(SQL Create Constraints)

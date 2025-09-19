@@ -1,7 +1,7 @@
 ---
 title: 請AI協助我開發-part02
 date: 2025-08-21 13:44:18
-tags: [diary]
+tags: [AI , back-end]
 ---
 
 

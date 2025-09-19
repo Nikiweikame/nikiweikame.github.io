@@ -1,7 +1,7 @@
 ---
 title: 請AI協助我開發-part03
 date: 2025-08-26 11:07:34
-tags: [diary]
+tags: [AI , back-end]
 ---
 
 ## 減肥紀錄網站資料庫-part03-運動項目與卡路里計算

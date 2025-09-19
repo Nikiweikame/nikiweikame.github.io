@@ -1,7 +1,7 @@
 ---
 title: 請AI協助我開發-part09
 date: 2025-09-09 10:44:08
-tags: [diary]
+tags: [AI , back-end]
 ---
 
 # 建立database.sqlite
@@ -16,7 +16,8 @@ php artisan migrate
 
 ```
 //終端機回應
-2025_08_28_030252_create_exercise_records_table ........................................................... 2.85ms DONE 2025_08_28_030252_create_exercise_types_table ............................................................. 0.48ms DONE
+2025_08_28_030252_create_exercise_records_table ............................ 2.85ms DONE
+2025_08_28_030252_create_exercise_types_table .............................. 0.48ms DONE
 ```
 
 仔細看終端機的回覆可以發現，只有建立兩個table的訊息
@@ -58,6 +59,8 @@ modelModel 是資料表的 PHP 代表，它負責：
 這時候要分兩部分來學習，user跟user以外的
 因為User Model 比普通 Model 多了 登入/認證功能。
 學習User Model前我會建議先學習普通的model
+
+## 一般的Model
 
 ```
 <?php
@@ -184,61 +187,31 @@ class ExerciseType extends Model
 }
 ```
 
-# Seeder建立資料
+## user的Model
 
-之後就是建立測試用資料
+* $hidden 設定
+
+user這是管控使用漲登入資訊的table，會有一些安全的機制
+
+像是 不會被序列化的欄位 $hidden
+
+這邊會規範哪些欄位不會被序列化，也就是無法轉換成JSON外傳
 ```
-// 終端機
-php artisan make:seeder UserSeeder
-php artisan make:factory UserFactory
-php artisan db:seed
+protected $hidden = ['password_hash'];
 ```
 
-這部分有三個指令
-* php artisan make:seeder UserSeeder
-➡️ 建立一個 Seeder 類別，用來定義要塞進資料庫的「假資料」。
-產生後會在 database/seeders/UserSeeder.php 裡面，通常用來建立第一筆的管理者資料
-* php artisan make:factory UserFactory
-➡️ 建立一個 Factory 類別，用來自動生成大量的假資料（通常搭配 Faker 套件）。
-* php artisan db:seed
-➡️ 執行 所有 Seeder（或指定 Seeder）來把資料寫進資料庫。
 
-這是我建立第一筆資料的Seeder
+## 其他沒有提到的 Casts 型別轉換
+
+確保某些欄位，在寫入資料的時候會自動轉換型別
+
 ```
-<?php
-
-namespace Database\Seeders;
-
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-
-class UserSeeder extends Seeder
+protected function casts(): array
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
-    {
-        User::create([
-            'user_id' => 'niki',
-            'password_hash' => bcrypt('123456'),
-            'nickname' => '烏龜',
-            'weight' => 77.5,
-            'status' => 'active',
-            'last_login_at' => now(),
-            'password_change_at' => now(),
-        ]);
-    }
+    return [
+        'last_login_at' => 'datetime',
+        'password_change_at' => 'datetime',
+        'weight' => 'decimal:2',
+    ];
 }
 ```
-
-這時候出現了意外的插曲，時間與我建立的時間不同
-時間差了8小時，感覺應該是時區設定問題
-
-愛醬表示我推測的沒錯是config/app.php的時區設定問題
-將
-'timezone' => 'UTC',
-改為
-'timezone' => 'Asia/Taipei',
-
-這樣建立的資料時間就是我指定時區的時間了

@@ -1,7 +1,7 @@
 ---
 title: 請AI協助我開發-part06
 date: 2025-08-28 16:45:31
-tags:
+tags: [AI , back-end]
 ---
 
 ## 嘗試製作這次系統設計文件
