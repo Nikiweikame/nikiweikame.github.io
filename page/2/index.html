@@ -79,6 +79,75 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-請AI協助我開發-part05" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/" class="article-date">
+  <time class="dt-published" datetime="2025-08-27T08:23:33.000Z" itemprop="datePublished">2025-08-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/">請AI協助我開發-part05</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="從SQLite開始的API製作"><a href="#從SQLite開始的API製作" class="headerlink" title="從SQLite開始的API製作"></a>從SQLite開始的API製作</h2><p>如果要使用SQLite就必須先建立一個空的 SQLite 資料庫檔案。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">touch database/database.sqlite</span><br></pre></td></tr></table></figure>
+
+<p>然後在 .env 設定SQLite 資料庫檔案位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DB_CONNECTION=sqlite</span><br><span class="line">DB_DATABASE=database/database.sqlite</span><br></pre></td></tr></table></figure>
+
+<h3 id="Eloquent建立"><a href="#Eloquent建立" class="headerlink" title="Eloquent建立"></a>Eloquent建立</h3><p>設定完成之後就要開始對資料庫做串聯，首先先用Laravel 的 Artisan 指令「產生程式骨架」，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">php artisan make:model User -m</span><br><span class="line">php artisan make:model ExerciseType -m</span><br><span class="line">php artisan make:model ExerciseRecord -m</span><br></pre></td></tr></table></figure>
+
+<p>從Laravel文件中所描述<br>這是Laravel的物件關係映射器object-relational mapper (ORM)，可讓您愉快地與資料庫互動。<br>使用 Eloquent 時，每個資料庫表都有一個對應的「模型」，用於與該表互動。</p>
+<p>換句話說就是可以透過這些model對這些table進行簡易的CRUD操作</p>
+<ul>
+<li>注意：這只是先畫資料庫連結與操作的藍圖</li>
+</ul>
+<p>model是在app&#x2F;Model建立代表model的php檔案，是操作資料庫的入口，會用來寫 查詢、關聯、規則 等邏輯。</p>
+<p>-m（等同 –migration）<br>Migration 是「資料表的版本控制腳本」，用來建立&#x2F;修改資料表結構。<br>會在database&#x2F;migrations&#x2F;建立php文件<br>之後用 php artisan migrate 執行，資料庫才會真的產生&#x2F;更新表。</p>
+<p>Laravel 專案通常已內建 User Model 與 users 表，已有就不要重複建立</p>
+<p>此時app&#x2F;Model就會有三個檔案<br>┌ ExerciseRecord.php<br>│ ExerciseType.php<br>└ User.php</p>
+<p>database&#x2F;migrations&#x2F;也會有三個檔案<br>┌ 0001_01_01_000000_create_users_table.php<br>│ xxxx_xx_xx_xxxxxx_create_exercise_records_table.php<br>└ xxxx_xx_xx_xxxxxx_create_exercise_types_table.php</p>
+<p>而一般開發的步驟（先 migration 後 model）</p>
+<h3 id="migrations設定"><a href="#migrations設定" class="headerlink" title="migrations設定"></a>migrations設定</h3><p>先針對ExerciseType的migrations做設定，考量User的有預設的關係會比較複雜(一次建立三個table)，<br>所以我選擇先對ExerciseType的migrations做設定，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">//database/migrations/xxxx_xx_xx_xxxxxx_create_exercise_types_table.php</span><br><span class="line">use Illuminate\Database\Migrations\Migration;</span><br><span class="line">use Illuminate\Database\Schema\Blueprint;</span><br><span class="line">use Illuminate\Support\Facades\Schema;</span><br><span class="line"></span><br><span class="line">return new class extends Migration</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Run the migrations.</span><br><span class="line">     */</span><br><span class="line">    public function up(): void</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::create(&#x27;exercise_types&#x27;, function (Blueprint $table) &#123;</span><br><span class="line">            $table-&gt;id();</span><br><span class="line">            $table-&gt;timestamps();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Reverse the migrations.</span><br><span class="line">     */</span><br><span class="line">    public function down(): void</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::dropIfExists(&#x27;exercise_types&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>首先up()跟down()是個別對應</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan migrate</span><br><span class="line">php artisan migrate:rollback</span><br></pre></td></tr></table></figure>
+<p>這兩個指令去新增資料表及刪除資料表，<br>對此我就有疑問，能不能針對個別檔案執行這些操作，愛醬對此問題是這樣回答的</p>
+<p>答：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">針對單一檔案的方法</span><br><span class="line"></span><br><span class="line">Laravel 有提供 --path 與 --pretend 等參數，可以針對單一 migration 檔案操作：</span><br><span class="line"></span><br><span class="line">1. 執行某一個 migration（建立）</span><br><span class="line">php artisan migrate --path=/database/migrations/2025_08_28_123456_create_exercise_types_table.php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">👉 這樣就只會執行這個檔案的 up()。</span><br><span class="line"></span><br><span class="line">2. 回滾某一個 migration（刪除）</span><br><span class="line"></span><br><span class="line">Laravel 沒有提供「直接 rollback 單檔」的指令，但有兩種方式：</span><br><span class="line"></span><br><span class="line">方式 A：reset 後再指定 migrate</span><br><span class="line"></span><br><span class="line">php artisan migrate:rollback --step=1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">👉 如果你剛剛最後只跑過這個檔案，--step=1 就會只回滾這一個。</span><br><span class="line"></span><br><span class="line">方式 B：用 migrate:refresh 搭配 --path</span><br><span class="line"></span><br><span class="line">php artisan migrate:refresh --path=/database/migrations/2025_08_28_123456_create_exercise_types_table.php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">👉 refresh 的意思是「先 down()，再 up()」，所以等於先刪掉再重建。</span><br><span class="line">這也是你要針對單檔修改 schema 時最常用的做法。</span><br><span class="line">一般狀況下</span><br><span class="line">php artisan migrate</span><br><span class="line">→ 執行 所有還沒執行過 的 migration（會跑每個檔案的 up()）。</span><br><span class="line"></span><br><span class="line">php artisan migrate:rollback</span><br><span class="line">→ 會依照「批次 (batch)」把最後一次 migrate 的 migration 全部 rollback（跑 down()）</span><br></pre></td></tr></table></figure>
+
+<p>看來只有建立可以做精細操作，刪除就沒辦法了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/" data-id="cmetpkl8k0000mhbohgyg3ghm" data-title="請AI協助我開發-part05" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-請AI協助我開發-part04" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/08/26/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part04/" class="article-date">
@@ -690,51 +759,6 @@ phpinfo();
 
 
   
-    <article id="post-結束了一段漫長的職業初體驗" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/08/05/%E7%B5%90%E6%9D%9F%E4%BA%86%E4%B8%80%E6%AE%B5%E6%BC%AB%E9%95%B7%E7%9A%84%E8%81%B7%E6%A5%AD%E5%88%9D%E9%AB%94%E9%A9%97/" class="article-date">
-  <time class="dt-published" datetime="2025-08-05T06:55:43.000Z" itemprop="datePublished">2025-08-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/08/05/%E7%B5%90%E6%9D%9F%E4%BA%86%E4%B8%80%E6%AE%B5%E6%BC%AB%E9%95%B7%E7%9A%84%E8%81%B7%E6%A5%AD%E5%88%9D%E9%AB%94%E9%A9%97/">結束了一段漫長的職業初體驗</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="記錄一些瑣事"><a href="#記錄一些瑣事" class="headerlink" title="記錄一些瑣事"></a>記錄一些瑣事</h2><p>健保部分，前公司還沒轉出，所以我現在還沒辦法加保，每天要檢查是否轉出，方便我做轉入動作</p>
-<h2 id="日後打算"><a href="#日後打算" class="headerlink" title="日後打算"></a>日後打算</h2><p>目前想往後端那邊學習，如果順利，我將會發展成全端工程師，前公司用React比較多，目前這段時間還是會練習React的開發，而之前的Vue3說真的是有點生疏了，也要花時間重溫一下<br>我先從Vue的複習開始吧！！！<br>希望一切能夠順利</p>
-<h2 id="工作室的方針"><a href="#工作室的方針" class="headerlink" title="工作室的方針"></a>工作室的方針</h2><p>最低標是學會架設API，</p>
-<p>語言選擇方面目前沒有限定，不過目前工作室會PHP比較多，所以往那邊發展的好處比較多</p>
-<p>目前JYu建議先去瞭解後端的面相，在知道後端的基礎概念及專有名詞之後，才好確認自身想要的方向</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/05/%E7%B5%90%E6%9D%9F%E4%BA%86%E4%B8%80%E6%AE%B5%E6%BC%AB%E9%95%B7%E7%9A%84%E8%81%B7%E6%A5%AD%E5%88%9D%E9%AB%94%E9%A9%97/" data-id="cme8961z400082w8zfu5l9nak" data-title="結束了一段漫長的職業初體驗" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -785,6 +809,10 @@ phpinfo();
       <ul>
         
           <li>
+            <a href="/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B-1/">不負責任的採買慾望</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B/">不負責任的採買慾望</a>
           </li>
         
@@ -798,10 +826,6 @@ phpinfo();
         
           <li>
             <a href="/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/">請AI協助我開發-part09</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/">請AI協助我開發-part08</a>
           </li>
         
       </ul>

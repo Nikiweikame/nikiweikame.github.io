@@ -79,6 +79,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-不負責任的採買慾望-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B-1/" class="article-date">
+  <time class="dt-published" datetime="2025-09-19T07:20:47.000Z" itemprop="datePublished">2025-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B-1/">不負責任的採買慾望</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B-1/" data-id="cmfth55400000bpboe48hb9w3" data-title="不負責任的採買慾望" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-不負責任的採買慾望" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B/" class="article-date">
@@ -226,7 +264,54 @@
 <p>愛醬表示我推測的沒錯是config&#x2F;app.php的時區設定問題<br>將<br>‘timezone’ &#x3D;&gt; ‘UTC’,<br>改為<br>‘timezone’ &#x3D;&gt; ‘Asia&#x2F;Taipei’,</p>
 <p>這樣建立的資料時間就是我指定時區的時間了</p>
 <h1 id="Controller-處理使用者請求（Web-或-API），調用-Model-做資料庫操作，最後回傳結果"><a href="#Controller-處理使用者請求（Web-或-API），調用-Model-做資料庫操作，最後回傳結果" class="headerlink" title="Controller : 處理使用者請求（Web 或 API），調用 Model 做資料庫操作，最後回傳結果"></a>Controller : 處理使用者請求（Web 或 API），調用 Model 做資料庫操作，最後回傳結果</h1><p>透過artisan 生成Controller</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller UserController</span><br><span class="line">php artisan make:controller ExerciseTypeController</span><br><span class="line">php artisan make:controller ExerciseRecordController</span><br></pre></td></tr></table></figure>
+<p>這時會有兩種模組可以選擇</p>
+<ul>
+<li>Resource Controller（7 個方法）、通常放在 web.php</li>
+</ul>
+<ol>
+<li>index() – 顯示資源列表</li>
+<li>create() – 顯示建立新資源的表單</li>
+<li>store() – 儲存新建立的資源</li>
+<li>show($id) – 顯示單一資源內容</li>
+<li>edit($id) – 顯示編輯資源的表單</li>
+<li>update($id) – 更新既有的資源</li>
+<li>destroy($id) – 刪除資源</li>
+</ol>
+<ul>
+<li>API resource controller（5 個方法）、通常放在 api.php中(需要另外建立)</li>
+</ul>
+<ol>
+<li>index() – 列表</li>
+<li>store() – 新增</li>
+<li>show($id) – 查看</li>
+<li>update($id) – 更新</li>
+<li>destroy($id) – 刪除</li>
+</ol>
+<p>分別在既有的maker:controller之後加上 –resource或是–api</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller UserController // 最陽春的指令</span><br><span class="line">php artisan make:controller ExerciseTypeController --resource //esource Controller版</span><br><span class="line">php artisan make:controller ExerciseRecordController --api //API resource controller</span><br></pre></td></tr></table></figure>
+<p>我這邊是使用API resource，所以之後會在routes新建一個api.php的文件</p>
+<h1 id="API路由建立"><a href="#API路由建立" class="headerlink" title="API路由建立"></a>API路由建立</h1><p>Laravel 的 routes&#x2F;web.php 和 routes&#x2F;api.php 都是用來定義路由，但設計上有幾個重要的差別：</p>
+<p>簡單的說<br>web.php &#x3D; 傳統網站（有 session、有 CSRF、瀏覽器導向）<br>api.php &#x3D; API（stateless、JSON 回應、給前端或手機用）</p>
+<p>基本上在controller建立的方法必須逐一在api.php上做設定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&#x27;/users&#x27;, [UserController::class, &#x27;index&#x27;]);</span><br><span class="line">Route::get(&#x27;/users/&#123;id&#125;&#x27;, [UserController::class, &#x27;show&#x27;]);</span><br><span class="line">Route::post(&#x27;/users&#x27;, [UserController::class, &#x27;store&#x27;]);</span><br><span class="line">Route::put(&#x27;/users/&#123;id&#125;&#x27;, [UserController::class, &#x27;update&#x27;]);</span><br><span class="line">Route::delete(&#x27;/users/&#123;id&#125;&#x27;, [UserController::class, &#x27;destroy&#x27;]);</span><br></pre></td></tr></table></figure>
+<p>但是如果只有API resource controller預設的那五個方法，就可以直接用Route::apiResource來處理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::apiResource(&#x27;users&#x27;, UserController::class);</span><br></pre></td></tr></table></figure>
+
+<p>我的api.php就會像這樣</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use App\Http\Controllers\UserController;</span><br><span class="line">use App\Http\Controllers\ExerciseTypeController;</span><br><span class="line">use App\Http\Controllers\ExerciseRecordController;</span><br><span class="line">use Illuminate\Support\Facades\Route;</span><br><span class="line"></span><br><span class="line">Route::apiResource(&#x27;users&#x27;, UserController::class);</span><br><span class="line">Route::apiResource(&#x27;exercise-types&#x27;, ExerciseTypeController::class);</span><br><span class="line">Route::apiResource(&#x27;exercise-records&#x27;, ExerciseRecordController::class);</span><br></pre></td></tr></table></figure>
+
+<h1 id="將api-php掛進路由系統"><a href="#將api-php掛進路由系統" class="headerlink" title="將api.php掛進路由系統"></a>將api.php掛進路由系統</h1><p>最後在bootstrap&#x2F;app.php中加上 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api: __DIR__.&#x27;/../routes/api.php&#x27;,</span><br></pre></td></tr></table></figure>
+<p>把 api.php 這個檔案掛進整個路由系統<br>bootstrap&#x2F;app.php</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use App\Http\Middleware\HandleAppearance;</span><br><span class="line">use App\Http\Middleware\HandleInertiaRequests;</span><br><span class="line">use Illuminate\Foundation\Application;</span><br><span class="line">use Illuminate\Foundation\Configuration\Exceptions;</span><br><span class="line">use Illuminate\Foundation\Configuration\Middleware;</span><br><span class="line">use Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets;</span><br><span class="line"></span><br><span class="line">return Application::configure(basePath: dirname(__DIR__))</span><br><span class="line">    -&gt;withRouting(</span><br><span class="line">        web: __DIR__.&#x27;/../routes/web.php&#x27;,</span><br><span class="line">        api: __DIR__.&#x27;/../routes/api.php&#x27;,//加上這行</span><br><span class="line">        commands: __DIR__.&#x27;/../routes/console.php&#x27;,</span><br><span class="line">        health: &#x27;/up&#x27;,</span><br><span class="line">    )</span><br><span class="line">    -&gt;withMiddleware(function (Middleware $middleware) &#123;</span><br><span class="line">        $middleware-&gt;encryptCookies(except: [&#x27;appearance&#x27;, &#x27;sidebar_state&#x27;]);</span><br><span class="line"></span><br><span class="line">        $middleware-&gt;web(append: [</span><br><span class="line">            HandleAppearance::class,</span><br><span class="line">            HandleInertiaRequests::class,</span><br><span class="line">            AddLinkHeadersForPreloadedAssets::class,</span><br><span class="line">        ]);</span><br><span class="line">    &#125;)</span><br><span class="line">    -&gt;withExceptions(function (Exceptions $exceptions) &#123;</span><br><span class="line">        //</span><br><span class="line">    &#125;)-&gt;create();</span><br></pre></td></tr></table></figure>
+
+<h1 id="驗證"><a href="#驗證" class="headerlink" title="驗證"></a>驗證</h1><p>這實在終端機上執行指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan route:list --path=api</span><br></pre></td></tr></table></figure>
+<p>就會顯示出剛剛設定的15個api路由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">GET|HEAD        api/exercise-records .......................... exercise-records.index › ExerciseRecordController@index</span><br><span class="line">  POST            api/exercise-records .......................... exercise-records.store › ExerciseRecordController@store</span><br><span class="line">  GET|HEAD        api/exercise-records/&#123;exercise_record&#125; .......... exercise-records.show › ExerciseRecordController@show</span><br><span class="line">  PUT|PATCH       api/exercise-records/&#123;exercise_record&#125; ...... exercise-records.update › ExerciseRecordController@update</span><br><span class="line">  DELETE          api/exercise-records/&#123;exercise_record&#125; .... exercise-records.destroy › ExerciseRecordController@destroy</span><br><span class="line">  GET|HEAD        api/exercise-types ................................ exercise-types.index › ExerciseTypeController@index</span><br><span class="line">  POST            api/exercise-types ................................ exercise-types.store › ExerciseTypeController@store</span><br><span class="line">  GET|HEAD        api/exercise-types/&#123;exercise_type&#125; .................. exercise-types.show › ExerciseTypeController@show</span><br><span class="line">  PUT|PATCH       api/exercise-types/&#123;exercise_type&#125; .............. exercise-types.update › ExerciseTypeController@update</span><br><span class="line">  DELETE          api/exercise-types/&#123;exercise_type&#125; ............ exercise-types.destroy › ExerciseTypeController@destroy</span><br><span class="line">  GET|HEAD        api/users .......................................................... users.index › UserController@index</span><br><span class="line">  POST            api/users .......................................................... users.store › UserController@store</span><br><span class="line">  GET|HEAD        api/users/&#123;user&#125; ..................................................... users.show › UserController@show</span><br><span class="line">  PUT|PATCH       api/users/&#123;user&#125; ................................................. users.update › UserController@update</span><br><span class="line">  DELETE          api/users/&#123;user&#125; ............................................... users.destroy › UserController@destroy</span><br><span class="line"></span><br><span class="line">                                                                                                      Showing [15] routes</span><br></pre></td></tr></table></figure>
+
+<p>這樣就代表你的api架設成功，可以啟動server，用postman做測試</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan serve //啟動伺服器</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -658,75 +743,6 @@
 
 
   
-    <article id="post-請AI協助我開發-part05" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/" class="article-date">
-  <time class="dt-published" datetime="2025-08-27T08:23:33.000Z" itemprop="datePublished">2025-08-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/">請AI協助我開發-part05</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="從SQLite開始的API製作"><a href="#從SQLite開始的API製作" class="headerlink" title="從SQLite開始的API製作"></a>從SQLite開始的API製作</h2><p>如果要使用SQLite就必須先建立一個空的 SQLite 資料庫檔案。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">touch database/database.sqlite</span><br></pre></td></tr></table></figure>
-
-<p>然後在 .env 設定SQLite 資料庫檔案位置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DB_CONNECTION=sqlite</span><br><span class="line">DB_DATABASE=database/database.sqlite</span><br></pre></td></tr></table></figure>
-
-<h3 id="Eloquent建立"><a href="#Eloquent建立" class="headerlink" title="Eloquent建立"></a>Eloquent建立</h3><p>設定完成之後就要開始對資料庫做串聯，首先先用Laravel 的 Artisan 指令「產生程式骨架」，</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">php artisan make:model User -m</span><br><span class="line">php artisan make:model ExerciseType -m</span><br><span class="line">php artisan make:model ExerciseRecord -m</span><br></pre></td></tr></table></figure>
-
-<p>從Laravel文件中所描述<br>這是Laravel的物件關係映射器object-relational mapper (ORM)，可讓您愉快地與資料庫互動。<br>使用 Eloquent 時，每個資料庫表都有一個對應的「模型」，用於與該表互動。</p>
-<p>換句話說就是可以透過這些model對這些table進行簡易的CRUD操作</p>
-<ul>
-<li>注意：這只是先畫資料庫連結與操作的藍圖</li>
-</ul>
-<p>model是在app&#x2F;Model建立代表model的php檔案，是操作資料庫的入口，會用來寫 查詢、關聯、規則 等邏輯。</p>
-<p>-m（等同 –migration）<br>Migration 是「資料表的版本控制腳本」，用來建立&#x2F;修改資料表結構。<br>會在database&#x2F;migrations&#x2F;建立php文件<br>之後用 php artisan migrate 執行，資料庫才會真的產生&#x2F;更新表。</p>
-<p>Laravel 專案通常已內建 User Model 與 users 表，已有就不要重複建立</p>
-<p>此時app&#x2F;Model就會有三個檔案<br>┌ ExerciseRecord.php<br>│ ExerciseType.php<br>└ User.php</p>
-<p>database&#x2F;migrations&#x2F;也會有三個檔案<br>┌ 0001_01_01_000000_create_users_table.php<br>│ xxxx_xx_xx_xxxxxx_create_exercise_records_table.php<br>└ xxxx_xx_xx_xxxxxx_create_exercise_types_table.php</p>
-<p>而一般開發的步驟（先 migration 後 model）</p>
-<h3 id="migrations設定"><a href="#migrations設定" class="headerlink" title="migrations設定"></a>migrations設定</h3><p>先針對ExerciseType的migrations做設定，考量User的有預設的關係會比較複雜(一次建立三個table)，<br>所以我選擇先對ExerciseType的migrations做設定，</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">//database/migrations/xxxx_xx_xx_xxxxxx_create_exercise_types_table.php</span><br><span class="line">use Illuminate\Database\Migrations\Migration;</span><br><span class="line">use Illuminate\Database\Schema\Blueprint;</span><br><span class="line">use Illuminate\Support\Facades\Schema;</span><br><span class="line"></span><br><span class="line">return new class extends Migration</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Run the migrations.</span><br><span class="line">     */</span><br><span class="line">    public function up(): void</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::create(&#x27;exercise_types&#x27;, function (Blueprint $table) &#123;</span><br><span class="line">            $table-&gt;id();</span><br><span class="line">            $table-&gt;timestamps();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Reverse the migrations.</span><br><span class="line">     */</span><br><span class="line">    public function down(): void</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::dropIfExists(&#x27;exercise_types&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>首先up()跟down()是個別對應</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan migrate</span><br><span class="line">php artisan migrate:rollback</span><br></pre></td></tr></table></figure>
-<p>這兩個指令去新增資料表及刪除資料表，<br>對此我就有疑問，能不能針對個別檔案執行這些操作，愛醬對此問題是這樣回答的</p>
-<p>答：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">針對單一檔案的方法</span><br><span class="line"></span><br><span class="line">Laravel 有提供 --path 與 --pretend 等參數，可以針對單一 migration 檔案操作：</span><br><span class="line"></span><br><span class="line">1. 執行某一個 migration（建立）</span><br><span class="line">php artisan migrate --path=/database/migrations/2025_08_28_123456_create_exercise_types_table.php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">👉 這樣就只會執行這個檔案的 up()。</span><br><span class="line"></span><br><span class="line">2. 回滾某一個 migration（刪除）</span><br><span class="line"></span><br><span class="line">Laravel 沒有提供「直接 rollback 單檔」的指令，但有兩種方式：</span><br><span class="line"></span><br><span class="line">方式 A：reset 後再指定 migrate</span><br><span class="line"></span><br><span class="line">php artisan migrate:rollback --step=1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">👉 如果你剛剛最後只跑過這個檔案，--step=1 就會只回滾這一個。</span><br><span class="line"></span><br><span class="line">方式 B：用 migrate:refresh 搭配 --path</span><br><span class="line"></span><br><span class="line">php artisan migrate:refresh --path=/database/migrations/2025_08_28_123456_create_exercise_types_table.php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">👉 refresh 的意思是「先 down()，再 up()」，所以等於先刪掉再重建。</span><br><span class="line">這也是你要針對單檔修改 schema 時最常用的做法。</span><br><span class="line">一般狀況下</span><br><span class="line">php artisan migrate</span><br><span class="line">→ 執行 所有還沒執行過 的 migration（會跑每個檔案的 up()）。</span><br><span class="line"></span><br><span class="line">php artisan migrate:rollback</span><br><span class="line">→ 會依照「批次 (batch)」把最後一次 migrate 的 migration 全部 rollback（跑 down()）</span><br></pre></td></tr></table></figure>
-
-<p>看來只有建立可以做精細操作，刪除就沒辦法了</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/27/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part05/" data-id="cmetpkl8k0000mhbohgyg3ghm" data-title="請AI協助我開發-part05" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -777,6 +793,10 @@
       <ul>
         
           <li>
+            <a href="/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B-1/">不負責任的採買慾望</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B/">不負責任的採買慾望</a>
           </li>
         
@@ -790,10 +810,6 @@
         
           <li>
             <a href="/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/">請AI協助我開發-part09</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/">請AI協助我開發-part08</a>
           </li>
         
       </ul>

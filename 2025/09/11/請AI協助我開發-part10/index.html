@@ -14,7 +14,7 @@
 <meta property="og:description" content="Seeder建立資料之後就是建立測試用資料 1234&#x2F;&#x2F; 終端機php artisan make:seeder UserSeederphp artisan make:factory UserFactoryphp artisan db:seed  這部分有三個指令  php artisan make:seeder UserSeeder➡️ 建立一個 Seeder 類別，用來定義要塞進資料庫的「假資料">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-09-11T04:52:35.000Z">
-<meta property="article:modified_time" content="2025-09-19T02:37:16.144Z">
+<meta property="article:modified_time" content="2025-09-21T09:06:57.740Z">
 <meta property="article:author" content="Niki_wei">
 <meta property="article:tag" content="back-end">
 <meta property="article:tag" content="AI">
@@ -119,7 +119,54 @@
 <p>愛醬表示我推測的沒錯是config&#x2F;app.php的時區設定問題<br>將<br>‘timezone’ &#x3D;&gt; ‘UTC’,<br>改為<br>‘timezone’ &#x3D;&gt; ‘Asia&#x2F;Taipei’,</p>
 <p>這樣建立的資料時間就是我指定時區的時間了</p>
 <h1 id="Controller-處理使用者請求（Web-或-API），調用-Model-做資料庫操作，最後回傳結果"><a href="#Controller-處理使用者請求（Web-或-API），調用-Model-做資料庫操作，最後回傳結果" class="headerlink" title="Controller : 處理使用者請求（Web 或 API），調用 Model 做資料庫操作，最後回傳結果"></a>Controller : 處理使用者請求（Web 或 API），調用 Model 做資料庫操作，最後回傳結果</h1><p>透過artisan 生成Controller</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller UserController</span><br><span class="line">php artisan make:controller ExerciseTypeController</span><br><span class="line">php artisan make:controller ExerciseRecordController</span><br></pre></td></tr></table></figure>
+<p>這時會有兩種模組可以選擇</p>
+<ul>
+<li>Resource Controller（7 個方法）、通常放在 web.php</li>
+</ul>
+<ol>
+<li>index() – 顯示資源列表</li>
+<li>create() – 顯示建立新資源的表單</li>
+<li>store() – 儲存新建立的資源</li>
+<li>show($id) – 顯示單一資源內容</li>
+<li>edit($id) – 顯示編輯資源的表單</li>
+<li>update($id) – 更新既有的資源</li>
+<li>destroy($id) – 刪除資源</li>
+</ol>
+<ul>
+<li>API resource controller（5 個方法）、通常放在 api.php中(需要另外建立)</li>
+</ul>
+<ol>
+<li>index() – 列表</li>
+<li>store() – 新增</li>
+<li>show($id) – 查看</li>
+<li>update($id) – 更新</li>
+<li>destroy($id) – 刪除</li>
+</ol>
+<p>分別在既有的maker:controller之後加上 –resource或是–api</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller UserController // 最陽春的指令</span><br><span class="line">php artisan make:controller ExerciseTypeController --resource //esource Controller版</span><br><span class="line">php artisan make:controller ExerciseRecordController --api //API resource controller</span><br></pre></td></tr></table></figure>
+<p>我這邊是使用API resource，所以之後會在routes新建一個api.php的文件</p>
+<h1 id="API路由建立"><a href="#API路由建立" class="headerlink" title="API路由建立"></a>API路由建立</h1><p>Laravel 的 routes&#x2F;web.php 和 routes&#x2F;api.php 都是用來定義路由，但設計上有幾個重要的差別：</p>
+<p>簡單的說<br>web.php &#x3D; 傳統網站（有 session、有 CSRF、瀏覽器導向）<br>api.php &#x3D; API（stateless、JSON 回應、給前端或手機用）</p>
+<p>基本上在controller建立的方法必須逐一在api.php上做設定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&#x27;/users&#x27;, [UserController::class, &#x27;index&#x27;]);</span><br><span class="line">Route::get(&#x27;/users/&#123;id&#125;&#x27;, [UserController::class, &#x27;show&#x27;]);</span><br><span class="line">Route::post(&#x27;/users&#x27;, [UserController::class, &#x27;store&#x27;]);</span><br><span class="line">Route::put(&#x27;/users/&#123;id&#125;&#x27;, [UserController::class, &#x27;update&#x27;]);</span><br><span class="line">Route::delete(&#x27;/users/&#123;id&#125;&#x27;, [UserController::class, &#x27;destroy&#x27;]);</span><br></pre></td></tr></table></figure>
+<p>但是如果只有API resource controller預設的那五個方法，就可以直接用Route::apiResource來處理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::apiResource(&#x27;users&#x27;, UserController::class);</span><br></pre></td></tr></table></figure>
+
+<p>我的api.php就會像這樣</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use App\Http\Controllers\UserController;</span><br><span class="line">use App\Http\Controllers\ExerciseTypeController;</span><br><span class="line">use App\Http\Controllers\ExerciseRecordController;</span><br><span class="line">use Illuminate\Support\Facades\Route;</span><br><span class="line"></span><br><span class="line">Route::apiResource(&#x27;users&#x27;, UserController::class);</span><br><span class="line">Route::apiResource(&#x27;exercise-types&#x27;, ExerciseTypeController::class);</span><br><span class="line">Route::apiResource(&#x27;exercise-records&#x27;, ExerciseRecordController::class);</span><br></pre></td></tr></table></figure>
+
+<h1 id="將api-php掛進路由系統"><a href="#將api-php掛進路由系統" class="headerlink" title="將api.php掛進路由系統"></a>將api.php掛進路由系統</h1><p>最後在bootstrap&#x2F;app.php中加上 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api: __DIR__.&#x27;/../routes/api.php&#x27;,</span><br></pre></td></tr></table></figure>
+<p>把 api.php 這個檔案掛進整個路由系統<br>bootstrap&#x2F;app.php</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use App\Http\Middleware\HandleAppearance;</span><br><span class="line">use App\Http\Middleware\HandleInertiaRequests;</span><br><span class="line">use Illuminate\Foundation\Application;</span><br><span class="line">use Illuminate\Foundation\Configuration\Exceptions;</span><br><span class="line">use Illuminate\Foundation\Configuration\Middleware;</span><br><span class="line">use Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets;</span><br><span class="line"></span><br><span class="line">return Application::configure(basePath: dirname(__DIR__))</span><br><span class="line">    -&gt;withRouting(</span><br><span class="line">        web: __DIR__.&#x27;/../routes/web.php&#x27;,</span><br><span class="line">        api: __DIR__.&#x27;/../routes/api.php&#x27;,//加上這行</span><br><span class="line">        commands: __DIR__.&#x27;/../routes/console.php&#x27;,</span><br><span class="line">        health: &#x27;/up&#x27;,</span><br><span class="line">    )</span><br><span class="line">    -&gt;withMiddleware(function (Middleware $middleware) &#123;</span><br><span class="line">        $middleware-&gt;encryptCookies(except: [&#x27;appearance&#x27;, &#x27;sidebar_state&#x27;]);</span><br><span class="line"></span><br><span class="line">        $middleware-&gt;web(append: [</span><br><span class="line">            HandleAppearance::class,</span><br><span class="line">            HandleInertiaRequests::class,</span><br><span class="line">            AddLinkHeadersForPreloadedAssets::class,</span><br><span class="line">        ]);</span><br><span class="line">    &#125;)</span><br><span class="line">    -&gt;withExceptions(function (Exceptions $exceptions) &#123;</span><br><span class="line">        //</span><br><span class="line">    &#125;)-&gt;create();</span><br></pre></td></tr></table></figure>
+
+<h1 id="驗證"><a href="#驗證" class="headerlink" title="驗證"></a>驗證</h1><p>這實在終端機上執行指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan route:list --path=api</span><br></pre></td></tr></table></figure>
+<p>就會顯示出剛剛設定的15個api路由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">GET|HEAD        api/exercise-records .......................... exercise-records.index › ExerciseRecordController@index</span><br><span class="line">  POST            api/exercise-records .......................... exercise-records.store › ExerciseRecordController@store</span><br><span class="line">  GET|HEAD        api/exercise-records/&#123;exercise_record&#125; .......... exercise-records.show › ExerciseRecordController@show</span><br><span class="line">  PUT|PATCH       api/exercise-records/&#123;exercise_record&#125; ...... exercise-records.update › ExerciseRecordController@update</span><br><span class="line">  DELETE          api/exercise-records/&#123;exercise_record&#125; .... exercise-records.destroy › ExerciseRecordController@destroy</span><br><span class="line">  GET|HEAD        api/exercise-types ................................ exercise-types.index › ExerciseTypeController@index</span><br><span class="line">  POST            api/exercise-types ................................ exercise-types.store › ExerciseTypeController@store</span><br><span class="line">  GET|HEAD        api/exercise-types/&#123;exercise_type&#125; .................. exercise-types.show › ExerciseTypeController@show</span><br><span class="line">  PUT|PATCH       api/exercise-types/&#123;exercise_type&#125; .............. exercise-types.update › ExerciseTypeController@update</span><br><span class="line">  DELETE          api/exercise-types/&#123;exercise_type&#125; ............ exercise-types.destroy › ExerciseTypeController@destroy</span><br><span class="line">  GET|HEAD        api/users .......................................................... users.index › UserController@index</span><br><span class="line">  POST            api/users .......................................................... users.store › UserController@store</span><br><span class="line">  GET|HEAD        api/users/&#123;user&#125; ..................................................... users.show › UserController@show</span><br><span class="line">  PUT|PATCH       api/users/&#123;user&#125; ................................................. users.update › UserController@update</span><br><span class="line">  DELETE          api/users/&#123;user&#125; ............................................... users.destroy › UserController@destroy</span><br><span class="line"></span><br><span class="line">                                                                                                      Showing [15] routes</span><br></pre></td></tr></table></figure>
+
+<p>這樣就代表你的api架設成功，可以啟動server，用postman做測試</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan serve //啟動伺服器</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -199,6 +246,10 @@
       <ul>
         
           <li>
+            <a href="/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B-1/">不負責任的採買慾望</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B/">不負責任的採買慾望</a>
           </li>
         
@@ -212,10 +263,6 @@
         
           <li>
             <a href="/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/">請AI協助我開發-part09</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/">請AI協助我開發-part08</a>
           </li>
         
       </ul>
