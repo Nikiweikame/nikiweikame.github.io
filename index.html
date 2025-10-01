@@ -79,6 +79,72 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2025年9月支出檢討" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/01/2025%E5%B9%B49%E6%9C%88%E6%94%AF%E5%87%BA%E6%AA%A2%E8%A8%8E/" class="article-date">
+  <time class="dt-published" datetime="2025-10-01T06:46:50.000Z" itemprop="datePublished">2025-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/10/01/2025%E5%B9%B49%E6%9C%88%E6%94%AF%E5%87%BA%E6%AA%A2%E8%A8%8E/">2025年09月支出檢討</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="2025年09月"><a href="#2025年09月" class="headerlink" title="2025年09月"></a>2025年09月</h1><p>這算是在外生活的第二個月，很多支出開始正式繳納，以這個月為基礎來評估一個月的預算應該會比較妥當</p>
+<h2 id="支出部分為14038"><a href="#支出部分為14038" class="headerlink" title="支出部分為14038"></a>支出部分為14038</h2><ul>
+<li><p>家用產品支出5281<br>其中房租為最大宗5000<br>剩下的洗衣費80(正常應該是200)<br>清潔用品-迷你拖把購買201，用起來比想像中難用，不過比直接用抹布清理地板好一點</p>
+</li>
+<li><p>伙食費3742<br>必預期的5000少了一些，應該是回家一趟都吃家裡的關係，不過也相對是將伙食費轉嫁到交通費上面了</p>
+</li>
+<li><p>電話費1674<br>不小心操作失誤，一次繳了三個月份的電話費</p>
+</li>
+<li><p>交通費1260</p>
+</li>
+</ul>
+<p>含來回台北的客運錢，機車加油僅有兩次，目前還沒有大小保養要做應該還行，剩下的幾乎都是大眾交通的花費</p>
+<ul>
+<li>稅-健保費826</li>
+</ul>
+<p>沒什麼好說的，不顧也多了解健保的收費規則，看當月最後一個月的承保單位為主</p>
+<ul>
+<li>電子產品700</li>
+</ul>
+<p>手標的清潔與防水套見得更換</p>
+<ul>
+<li>娛樂 與家人的澎湖行555</li>
+</ul>
+<p>原本花費是破萬的，家裡事後給了不少，一部分分給妹妹，我的支出將到555</p>
+<h2 id="還沒被統計到的支出"><a href="#還沒被統計到的支出" class="headerlink" title="還沒被統計到的支出"></a>還沒被統計到的支出</h2><p>應該還有國民年金的部分，不過還沒送資料過來，預估是1200多，<br>電費是三個月繳一次，應該下個月會有帳單了，預估是1000以下(僅有8、9月份，1度5塊)</p>
+<p>感覺一個月的平均支出應該會落在15000上下應該還是有機會的，雖然我當初一個月抓的生活費是20000</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/10/01/2025%E5%B9%B49%E6%9C%88%E6%94%AF%E5%87%BA%E6%AA%A2%E8%A8%8E/" data-id="cmg7o71qn000063bof3142f1p" data-title="2025年09月支出檢討" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Account-book/" rel="tag">Account book</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-一週報告-20250927" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/27/%E4%B8%80%E9%80%B1%E5%A0%B1%E5%91%8A-20250927/" class="article-date">
@@ -147,9 +213,20 @@
       
         <h2 id="其他元件的controller"><a href="#其他元件的controller" class="headerlink" title="其他元件的controller"></a>其他元件的controller</h2><p>要在controller文件中加入 jwt.auth 中間件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 在建構子中加上 jwt.auth 中間件</span><br><span class="line">public function __construct()</span><br><span class="line">&#123;</span><br><span class="line">    $this-&gt;middleware(&#x27;jwt.auth&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>這樣就可以在後續的函式中使用</p>
+<p>這樣就可以在後續的所有函式都會先進行token驗證，也能在後續的還是中使用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$user = auth()-&gt;user();</span><br></pre></td></tr></table></figure>
+<p>這種做法，配合api.php的運用會是這樣</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::apiResource(&#x27;exerciseTypes&#x27;, ExerciseTypeController::class);</span><br></pre></td></tr></table></figure>
 
+<p>這部分會有兩個疑惑<br>其一，如果不是所有的方法都需要進行token驗證呢？<br>其二，jwt.auth 中間件能不能移到api.php統一處理？</p>
+<p>針對其一的問題<br>如果你只想部分方法需要驗證，可以這樣寫：<br>假設CRUD中R的部分不需要token驗證，可以這樣呈現</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public function __construct()</span><br><span class="line">&#123;</span><br><span class="line">    // 只有 CUD 需要驗證</span><br><span class="line">    $this-&gt;middleware(&#x27;jwt.auth&#x27;)-&gt;only([&#x27;store&#x27;, &#x27;update&#x27;, &#x27;destroy&#x27;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或是相反，先套用全部，再排除：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public function __construct()</span><br><span class="line">&#123;</span><br><span class="line">    // 除了 index/show 不需要驗證，其它都要驗證</span><br><span class="line">    $this-&gt;middleware(&#x27;jwt.auth&#x27;)-&gt;except([&#x27;index&#x27;, &#x27;show&#x27;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再來其二的問題，在api.php寫middleware，並把那些需要token驗證方法包進裡面</p>
+<p>Route::get(‘&#x2F;exerciseRecords’, [ExerciseRecordController::class, ‘index’]);</p>
+<p>Route::middleware(‘jwt.auth’)-&gt;group(function () {<br>    &#x2F;&#x2F; exercise records<br>    Route::post(‘&#x2F;exerciseRecords’, [ExerciseRecordController::class, ‘store’]);<br>    Route::put(‘&#x2F;exerciseRecords&#x2F;{id}’, [ExerciseRecordController::class, ‘update’]);<br>    Route::delete(‘&#x2F;exerciseRecords&#x2F;{id}’, [ExerciseRecordController::class, ‘destroy’]);<br>});</p>
 <h2 id="ExerciseRecordController"><a href="#ExerciseRecordController" class="headerlink" title="ExerciseRecordController"></a>ExerciseRecordController</h2><h2 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h2><p>先功能面思考，我進到個人紀錄的時候，希望能看到我自己的運動紀錄<br>所以一開始要先從JWT取得user資料，<br>再從table中找到該user的資料，<br>之後將多筆資料透過get()輸出出去</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$user = auth()-&gt;user();</span><br><span class="line">$query = ExerciseRecord::where(&#x27;user_id&#x27;, $user-&gt;id);</span><br><span class="line"></span><br><span class="line">$records = $query-&gt;get();</span><br><span class="line"></span><br><span class="line">return response()-&gt;json([</span><br><span class="line">    &#x27;success&#x27; =&gt; true,</span><br><span class="line">    &#x27;data&#x27; =&gt; $records,</span><br><span class="line">    &#x27;message&#x27; =&gt; &#x27;Records fetched successfully&#x27;,</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
 <p>這時我思考著，會不會有使用者想看個別運動的記錄呢，就像是原本show功能的延伸<br>從查詢單一資料延伸成查詢單一運動項目的紀錄</p>
@@ -727,49 +804,6 @@
 
 
   
-    <article id="post-停止內耗與焦慮，讓心平靜下來" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/" class="article-date">
-  <time class="dt-published" datetime="2025-09-05T03:31:15.000Z" itemprop="datePublished">2025-09-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/">停止內耗與焦慮，讓心平靜下來</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="近況報告"><a href="#近況報告" class="headerlink" title="近況報告"></a>近況報告</h2><p>最近有點焦慮，也有點提不起勁<br>有點討厭那個狀態的自己，什麼事都不想做<br>但是卻又覺得不做點事又不行，很矛盾吧！<br>最後陷入好像有做點事情卻什麼事情都沒有進展的旋渦<br>做一些沒有意義的事情，瀏覽一些沒有意義的文章<br>想在同溫層尋找認同，卻什麼都沒有得到</p>
-<p>我想把自己整理一下，把自己該做的、想做的、不切實際的目標都整理一下<br>想煩惱視覺化，再好好的去管理他們，讓他從心頭移到其他地方</p>
-<h2 id="對於筆記的迷思"><a href="#對於筆記的迷思" class="headerlink" title="對於筆記的迷思"></a>對於筆記的迷思</h2><p>筆記的意義在於幫助自己記錄重要的事物，不要一開始就想著這是給別人看的東西<br>這樣反而不知道該如何下筆，不如先記錄自己的想法，之後再將比較整理成容易讓其他人閱讀的方式<br>我沒辦法像那些厲害的人一樣，一步到位，但那又如何呢？<br>我需要的是適合我的處理事情方式，而不是最理想但我卻做不到的方式</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/" data-id="cmf6aoe680002jzbof5seh35p" data-title="停止內耗與焦慮，讓心平靜下來" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -788,7 +822,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notes/" rel="tag">notes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shopping-cart/" rel="tag">shopping_cart</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start/" rel="tag">start</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Account-book/" rel="tag">Account book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notes/" rel="tag">notes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shopping-cart/" rel="tag">shopping_cart</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/start/" rel="tag">start</a></li></ul>
     </div>
   </div>
 
@@ -798,7 +832,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AI/" style="font-size: 16.67px;">AI</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/back-end/" style="font-size: 20px;">back-end</a> <a href="/tags/diary/" style="font-size: 13.33px;">diary</a> <a href="/tags/notes/" style="font-size: 10px;">notes</a> <a href="/tags/shopping-cart/" style="font-size: 10px;">shopping_cart</a> <a href="/tags/start/" style="font-size: 10px;">start</a>
+      <a href="/tags/AI/" style="font-size: 16.67px;">AI</a> <a href="/tags/Account-book/" style="font-size: 10px;">Account book</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/back-end/" style="font-size: 20px;">back-end</a> <a href="/tags/diary/" style="font-size: 13.33px;">diary</a> <a href="/tags/notes/" style="font-size: 10px;">notes</a> <a href="/tags/shopping-cart/" style="font-size: 10px;">shopping_cart</a> <a href="/tags/start/" style="font-size: 10px;">start</a>
     </div>
   </div>
 
@@ -807,7 +841,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
     </div>
   </div>
 
@@ -818,6 +852,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/10/01/2025%E5%B9%B49%E6%9C%88%E6%94%AF%E5%87%BA%E6%AA%A2%E8%A8%8E/">2025年09月支出檢討</a>
+          </li>
         
           <li>
             <a href="/2025/09/27/%E4%B8%80%E9%80%B1%E5%A0%B1%E5%91%8A-20250927/">一週報告-20250927</a>
@@ -833,10 +871,6 @@
         
           <li>
             <a href="/2025/09/19/%E4%B8%8D%E8%B2%A0%E8%B2%AC%E4%BB%BB%E7%9A%84%E6%8E%A1%E8%B2%B7%E6%85%BE%E6%9C%9B/">不負責任的採買慾望</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/19/20250919%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/">20250919近況報告</a>
           </li>
         
       </ul>
