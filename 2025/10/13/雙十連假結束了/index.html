@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>資料庫建立-2025.08.12 | Niki的Blog</title>
+  <title>雙十連假結束了 | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="連線資料庫： 安裝 MySQL（可透過 XAMPP 或獨立安裝）。使用 PDO 或 MySQLi 連線資料庫： php&lt;?php$dsn &#x3D; ‘mysql:host&#x3D;localhost;dbname&#x3D;資料庫名稱’;$username &#x3D; ‘root’;$password &#x3D; ‘’;  try {    $pdo &#x3D; new PDO(">
+  <meta name="description" content="連假做什麼呢？對於目前待業的我來說，連假其實意義不太大，還是每天去工作室做學習，做做side project唯一有差別的是商家星期五平日價格變成假日價格了一些常去的便當店會有連假休息問題 我算是休息嗎？應該算吧，我感覺這幾天我比平常慵懶不少，雖然還是在">
 <meta property="og:type" content="article">
-<meta property="og:title" content="資料庫建立-2025.08.12">
-<meta property="og:url" content="https://nikiweikame.github.io/2025/08/12/%E8%B3%87%E6%96%99%E5%BA%AB%E5%BB%BA%E7%AB%8B-2025-08-12/index.html">
+<meta property="og:title" content="雙十連假結束了">
+<meta property="og:url" content="https://nikiweikame.github.io/2025/10/13/%E9%9B%99%E5%8D%81%E9%80%A3%E5%81%87%E7%B5%90%E6%9D%9F%E4%BA%86/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="連線資料庫： 安裝 MySQL（可透過 XAMPP 或獨立安裝）。使用 PDO 或 MySQLi 連線資料庫： php&lt;?php$dsn &#x3D; ‘mysql:host&#x3D;localhost;dbname&#x3D;資料庫名稱’;$username &#x3D; ‘root’;$password &#x3D; ‘’;  try {    $pdo &#x3D; new PDO(">
+<meta property="og:description" content="連假做什麼呢？對於目前待業的我來說，連假其實意義不太大，還是每天去工作室做學習，做做side project唯一有差別的是商家星期五平日價格變成假日價格了一些常去的便當店會有連假休息問題 我算是休息嗎？應該算吧，我感覺這幾天我比平常慵懶不少，雖然還是在">
 <meta property="og:locale">
-<meta property="article:published_time" content="2025-08-12T06:40:12.000Z">
-<meta property="article:modified_time" content="2025-09-19T02:34:36.724Z">
+<meta property="article:published_time" content="2025-10-13T05:11:23.000Z">
+<meta property="article:modified_time" content="2025-10-13T05:22:29.825Z">
 <meta property="article:author" content="Niki_wei">
-<meta property="article:tag" content="back-end">
+<meta property="article:tag" content="diary">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Niki的Blog" type="application/atom+xml">
@@ -80,10 +80,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-資料庫建立-2025-08-12" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-雙十連假結束了" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/08/12/%E8%B3%87%E6%96%99%E5%BA%AB%E5%BB%BA%E7%AB%8B-2025-08-12/" class="article-date">
-  <time class="dt-published" datetime="2025-08-12T06:40:12.000Z" itemprop="datePublished">2025-08-12</time>
+    <a href="/2025/10/13/%E9%9B%99%E5%8D%81%E9%80%A3%E5%81%87%E7%B5%90%E6%9D%9F%E4%BA%86/" class="article-date">
+  <time class="dt-published" datetime="2025-10-13T05:11:23.000Z" itemprop="datePublished">2025-10-13</time>
 </a>
     
   </div>
@@ -94,7 +94,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      資料庫建立-2025.08.12
+      雙十連假結束了
     </h1>
   
 
@@ -102,33 +102,17 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>連線資料庫：</p>
-<p>安裝 MySQL（可透過 XAMPP 或獨立安裝）。<br>使用 PDO 或 MySQLi 連線資料庫：</p>
-<p>php&lt;?php<br>$dsn &#x3D; ‘mysql:host&#x3D;localhost;dbname&#x3D;資料庫名稱’;<br>$username &#x3D; ‘root’;<br>$password &#x3D; ‘’; </p>
-<p>try {<br>    $pdo &#x3D; new PDO($dsn, $username, $password);<br>    $pdo-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);<br>    echo “Database connected!”;<br>} catch (PDOException $e) {<br>    echo “Connection failed: “ . $e-&gt;getMessage();<br>}<br>?&gt;</p>
-<p>帳號密碼建議使用其他文件來儲存<br>目前做小專案的練習，我先使用config.php儲存帳號密碼<br>後期再學習使用vlucas&#x2F;phpdotenv</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">// config.php</span><br><span class="line">return [</span><br><span class="line">    &#x27;db&#x27; =&gt; [</span><br><span class="line">        &#x27;username&#x27; =&gt; &#x27;root&#x27;,</span><br><span class="line">        &#x27;password&#x27; =&gt; &#x27;&#x27;</span><br><span class="line">    ]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$config = include &#x27;config.php&#x27;;</span><br><span class="line">$username = $config[&#x27;db&#x27;][&#x27;username&#x27;];</span><br><span class="line">$password = $config[&#x27;db&#x27;][&#x27;password&#x27;];</span><br><span class="line">$pdo = new PDO($dsn, $username, $password);</span><br></pre></td></tr></table></figure>
-
-<p>步驟 4：部署到線上伺服器<br>當你完成本地開發後，可以將 PHP 應用部署到線上伺服器：</p>
-<p>選擇主機：如 AWS、Heroku、或共享主機（如 Bluehost、Hostinger）。<br>上傳檔案：使用 FTP&#x2F;SFTP 上傳你的 PHP 檔案到主機的公開目錄（通常是 public_html）。<br>設定環境：確保主機支援 PHP 和所需的擴充套件（如 MySQL）。<br>測試：訪問你的網域，確認應用程式正常運行。</p>
-<p>常見問題與解決方法</p>
-<p>PHP 檔案無法運行？</p>
-<p>檢查 PHP 是否正確安裝（php -v）。<br>確保 Web 伺服器（如 Apache）正在運行。<br>確認檔案副檔名是 .php，並放在正確的資料夾。</p>
-<p>出現 404 錯誤？</p>
-<p>檢查 URL 是否正確。<br>確認伺服器是否啟動（php -S localhost:8000 或 Apache&#x2F;Nginx 服務）。</p>
-<p>需要更多學習資源？</p>
-<p>官方文件：PHP 官方網站。<br>線上課程：如 Codecademy、Udemy 的 PHP 課程。<br>框架：學習 Laravel 或 CodeIgniter，這些框架能簡化伺服器開發。</p>
+        <h1 id="連假做什麼呢？"><a href="#連假做什麼呢？" class="headerlink" title="連假做什麼呢？"></a>連假做什麼呢？</h1><p>對於目前待業的我來說，連假其實意義不太大，還是每天去工作室做學習，做做side project<br>唯一有差別的是商家星期五平日價格變成假日價格了<br>一些常去的便當店會有連假休息問題</p>
+<h1 id="我算是休息嗎？"><a href="#我算是休息嗎？" class="headerlink" title="我算是休息嗎？"></a>我算是休息嗎？</h1><p>應該算吧，我感覺這幾天我比平常慵懶不少，雖然還是在</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/12/%E8%B3%87%E6%96%99%E5%BA%AB%E5%BB%BA%E7%AB%8B-2025-08-12/" data-id="cme8961z300042w8z6grg5ima" data-title="資料庫建立-2025.08.12" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/10/13/%E9%9B%99%E5%8D%81%E9%80%A3%E5%81%87%E7%B5%90%E6%9D%9F%E4%BA%86/" data-id="cmgoouuyk00010mbo14pdf04q" data-title="雙十連假結束了" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
 
     </footer>
   </div>
@@ -136,19 +120,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2025/08/15/%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%9F%BA%E7%A4%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          後端工程師基礎工作流程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2025/08/07/%E7%94%A8AI%E5%AD%B8%E7%BF%92%E4%BC%BA%E6%9C%8D%E5%99%A8%E6%9E%B6%E8%A8%ADby%20PHP/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2025/10/08/%E4%B8%AD%E7%A7%8B%E5%90%83%E5%AE%8C%E7%83%A4%E8%82%89%E8%A6%BA%E5%BE%97%E6%BB%BF%E8%B6%B3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">用AI學習伺服器架設by PHP-2025.08.07</div>
+      <div class="article-nav-title">中秋吃完烤肉覺得滿足</div>
     </a>
   
 </nav>
