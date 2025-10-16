@@ -79,6 +79,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-近況報告" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/" class="article-date">
+  <time class="dt-published" datetime="2025-10-16T10:07:46.000Z" itemprop="datePublished">2025-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/">side project 近況報告</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="進度"><a href="#進度" class="headerlink" title="進度"></a>進度</h1><p>前端做到一半，準備下一個介面的問題，<br>要製作運動紀錄的介面，目前有四個api要開發，<br>也就是基本的CRUD，<br>先從讀取R開始，為了搞讀取，必須先搞假資料<br>趁這次實作了seeder 與 factory 結合運用<br>平常都是塞指定的假資料，這次用factory產出大量的假資料</p>
+<p>優化得部分<br>我優化了驗證出錯得部分<br>實作了Exceptions&#x2F;Handler.php<br>讓他統一處理驗證的錯誤處置，<br>也順便處理JWT驗證的錯誤回報問題，簡化token的處理，不過其他api還沒有全部改正，到時候遇到一個改一個</p>
+<p>目前頁面還缺<br>運動紀錄 新增&#x2F;編輯<br>運動項目 新增&#x2F;修改&#x2F;刪除<br>刪除的部分要考慮 要不要用假性刪除，不然項目刪除會把紀錄一起刪掉，這不太妥，如果是讓人無法查閱&#x2F;選擇倒是可以，既有的紀錄也不會有影響<br>不然就是刪除前，檢查record不能有關聯資料，如果有就假性刪除，沒有就真刪除<br>個人資料的修改&#x2F;密碼修改</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/" data-id="cmgtbd2d60000gnbodx2l962t" data-title="side project 近況報告" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-學習跟遊戲我一個都不想落下，至少我現在還能從遊戲中賺錢" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/10/14/%E5%AD%B8%E7%BF%92%E8%B7%9F%E9%81%8A%E6%88%B2%E6%88%91%E4%B8%80%E5%80%8B%E9%83%BD%E4%B8%8D%E6%83%B3%E8%90%BD%E4%B8%8B%EF%BC%8C%E8%87%B3%E5%B0%91%E6%88%91%E7%8F%BE%E5%9C%A8%E9%82%84%E8%83%BD%E5%BE%9E%E9%81%8A%E6%88%B2%E4%B8%AD%E8%B3%BA%E9%8C%A2/" class="article-date">
@@ -496,88 +539,6 @@
 
 
   
-    <article id="post-請AI協助我開發-part12" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/25/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part12/" class="article-date">
-  <time class="dt-published" datetime="2025-09-25T10:25:21.000Z" itemprop="datePublished">2025-09-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/25/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part12/">請AI協助我開發-part12</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="其他元件的controller"><a href="#其他元件的controller" class="headerlink" title="其他元件的controller"></a>其他元件的controller</h2><p>要在controller文件中加入 jwt.auth 中間件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 在建構子中加上 jwt.auth 中間件</span><br><span class="line">public function __construct()</span><br><span class="line">&#123;</span><br><span class="line">    $this-&gt;middleware(&#x27;jwt.auth&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>這樣就可以在後續的所有函式都會先進行token驗證，也能在後續的還是中使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$user = auth()-&gt;user();</span><br></pre></td></tr></table></figure>
-<p>這種做法，配合api.php的運用會是這樣</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::apiResource(&#x27;exerciseTypes&#x27;, ExerciseTypeController::class);</span><br></pre></td></tr></table></figure>
-
-<p>這部分會有兩個疑惑<br>其一，如果不是所有的方法都需要進行token驗證呢？<br>其二，jwt.auth 中間件能不能移到api.php統一處理？</p>
-<p>針對其一的問題<br>如果你只想部分方法需要驗證，可以這樣寫：<br>假設CRUD中R的部分不需要token驗證，可以這樣呈現</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public function __construct()</span><br><span class="line">&#123;</span><br><span class="line">    // 只有 CUD 需要驗證</span><br><span class="line">    $this-&gt;middleware(&#x27;jwt.auth&#x27;)-&gt;only([&#x27;store&#x27;, &#x27;update&#x27;, &#x27;destroy&#x27;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>或是相反，先套用全部，再排除：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public function __construct()</span><br><span class="line">&#123;</span><br><span class="line">    // 除了 index/show 不需要驗證，其它都要驗證</span><br><span class="line">    $this-&gt;middleware(&#x27;jwt.auth&#x27;)-&gt;except([&#x27;index&#x27;, &#x27;show&#x27;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>再來其二的問題，在api.php寫middleware，並把那些需要token驗證方法包進裡面</p>
-<p>Route::get(‘&#x2F;exerciseRecords’, [ExerciseRecordController::class, ‘index’]);</p>
-<p>Route::middleware(‘jwt.auth’)-&gt;group(function () {<br>    &#x2F;&#x2F; exercise records<br>    Route::post(‘&#x2F;exerciseRecords’, [ExerciseRecordController::class, ‘store’]);<br>    Route::put(‘&#x2F;exerciseRecords&#x2F;{id}’, [ExerciseRecordController::class, ‘update’]);<br>    Route::delete(‘&#x2F;exerciseRecords&#x2F;{id}’, [ExerciseRecordController::class, ‘destroy’]);<br>});</p>
-<h2 id="ExerciseRecordController"><a href="#ExerciseRecordController" class="headerlink" title="ExerciseRecordController"></a>ExerciseRecordController</h2><h2 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h2><p>先功能面思考，我進到個人紀錄的時候，希望能看到我自己的運動紀錄<br>所以一開始要先從JWT取得user資料，<br>再從table中找到該user的資料，<br>之後將多筆資料透過get()輸出出去</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$user = auth()-&gt;user();</span><br><span class="line">$query = ExerciseRecord::where(&#x27;user_id&#x27;, $user-&gt;id);</span><br><span class="line"></span><br><span class="line">$records = $query-&gt;get();</span><br><span class="line"></span><br><span class="line">return response()-&gt;json([</span><br><span class="line">    &#x27;success&#x27; =&gt; true,</span><br><span class="line">    &#x27;data&#x27; =&gt; $records,</span><br><span class="line">    &#x27;message&#x27; =&gt; &#x27;Records fetched successfully&#x27;,</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
-<p>這時我思考著，會不會有使用者想看個別運動的記錄呢，就像是原本show功能的延伸<br>從查詢單一資料延伸成查詢單一運動項目的紀錄</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public function getRecords(Request $request)</span><br><span class="line">&#123;</span><br><span class="line">    $user = auth()-&gt;user(); // 從 JWT 拿使用者</span><br><span class="line">    $exerciseTypeId = $request-&gt;input(&#x27;exercise_type_id&#x27;); // 從前端拿條件</span><br><span class="line"></span><br><span class="line">    $query = ExerciseRecord::where(&#x27;user_id&#x27;, $user-&gt;id);</span><br><span class="line"></span><br><span class="line">    if ($exerciseTypeId) &#123;</span><br><span class="line">        $query-&gt;where(&#x27;exercise_type_id&#x27;, $exerciseTypeId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $records = $query-&gt;get(); // 取得結果，多筆查詢</span><br><span class="line"></span><br><span class="line">    return response()-&gt;json([</span><br><span class="line">        &#x27;success&#x27; =&gt; true,</span><br><span class="line">        &#x27;data&#x27; =&gt; $records,</span><br><span class="line">        &#x27;message&#x27; =&gt; &#x27;Records fetched successfully&#x27;,</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>愛醬建議我這兩個功能可以整併在一起<br>在沒有給予Request時，回傳使用者所有紀錄<br>有Request時，則回傳使用者的特定運動紀錄</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public function index(Request $request)</span><br><span class="line">&#123;</span><br><span class="line">    $user = auth()-&gt;user();</span><br><span class="line">    $exerciseTypeId = $request-&gt;input(&#x27;exercise_type_id&#x27;);</span><br><span class="line"></span><br><span class="line">    $query = ExerciseRecord::where(&#x27;user_id&#x27;, $user-&gt;id);</span><br><span class="line">    if ($exerciseTypeId) &#123;</span><br><span class="line">        $query-&gt;where(&#x27;exercise_type_id&#x27;, $exerciseTypeId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $records = $query-&gt;get();</span><br><span class="line"></span><br><span class="line">    return response()-&gt;json([</span><br><span class="line">        &#x27;success&#x27; =&gt; true,</span><br><span class="line">        &#x27;data&#x27; =&gt; $records,</span><br><span class="line">        &#x27;message&#x27; =&gt; &#x27;Records fetched successfully&#x27;,</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h2><p>接著使用者新增運動紀錄store</p>
-<p>一樣先從JWT獲得使用者資訊，接著驗證新增的資訊<br>再來是新增到資料庫上，最後將結果回傳出去</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public function store(Request $request)</span><br><span class="line">&#123;</span><br><span class="line">    // 取得當前使用者</span><br><span class="line">    $user = auth()-&gt;user();</span><br><span class="line">    // 驗證輸入</span><br><span class="line">    $validated = $request-&gt;validate([</span><br><span class="line">        &#x27;exercise_type_id&#x27; =&gt; &#x27;required|exists:exercise_types,id&#x27;,</span><br><span class="line">        &#x27;record_time&#x27; =&gt; &#x27;required|date&#x27;,</span><br><span class="line">        &#x27;count&#x27; =&gt; &#x27;required|integer|min:1&#x27;,</span><br><span class="line">        &#x27;unit&#x27; =&gt; &#x27;required|string|max:100&#x27;,</span><br><span class="line">        &#x27;calories&#x27; =&gt; &#x27;required|numeric|min:0&#x27;,</span><br><span class="line">    ]);</span><br><span class="line">    // 建立紀錄</span><br><span class="line">    $record = ExerciseRecord::create([</span><br><span class="line">        &#x27;user_id&#x27; =&gt; $user-&gt;id,</span><br><span class="line">        &#x27;exercise_type_id&#x27; =&gt; $validated[&#x27;exercise_type_id&#x27;],</span><br><span class="line">        &#x27;record_time&#x27; =&gt; $validated[&#x27;record_time&#x27;],</span><br><span class="line">        &#x27;count&#x27; =&gt; $validated[&#x27;count&#x27;],</span><br><span class="line">        &#x27;unit&#x27; =&gt; $validated[&#x27;unit&#x27;],</span><br><span class="line">        &#x27;calories&#x27; =&gt; $validated[&#x27;calories&#x27;],</span><br><span class="line">    ]);</span><br><span class="line">    // 回傳結果</span><br><span class="line">    return response()-&gt;json([</span><br><span class="line">        &#x27;success&#x27; =&gt; true,</span><br><span class="line">        &#x27;data&#x27; =&gt; $record,</span><br><span class="line">        &#x27;message&#x27; =&gt; &#x27;Record created successfully&#x27;,</span><br><span class="line">    ], 201); // 201 Created</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><p>有些人會先記錄自己預計要做的運動，但是計劃總是趕不上變化，<br>所以才需要修改功能</p>
-<p>除了建立資料時的個欄位驗證之外，還需要精確地抓到腰修改的是哪一筆資料<br>所以輸入的參數update的fuction的參數除了Request之外還有放在api網址上的該筆紀錄的$id</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public function update(Request $request,$id)</span><br></pre></td></tr></table></figure>
-
-<p>而在查找資料的時候還必須加一層保護機制，確保該筆資料確實時這名使用者新增的，若該資料不存在則要回傳錯誤</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$record = ExerciseRecord::where(&#x27;user_id&#x27;, $user-&gt;id)</span><br><span class="line">    -&gt;where(&#x27;id&#x27;, $validated[&#x27;id&#x27;])</span><br><span class="line">    -&gt;first();</span><br><span class="line"></span><br><span class="line">if (! $record) &#123;</span><br><span class="line">    return response()-&gt;json([&#x27;success&#x27; =&gt; false, &#x27;message&#x27; =&gt; &#x27;Record not found&#x27;], 404);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>之後將資料更新功能整合就會變成下面這樣</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public function update(Request $request,$id)</span><br><span class="line">&#123;</span><br><span class="line">    $user = auth()-&gt;user();</span><br><span class="line"></span><br><span class="line">    $validated = $request-&gt;validate([</span><br><span class="line">        &#x27;exercise_type_id&#x27; =&gt; &#x27;required|exists:exercise_types,id&#x27;,</span><br><span class="line">        &#x27;record_time&#x27; =&gt; &#x27;required|date&#x27;,</span><br><span class="line">        &#x27;count&#x27; =&gt; &#x27;required|integer|min:1&#x27;,</span><br><span class="line">        &#x27;unit&#x27; =&gt; &#x27;required|string|max:100&#x27;,</span><br><span class="line">        &#x27;calories&#x27; =&gt; &#x27;required|numeric|min:0&#x27;,</span><br><span class="line">    ]);</span><br><span class="line"></span><br><span class="line">    $record = ExerciseRecord::where(&#x27;user_id&#x27;, $user-&gt;id)</span><br><span class="line">        -&gt;where(&#x27;id&#x27;, $id)</span><br><span class="line">        -&gt;first();</span><br><span class="line"></span><br><span class="line">    if (! $record) &#123;</span><br><span class="line">        return response()-&gt;json([&#x27;success&#x27; =&gt; false, &#x27;message&#x27; =&gt; &#x27;Record not found&#x27;], 404);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $record-&gt;update([</span><br><span class="line">        &#x27;exercise_type_id&#x27; =&gt; $validated[&#x27;exercise_type_id&#x27;],</span><br><span class="line">        &#x27;record_time&#x27; =&gt; $validated[&#x27;record_time&#x27;],</span><br><span class="line">        &#x27;count&#x27; =&gt; $validated[&#x27;count&#x27;],</span><br><span class="line">        &#x27;unit&#x27; =&gt; $validated[&#x27;unit&#x27;],</span><br><span class="line">        &#x27;calories&#x27; =&gt; $validated[&#x27;calories&#x27;],</span><br><span class="line">    ]);</span><br><span class="line"></span><br><span class="line">    return response()-&gt;json([</span><br><span class="line">        &#x27;success&#x27; =&gt; true,</span><br><span class="line">        &#x27;data&#x27; =&gt; $record,</span><br><span class="line">        &#x27;message&#x27; =&gt; &#x27;Record updated successfully&#x27;,</span><br><span class="line">    ], 200);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h2><p>最後是CRUD的Delete刪除功能</p>
-<p>跟update一樣必須精準地找到那筆資料，之後對那筆資料執行刪除動作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public function destroy($id)</span><br><span class="line">&#123;</span><br><span class="line">    $user = auth()-&gt;user();</span><br><span class="line">    $record = ExerciseRecord::where(&#x27;user_id&#x27;, $user-&gt;id)</span><br><span class="line">        -&gt;where(&#x27;id&#x27;, $id)</span><br><span class="line">        -&gt;first();</span><br><span class="line"></span><br><span class="line">    if (! $record) &#123;</span><br><span class="line">        return response()-&gt;json([</span><br><span class="line">            &#x27;success&#x27; =&gt; false,</span><br><span class="line">            &#x27;message&#x27; =&gt; &#x27;Record not found&#x27;,</span><br><span class="line">        ], 404);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $record-&gt;delete();</span><br><span class="line"></span><br><span class="line">    return response()-&gt;json([</span><br><span class="line">        &#x27;success&#x27; =&gt; true,</span><br><span class="line">        &#x27;data&#x27; =&gt; null,</span><br><span class="line">        &#x27;message&#x27; =&gt; &#x27;Exercise record deleted successfully&#x27;,</span><br><span class="line">    ], 200);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>這樣基本的四個功能就有了，最後要在routes&#x2F;api.php上，在JWT驗證路由中把exercise records的項目加上去就好</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Route::post(&#x27;/login&#x27;, [AuthController::class, &#x27;login&#x27;]);</span><br><span class="line">Route::post(&#x27;/register&#x27;, [AuthController::class, &#x27;register&#x27;]);</span><br><span class="line"></span><br><span class="line">// 需要 JWT 驗證的路由</span><br><span class="line">Route::middleware(&#x27;jwt.auth&#x27;)-&gt;group(function () &#123;</span><br><span class="line">    Route::get(&#x27;/me&#x27;, [AuthController::class, &#x27;me&#x27;]);</span><br><span class="line">    Route::post(&#x27;/logout&#x27;, [AuthController::class, &#x27;logout&#x27;]);</span><br><span class="line">    Route::put(&#x27;/profile&#x27;, [AuthController::class, &#x27;updateProfile&#x27;]);</span><br><span class="line">    // exercise records</span><br><span class="line">    Route::get(&#x27;/exerciseRecords&#x27;, [ExerciseRecordController::class, &#x27;index&#x27;]);</span><br><span class="line">    Route::post(&#x27;/exerciseRecords&#x27;, [ExerciseRecordController::class, &#x27;store&#x27;]);</span><br><span class="line">    Route::put(&#x27;/exerciseRecords/&#123;id&#125;&#x27;, [ExerciseRecordController::class, &#x27;update&#x27;]);</span><br><span class="line">    Route::delete(&#x27;/exerciseRecords/&#123;id&#125;&#x27;, [ExerciseRecordController::class, &#x27;destroy&#x27;]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/09/25/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part12/" data-id="cmg20oig60001qwbo37q62fne" data-title="請AI協助我開發-part12" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -606,7 +567,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AI/" style="font-size: 13.33px;">AI</a> <a href="/tags/Account-book/" style="font-size: 10px;">Account book</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/back-end/" style="font-size: 20px;">back-end</a> <a href="/tags/diary/" style="font-size: 16.67px;">diary</a> <a href="/tags/marry/" style="font-size: 10px;">marry</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/notes/" style="font-size: 10px;">notes</a> <a href="/tags/shopping-cart/" style="font-size: 10px;">shopping_cart</a> <a href="/tags/start/" style="font-size: 10px;">start</a>
+      <a href="/tags/AI/" style="font-size: 15px;">AI</a> <a href="/tags/Account-book/" style="font-size: 10px;">Account book</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/back-end/" style="font-size: 20px;">back-end</a> <a href="/tags/diary/" style="font-size: 20px;">diary</a> <a href="/tags/marry/" style="font-size: 10px;">marry</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/notes/" style="font-size: 10px;">notes</a> <a href="/tags/shopping-cart/" style="font-size: 10px;">shopping_cart</a> <a href="/tags/start/" style="font-size: 10px;">start</a>
     </div>
   </div>
 
@@ -628,6 +589,10 @@
       <ul>
         
           <li>
+            <a href="/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/">side project 近況報告</a>
+          </li>
+        
+          <li>
             <a href="/2025/10/14/%E5%AD%B8%E7%BF%92%E8%B7%9F%E9%81%8A%E6%88%B2%E6%88%91%E4%B8%80%E5%80%8B%E9%83%BD%E4%B8%8D%E6%83%B3%E8%90%BD%E4%B8%8B%EF%BC%8C%E8%87%B3%E5%B0%91%E6%88%91%E7%8F%BE%E5%9C%A8%E9%82%84%E8%83%BD%E5%BE%9E%E9%81%8A%E6%88%B2%E4%B8%AD%E8%B3%BA%E9%8C%A2/">學習跟遊戲我一個都不想落下，至少我現在還能從遊戲中賺錢</a>
           </li>
         
@@ -641,10 +606,6 @@
         
           <li>
             <a href="/2025/10/08/%E4%B8%AD%E7%A7%8B%E5%90%83%E5%AE%8C%E7%83%A4%E8%82%89%E8%A6%BA%E5%BE%97%E6%BB%BF%E8%B6%B3/">中秋吃完烤肉覺得滿足</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/04/%E8%BD%89%E7%99%BC-%E5%A9%9A%E5%89%8D15%E5%95%8F/">轉發 婚前15問</a>
           </li>
         
       </ul>

@@ -4,20 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>請AI協助我開發-part01 | Niki的Blog</title>
+  <title>side project 近況報告 | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="實作是最好的技術磨練需求是進步的起點，我想要展現自己所學的技術，增進自己的價值，但我應該如何呈現自身的價值，我試著問問AI能給予我些建議 Q:我不知道要開發什麼，最好是可以讓我放在自己的履歷上的作品A: 履歷作品要達到什麼效果？ 能展現技術能力（不只是 Hello World）有實際用途（讓 HR&#x2F;主管一眼看出來你真的做過完整專案）代碼結構清晰、容易展示（最好有 Github Repo、">
+  <meta name="description" content="進度前端做到一半，準備下一個介面的問題，要製作運動紀錄的介面，目前有四個api要開發，也就是基本的CRUD，先從讀取R開始，為了搞讀取，必須先搞假資料趁這次實作了seeder 與 factory 結合運用平常都是塞指定的假資料，這次用factory產出大量的假資料 優化得部分我優化了驗證出錯得部分實作了Exceptions&#x2F;Handler.php讓他統一處理驗證的錯誤處置，也順便處理JW">
 <meta property="og:type" content="article">
-<meta property="og:title" content="請AI協助我開發-part01">
-<meta property="og:url" content="https://nikiweikame.github.io/2025/08/20/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part01/index.html">
+<meta property="og:title" content="side project 近況報告">
+<meta property="og:url" content="https://nikiweikame.github.io/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="實作是最好的技術磨練需求是進步的起點，我想要展現自己所學的技術，增進自己的價值，但我應該如何呈現自身的價值，我試著問問AI能給予我些建議 Q:我不知道要開發什麼，最好是可以讓我放在自己的履歷上的作品A: 履歷作品要達到什麼效果？ 能展現技術能力（不只是 Hello World）有實際用途（讓 HR&#x2F;主管一眼看出來你真的做過完整專案）代碼結構清晰、容易展示（最好有 Github Repo、">
+<meta property="og:description" content="進度前端做到一半，準備下一個介面的問題，要製作運動紀錄的介面，目前有四個api要開發，也就是基本的CRUD，先從讀取R開始，為了搞讀取，必須先搞假資料趁這次實作了seeder 與 factory 結合運用平常都是塞指定的假資料，這次用factory產出大量的假資料 優化得部分我優化了驗證出錯得部分實作了Exceptions&#x2F;Handler.php讓他統一處理驗證的錯誤處置，也順便處理JW">
 <meta property="og:locale">
-<meta property="article:published_time" content="2025-08-20T03:00:12.000Z">
-<meta property="article:modified_time" content="2025-09-19T02:35:07.690Z">
+<meta property="article:published_time" content="2025-10-16T10:07:46.000Z">
+<meta property="article:modified_time" content="2025-10-16T11:05:27.168Z">
 <meta property="article:author" content="Niki_wei">
-<meta property="article:tag" content="back-end">
-<meta property="article:tag" content="AI">
+<meta property="article:tag" content="diary">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Niki的Blog" type="application/atom+xml">
@@ -81,10 +80,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-請AI協助我開發-part01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-近況報告" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/08/20/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part01/" class="article-date">
-  <time class="dt-published" datetime="2025-08-20T03:00:12.000Z" itemprop="datePublished">2025-08-20</time>
+    <a href="/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/" class="article-date">
+  <time class="dt-published" datetime="2025-10-16T10:07:46.000Z" itemprop="datePublished">2025-10-16</time>
 </a>
     
   </div>
@@ -95,7 +94,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      請AI協助我開發-part01
+      side project 近況報告
     </h1>
   
 
@@ -103,40 +102,18 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="實作是最好的技術磨練"><a href="#實作是最好的技術磨練" class="headerlink" title="實作是最好的技術磨練"></a>實作是最好的技術磨練</h2><p>需求是進步的起點，我想要展現自己所學的技術，增進自己的價值，<br>但我應該如何呈現自身的價值，我試著問問AI能給予我些建議</p>
-<p>Q:我不知道要開發什麼，最好是可以讓我放在自己的履歷上的作品<br>A:</p>
-<p>履歷作品要達到什麼效果？</p>
-<p>能展現技術能力（不只是 Hello World）<br>有實際用途（讓 HR&#x2F;主管一眼看出來你真的做過完整專案）<br>代碼結構清晰、容易展示（最好有 Github Repo、線上 Demo）<br>有一點點亮點（比單純的 CRUD 多一點，像是搜尋、圖表、登入系統）</p>
-<p>這分析挺明確的，也點出了這方面的作品應該要有什麼樣的特點，<br>這也彌補了我的一些缺點，我大概知道要做什麼，但是為什麼要這樣做，<br>或是這能帶給自己有什麼好處我卻一蓋不知，只知道大家都這樣做，先跟著潮流走，<br>經過AI的分析，可以明確的知道<br>What should I do? and Why should I do?</p>
-<p>AI稱呼太麻煩了，中英切換有點懶，後續內文會用愛醬做稱呼</p>
-<p>接著愛醬給了我五個選項，分別是</p>
-<ol>
-<li>個人履歷網站（加後台管理）</li>
-<li>任務管理系統（Todo + 協作）</li>
-<li>部落格系統（有 Markdown 編輯器）</li>
-<li>小型電商網站</li>
-<li>資料視覺化平台</li>
-</ol>
-<p>並給予我製作的順序，1 &gt; 2&#x2F;3 &gt; 4&#x2F;5</p>
-<p>我想個人履歷網站，我目前對上面要放什麼東西在上面沒有明確的想法，<br>也許我沒有那麼明白自己能做到什麼程度，目前我還沒有把握將自己能力具體化呈現</p>
-<p>但是愛醬給了我一個很棒的方向，並結合我目前想要做的東西，<br>我想做一個減肥的紀錄網站，註冊需要輸入自己的身高體重等數據，之後每天上傳運動的內容，此時會計算消耗多少卡路里，<br>還可以更新自己的體重數據，可以新增運動的項目與消耗卡路里的量</p>
-<p>愛醬對於我決定的方向，分析優劣之後，並補上更完整的藍圖</p>
-<p>不過也建議我先做最小可行性版本(英語：minimum viable product, MVP)<br>先把下面的核心功能做出來</p>
-<ol>
-<li>註冊 &#x2F; 登入</li>
-<li>新增運動紀錄（消耗卡路里計算）</li>
-<li>體重輸入 + 折線圖顯示</li>
-</ol>
-<p>方向決定好了，之後就是逐步實作的環節。</p>
+        <h1 id="進度"><a href="#進度" class="headerlink" title="進度"></a>進度</h1><p>前端做到一半，準備下一個介面的問題，<br>要製作運動紀錄的介面，目前有四個api要開發，<br>也就是基本的CRUD，<br>先從讀取R開始，為了搞讀取，必須先搞假資料<br>趁這次實作了seeder 與 factory 結合運用<br>平常都是塞指定的假資料，這次用factory產出大量的假資料</p>
+<p>優化得部分<br>我優化了驗證出錯得部分<br>實作了Exceptions&#x2F;Handler.php<br>讓他統一處理驗證的錯誤處置，<br>也順便處理JWT驗證的錯誤回報問題，簡化token的處理，不過其他api還沒有全部改正，到時候遇到一個改一個</p>
+<p>目前頁面還缺<br>運動紀錄 新增&#x2F;編輯<br>運動項目 新增&#x2F;修改&#x2F;刪除<br>刪除的部分要考慮 要不要用假性刪除，不然項目刪除會把紀錄一起刪掉，這不太妥，如果是讓人無法查閱&#x2F;選擇倒是可以，既有的紀錄也不會有影響<br>不然就是刪除前，檢查record不能有關聯資料，如果有就假性刪除，沒有就真刪除<br>個人資料的修改&#x2F;密碼修改</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/20/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part01/" data-id="cmejmjhh40000a18z1un6cm22" data-title="請AI協助我開發-part01" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/" data-id="cmgtbd2d60000gnbodx2l962t" data-title="side project 近況報告" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
 
     </footer>
   </div>
@@ -144,19 +121,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2025/08/21/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part02/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          請AI協助我開發-part02
-        
-      </div>
-    </a>
   
-  
-    <a href="/2025/08/18/8-18%E6%97%A5%E8%A8%98/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2025/10/14/%E5%AD%B8%E7%BF%92%E8%B7%9F%E9%81%8A%E6%88%B2%E6%88%91%E4%B8%80%E5%80%8B%E9%83%BD%E4%B8%8D%E6%83%B3%E8%90%BD%E4%B8%8B%EF%BC%8C%E8%87%B3%E5%B0%91%E6%88%91%E7%8F%BE%E5%9C%A8%E9%82%84%E8%83%BD%E5%BE%9E%E9%81%8A%E6%88%B2%E4%B8%AD%E8%B3%BA%E9%8C%A2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">8/18日記</div>
+      <div class="article-nav-title">學習跟遊戲我一個都不想落下，至少我現在還能從遊戲中賺錢</div>
     </a>
   
 </nav>
