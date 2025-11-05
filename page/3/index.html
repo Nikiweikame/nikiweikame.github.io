@@ -79,6 +79,122 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-請AI協助我開發-part08" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" class="article-date">
+  <time class="dt-published" datetime="2025-09-08T09:00:00.000Z" itemprop="datePublished">2025-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/">請AI協助我開發-part08</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="延續part-05的內容-認識migration-續"><a href="#延續part-05的內容-認識migration-續" class="headerlink" title="延續part-05的內容-認識migration-續"></a>延續part-05的內容-認識migration-續</h2><p>延續上次說到的我在規劃好資料庫之後，透過下面三個laravel內建的指令，在migration資料夾建立了三個檔案(嚴格來說是兩個user是已經內建的)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">php artisan make:model User -m</span><br><span class="line">php artisan make:model ExerciseType -m</span><br><span class="line">php artisan make:model ExerciseRecord -m</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Migrations\Migration;</span><br><span class="line">use Illuminate\Database\Schema\Blueprint;</span><br><span class="line">use Illuminate\Support\Facades\Schema;</span><br><span class="line"></span><br><span class="line">return new class extends Migration</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Run the migrations.</span><br><span class="line">     */</span><br><span class="line">    public function up(): void</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::create(&#x27;exercise_records&#x27;, function (Blueprint $table) &#123;</span><br><span class="line">            $table-&gt;id();</span><br><span class="line">            $table-&gt;timestamps();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Reverse the migrations.</span><br><span class="line">     */</span><br><span class="line">    public function down(): void</span><br><span class="line">    &#123;</span><br><span class="line">        Schema::dropIfExists(&#x27;exercise_records&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>先前有提到up()跟down()的用途<br>現在接著說他們實際上做了什麼</p>
+<p>首先先創立一個table</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Schema::create(&#x27;table名稱&#x27;,&#x27;建立table欄位資料的細部動作&#x27;)</span><br></pre></td></tr></table></figure>
+<p>之後在規範這個table裡面有那些欄位，欄位的型別與限制，也就是後面的function</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function (Blueprint $table) &#123;</span><br><span class="line">            $table-&gt;id();</span><br><span class="line">            $table-&gt;timestamps();</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+<p>一開始他先規範參數 $table 是一個 Blueprint 物件，<br>這樣函式內部就能使用Blueprint的method<br>再來就是兩個比較常看的method id()跟timestamps()<br>這兩個都是語法糖，把常用欄位的建立，封裝成一個方便的方法<br>id()其實是bigIncrements(‘id’);<br>相當於SQL建立欄位時的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY</span><br></pre></td></tr></table></figure>
+<p>而timestamps()是建立created_at 與 updated_at兩個欄位且可以存放NULL值，<br>等價於：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$table-&gt;timestamp(&#x27;created_at&#x27;)-&gt;nullable();</span><br><span class="line">$table-&gt;timestamp(&#x27;updated_at&#x27;)-&gt;nullable();</span><br></pre></td></tr></table></figure>
+<p>再來就是其他沒有在預設中的method</p>
+<p>我依據我要建立table來看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Table exercise_record &#123;</span><br><span class="line">  id int [primary key, increment]</span><br><span class="line">  user_id varchar(50) [ref: &gt; user.id]</span><br><span class="line">  exercise_type_id varchar(100) [ref: &gt; exercise_type.id]</span><br><span class="line">  record_time datetime</span><br><span class="line">  count int</span><br><span class="line">  unit varchar(100)</span><br><span class="line">  calories decimal(10,2)</span><br><span class="line">  created_at datetime</span><br><span class="line">  updated_at datetime</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目前有四種類別varchar、decimal、int、datetime</p>
+<p>他們對應的method是string、decimal、integer、dateTime</p>
+<p>他們method的第一個參數是欄位名稱，後面就是其他的限制</p>
+<p>像是<br>user_id varchar(50)<br>就是<br>$table-&gt;string(‘user_id’, 50);<br>後面的50就是長度限制50</p>
+<p>轉換後會變成這樣，當然也可以請愛醬幫忙轉換</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public function up(): void</span><br><span class="line">&#123;</span><br><span class="line">    Schema::create(&#x27;exercise_record&#x27;, function (Blueprint $table) &#123;</span><br><span class="line">        $table-&gt;id(); // id INT AUTO_INCREMENT PRIMARY KEY</span><br><span class="line">        $table-&gt;string(&#x27;user_id&#x27;, 50);</span><br><span class="line">        $table-&gt;string(&#x27;exercise_type_id&#x27;, 100);</span><br><span class="line">        $table-&gt;dateTime(&#x27;record_time&#x27;);</span><br><span class="line">        $table-&gt;integer(&#x27;count&#x27;);</span><br><span class="line">        $table-&gt;string(&#x27;unit&#x27;, 100);</span><br><span class="line">        $table-&gt;decimal(&#x27;calories&#x27;, 10, 2);</span><br><span class="line">        $table-&gt;timestamps(); // created_at, updated_at</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之後外鍵的設定，這邊分為四個部分<br>$table-&gt;foreign(‘user_id’)	將 exercise_record 的 user_id 欄位設定為外鍵<br>-&gt;references(‘id’)	指定這個外鍵要對應到 users 表的 id 欄位<br>-&gt;on(‘users’)	指定對應的資料表是 users<br>-&gt;onDelete(‘cascade’)	刪除行為：當 users 表中對應的 id 被刪除時，exercise_record 裡對應的資料也會被自動刪掉（cascade 刪除）</p>
+<p>整合起來就變這樣</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public function up(): void</span><br><span class="line">&#123;</span><br><span class="line">    Schema::create(&#x27;exercise_record&#x27;, function (Blueprint $table) &#123;</span><br><span class="line">        $table-&gt;id(); // id INT AUTO_INCREMENT PRIMARY KEY</span><br><span class="line">        $table-&gt;string(&#x27;user_id&#x27;, 50);</span><br><span class="line">        $table-&gt;string(&#x27;exercise_type_id&#x27;, 100);</span><br><span class="line">        $table-&gt;dateTime(&#x27;record_time&#x27;);</span><br><span class="line">        $table-&gt;integer(&#x27;count&#x27;);</span><br><span class="line">        $table-&gt;string(&#x27;unit&#x27;, 100);</span><br><span class="line">        $table-&gt;decimal(&#x27;calories&#x27;, 10, 2);</span><br><span class="line">        $table-&gt;timestamps(); // created_at, updated_at</span><br><span class="line"></span><br><span class="line">        // 外鍵約束</span><br><span class="line">        $table-&gt;foreign(&#x27;user_id&#x27;)-&gt;references(&#x27;id&#x27;)-&gt;on(&#x27;users&#x27;)-&gt;onDelete(&#x27;cascade&#x27;);</span><br><span class="line">        $table-&gt;foreign(&#x27;exercise_type_id&#x27;)-&gt;references(&#x27;id&#x27;)-&gt;on(&#x27;exercise_types&#x27;)-&gt;onDelete(&#x27;cascade&#x27;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>語法建立的時候愛醬有將三個表格都加上$table-&gt;timestamps()<br>但是我不是所有欄位都需要這兩個項目，<br>對此愛醬是這樣給予我建議的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">對大多數應用程式來說，保留 $table-&gt;timestamps() 是很方便的</span><br><span class="line">可以用來排序、查詢最新資料、做審計紀錄</span><br><span class="line">若真的不需要時間追蹤，可以不加，migration 也會正常運作</span><br></pre></td></tr></table></figure>
+
+<p>簡單說就是雖然不是必要，但是建議加，或許會有意想不到的用處</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" data-id="cmf6aoe680000jzbo6k7v2fw2" data-title="請AI協助我開發-part08" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-20250908一週的起始" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/08/20250908%E4%B8%80%E9%80%B1%E7%9A%84%E8%B5%B7%E5%A7%8B/" class="article-date">
+  <time class="dt-published" datetime="2025-09-08T05:38:37.000Z" itemprop="datePublished">2025-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/08/20250908%E4%B8%80%E9%80%B1%E7%9A%84%E8%B5%B7%E5%A7%8B/">20250908一週的起始</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一週的目標"><a href="#一週的目標" class="headerlink" title="一週的目標"></a>一週的目標</h1><p>這週的工作天僅有四天，我想先透過laravel完成SQLite資料庫的設定，以及api的設定<br>完成之後再去做MySQL的資料庫綁定</p>
+<p>加油吧，堅定自己的方向，不要放棄，即使迷惘也沒有關係，</p>
+<p>知道迷惘、面對迷惘、最後克服迷惘</p>
+<h1 id="放下鐵人賽"><a href="#放下鐵人賽" class="headerlink" title="放下鐵人賽"></a>放下鐵人賽</h1><p>雖然參加鐵人賽可以強迫自己每天都有所前進，我個人其實蠻認同的，<br>但是總覺得不適合現在的我，我的文章比較隨性一點，不一定每一篇都能滿足參賽的基本格式需求<br>我決定不參加這次的鐵人賽，但是我的文章還是會繼續寫下去，可能幾天都在寫同一篇文章，或是一篇文章就短短一篇</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/09/08/20250908%E4%B8%80%E9%80%B1%E7%9A%84%E8%B5%B7%E5%A7%8B/" data-id="cmfapv4ms0000kqbo4r88awye" data-title="20250908一週的起始" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-停止內耗與焦慮，讓心平靜下來" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/05/%E5%81%9C%E6%AD%A2%E5%85%A7%E8%80%97%E8%88%87%E7%84%A6%E6%85%AE%EF%BC%8C%E8%AE%93%E5%BF%83%E5%B9%B3%E9%9D%9C%E4%B8%8B%E4%BE%86/" class="article-date">
@@ -605,124 +721,6 @@
 
 
   
-    <article id="post-8-18日記" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/08/18/8-18%E6%97%A5%E8%A8%98/" class="article-date">
-  <time class="dt-published" datetime="2025-08-18T03:51:57.000Z" itemprop="datePublished">2025-08-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/08/18/8-18%E6%97%A5%E8%A8%98/">8/18日記</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="健保轉入"><a href="#健保轉入" class="headerlink" title="健保轉入"></a>健保轉入</h2><p>健保0811轉出，0816透過健保申請APP轉入，日期接在轉出之後</p>
-<h2 id="日常問自己"><a href="#日常問自己" class="headerlink" title="日常問自己"></a>日常問自己</h2><p>我有成長成自己未來想要的樣子嗎？<br>要避免變成自己討厭的樣子嗎？<br>我想要的未來應該是什麼樣子？<br>我有往那個方向努力嗎？<br>我有沒有走歪呢？</p>
-<h2 id="遠傳送的冰淇淋"><a href="#遠傳送的冰淇淋" class="headerlink" title="遠傳送的冰淇淋"></a>遠傳送的冰淇淋</h2><p>遠傳兒童定位手錶活動有送全家冰淇淋，之前有報名，今天該去處理處理！</p>
-<h2 id="識別的意義"><a href="#識別的意義" class="headerlink" title="識別的意義"></a>識別的意義</h2><p>在具有識別意義的文字中，我會特別在意，因為這部分的錯別字容易讓人誤解尤其是在對話成立之前，<br>但是在對話成立之後這問題就可以被忽略的</p>
-<h2 id="人際關係考量"><a href="#人際關係考量" class="headerlink" title="人際關係考量"></a>人際關係考量</h2><p>是不是該跟離人保持距離了，他的思想與價值觀跟我的相性不是很好，<br>我覺得保持距離應該會比較好</p>
-<h2 id="後端的下一個目標"><a href="#後端的下一個目標" class="headerlink" title="後端的下一個目標"></a>後端的下一個目標</h2><p>資料的上傳與下載實作或是學習框架</p>
-<h2 id="解決之前區網無法連進自己架設網站的問題"><a href="#解決之前區網無法連進自己架設網站的問題" class="headerlink" title="解決之前區網無法連進自己架設網站的問題"></a>解決之前區網無法連進自己架設網站的問題</h2><p>之前不管是vue還是php我都只有開放本地瀏覽</p>
-<p>npm run dev（Vite 或 Vue CLI）預設啟動的開發伺服器只綁定在 localhost (127.0.0.1)，所以：</p>
-<p>你自己這台電腦可以打 <a target="_blank" rel="noopener" href="http://localhost:5173/">http://localhost:5173/</a></p>
-<p>同一個區網的其他裝置（手機、筆電…）是不能直接用 localhost:5173 進來的，因為對它們來說 localhost 指的是「它們自己」，不是你的電腦。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local</span><br><span class="line">npm run dev</span><br><span class="line">Network</span><br><span class="line">npm run dev -- --host</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local</span><br><span class="line">php -S localhost:8000</span><br><span class="line">Network</span><br><span class="line">php -S 0.0.0.0:8000</span><br></pre></td></tr></table></figure>
-
-<p>延伸<br>0.0.0.0 在網路上是一個特殊的 IP，用來表示 「所有網路介面」。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/18/8-18%E6%97%A5%E8%A8%98/" data-id="cmegly8n10000zm8z2siq0rh7" data-title="8/18日記" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-後端工程師基礎工作流程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/08/15/%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%9F%BA%E7%A4%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/" class="article-date">
-  <time class="dt-published" datetime="2025-08-15T07:28:47.000Z" itemprop="datePublished">2025-08-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/08/15/%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%9F%BA%E7%A4%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/">後端工程師基礎工作流程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="日常工作"><a href="#日常工作" class="headerlink" title="日常工作"></a>日常工作</h1><h2 id="新功能開發"><a href="#新功能開發" class="headerlink" title="新功能開發"></a>新功能開發</h2><ul>
-<li><p>PM(Project Manager專案經理)給予需求</p>
-</li>
-<li><p>需求確認<br>– 客戶的問題是什麼？<br>– 客戶操作系統的流程<br>– 操作的限制</p>
-</li>
-<li><p>協調規劃</p>
-</li>
-</ul>
-<p>– 前端 API文件<br>– 主管 ERD、API文件<br>– PM</p>
-<ul>
-<li>延伸：ERD(Entity-Relationship Diagram 實體關係圖)<br>各個Table的關係圖，組出最後要輸出的結果的關係<br>像是我要產出客戶的基本資料，我就要從生日Table、姓名Table、地址Table等取得相關資訊，最後組出我要的結果<br>也就是最後輸出表的來源關係圖</li>
-</ul>
-<h2 id="系統技術債維護"><a href="#系統技術債維護" class="headerlink" title="系統技術債維護"></a>系統技術債維護</h2><ul>
-<li><p>分析code trace code<br>分析瓶頸(bottleneck)、opp結構(Facade，Trait)、SQL Query、資料庫結構(Index、DB schemes)</p>
-</li>
-<li><p>跟主管報告<br>預計該如何解決問題，或是為什麼這樣可以解決問題。</p>
-</li>
-</ul>
-<h2 id="Implement-實作"><a href="#Implement-實作" class="headerlink" title="Implement 實作"></a>Implement 實作</h2><ul>
-<li><p>列出步驟，跟主管確認</p>
-</li>
-<li><p>交付 code review<br>git commit<br>PR(Pull Request)最終的提交<br>此時需要幫主管節省時間<br>必須讓主觀知道issue 需求及開發過程中討論的結果<br>為什麼這樣做，以及為什麼可以解決問題How and Why<br>測試</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/15/%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%9F%BA%E7%A4%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/" data-id="cmeclbo4600002e8z7y4m5wgs" data-title="後端工程師基礎工作流程" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notes/" rel="tag">notes</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -773,6 +771,14 @@
       <ul>
         
           <li>
+            <a href="/2025/11/05/new-%E5%8A%9F%E8%83%BD%E6%B8%AC%E8%A9%A6/">new 功能測試</a>
+          </li>
+        
+          <li>
+            <a href="/2025/11/05/%E6%96%B0%E5%8A%9F%E8%83%BD%E6%B8%AC%E8%A9%A6/">新功能測試</a>
+          </li>
+        
+          <li>
             <a href="/2025/11/04/%E4%BC%91%E6%81%AF%E5%A4%A0%E4%B9%85%E4%BA%86%EF%BC%8C%E5%88%97%E4%B8%80%E4%BB%BD%E5%BE%85%E8%BE%A6%E6%B8%85%E5%96%AE%E5%90%A7/">休息夠久了，列一份待辦清單吧</a>
           </li>
         
@@ -782,14 +788,6 @@
         
           <li>
             <a href="/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/">side project 近況報告</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/14/%E5%AD%B8%E7%BF%92%E8%B7%9F%E9%81%8A%E6%88%B2%E6%88%91%E4%B8%80%E5%80%8B%E9%83%BD%E4%B8%8D%E6%83%B3%E8%90%BD%E4%B8%8B%EF%BC%8C%E8%87%B3%E5%B0%91%E6%88%91%E7%8F%BE%E5%9C%A8%E9%82%84%E8%83%BD%E5%BE%9E%E9%81%8A%E6%88%B2%E4%B8%AD%E8%B3%BA%E9%8C%A2/">學習跟遊戲我一個都不想落下，至少我現在還能從遊戲中賺錢</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/13/%E5%89%8D%E7%AB%AF%E9%A0%81%E9%9D%A2%E7%9A%84pinia%E7%AE%A1%E7%90%86/">前端頁面的pinia管理</a>
           </li>
         
       </ul>
