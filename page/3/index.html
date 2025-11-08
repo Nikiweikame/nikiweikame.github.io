@@ -79,6 +79,108 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-請AI協助我開發-part09" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/" class="article-date">
+  <time class="dt-published" datetime="2025-09-09T02:44:08.000Z" itemprop="datePublished">2025-09-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/">請AI協助我開發-part09</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="建立database-sqlite"><a href="#建立database-sqlite" class="headerlink" title="建立database.sqlite"></a>建立database.sqlite</h1><p>設定好 Migrations檔案之後，就要開始建立database.sqlite的內容了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//終端機</span><br><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
+
+<p>這邊可能會遇上的問題</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//終端機回應</span><br><span class="line">2025_08_28_030252_create_exercise_records_table ............................ 2.85ms DONE</span><br><span class="line">2025_08_28_030252_create_exercise_types_table .............................. 0.48ms DONE</span><br></pre></td></tr></table></figure>
+
+<p>仔細看終端機的回覆可以發現，只有建立兩個table的訊息</p>
+<p>我用 sqlite3 檢查 database.sqlite內的table，發現user table是有建立的，但是內容是laravel建立的預設內容<br>還有一些不認識的table，想必這些都是原本預設建立的table，此時回去看Migrations資料夾內的檔案，那些不認識的table name跟都對上了</p>
+<p>這時候愛醬建議我下達php artisan migrate:refresh指令，<br>問題來了，因為我的migrate檔案有動過一些該drop的table沒寫進指令裡面，會讓這個操作不完整甚至會出現錯誤<br>正確的流程這可能要對migrate進行修改前，先把預設的table給drop掉才是<br>現在因為是剛開發階段，可以直接把資料砍掉重建</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm database/database.sqlite</span><br><span class="line">touch database/database.sqlite</span><br><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
+<p>這樣我的database.sqlite也算是建立好了</p>
+<h1 id="建立model"><a href="#建立model" class="headerlink" title="建立model"></a>建立model</h1><p>之前在part05有提到一般開發的步驟（先 migration 後 model），雖然我忘記先去處理seeder的事務，<br>不意外的出了很多bug，才回來探討是哪邊出問題，原來是我漏了model這一步</p>
+<p>之前也說了model是操作資料庫的入口，會用來寫 查詢、關聯、規則 等邏輯，其實不精確。<br>modelModel 是資料表的 PHP 代表，它負責：</p>
+<ul>
+<li>跟資料表對應</li>
+<li>讀取資料、寫入資料</li>
+<li>定義欄位可批量寫入($fillable)</li>
+<li>設定資料表關聯（hasMany、belongsTo…）<br>換句話說，Model 就是操作資料庫的「物件化橋樑」。</li>
+</ul>
+<p>現在app&#x2F;Model資料夾有三個檔案<br>此時app&#x2F;Model就會有三個檔案<br>┌ ExerciseRecord.php<br>│ ExerciseType.php<br>└ User.php</p>
+<p>這時候要分兩部分來學習，user跟user以外的<br>因為User Model 比普通 Model 多了 登入&#x2F;認證功能。<br>學習User Model前我會建議先學習普通的model</p>
+<h2 id="一般的Model"><a href="#一般的Model" class="headerlink" title="一般的Model"></a>一般的Model</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    //</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這是預設的model樣式，建立一個class並繼承Model(Illuminate\Database\Eloquent\Model)</p>
+<ul>
+<li>允許建立假資料use HasFactory</li>
+</ul>
+<p>use HasFactory; → 讓這個 Model 可以用 Factory 生成假資料</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line">// Factory假資料</span><br><span class="line">use Illuminate\Database\Eloquent\Factories\HasFactory;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    use HasFactory;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>$fillable（允許批量寫入的欄位）&#x2F;$guarded（拒絕批量寫入的欄位）</li>
+</ul>
+<p>這兩個是相對立的存在，通常建議使用$fillable 來明確控制安全欄位<br>確保用 create() 或 update() 批量寫入時，只有 $fillable 裡的欄位會被寫入<br>而$guarded 是跟 $fillable 反過來用，明確的拒絕批量寫入哪些欄位，通常都是以值會自動生成的欄位居多<br>再次強調：建議使用$fillable 來明確控制安全欄位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line">// Factory假資料</span><br><span class="line">use Illuminate\Database\Eloquent\Factories\HasFactory;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    use HasFactory;</span><br><span class="line"></span><br><span class="line">    protected $fillable = [&#x27;name&#x27;, &#x27;weight_unit&#x27;, &#x27;calories_per_unit&#x27;, &#x27;description&#x27;, &#x27;updated_by&#x27;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>$table（自訂資料表名稱）<br>Laravel 預設會用 Model 名稱小寫加複數 當資料表名稱<br>例：User → users<br>如果資料表名稱不符合Laravel 預設規則，就要指定 $<br>來明確控制安全欄位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line">// Factory假資料</span><br><span class="line">use Illuminate\Database\Eloquent\Factories\HasFactory;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    use HasFactory;</span><br><span class="line"></span><br><span class="line">    protected $fillable = [&#x27;name&#x27;, &#x27;weight_unit&#x27;, &#x27;calories_per_unit&#x27;, &#x27;description&#x27;, &#x27;updated_by&#x27;];</span><br><span class="line"></span><br><span class="line">    protected $table = &#x27;exercise_types&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>$primaryKey（自訂主鍵欄位）<br>預設主鍵是 id<br>如果你的資料表主鍵不是 id，要設定 $primaryKey</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected $primaryKey = &#x27;user_id&#x27;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Timestamps<br>Laravel 預設自動維護：<br>created_at<br>updated_at<br>如果資料表沒有這兩個欄位，可以關閉：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public $timestamps = false;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>關聯關係（Relationships）</p>
+</li>
+</ul>
+<p>Eloquent 支援多種資料表間的關聯，如一對一、一對多、多對多等。<br>例如，一對多關聯：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public function posts()</span><br><span class="line">&#123;</span><br><span class="line">    return $this-&gt;hasMany(Post::class);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>這就像ERD表示table間的關係，也是說明外鍵的連結</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App\Models;</span><br><span class="line"></span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line">// Factory假資料</span><br><span class="line">use Illuminate\Database\Eloquent\Factories\HasFactory;</span><br><span class="line"></span><br><span class="line">class ExerciseType extends Model</span><br><span class="line">&#123;</span><br><span class="line">    use HasFactory;</span><br><span class="line"></span><br><span class="line">    protected $fillable = [&#x27;name&#x27;, &#x27;weight_unit&#x27;, &#x27;calories_per_unit&#x27;, &#x27;description&#x27;, &#x27;updated_by&#x27;];</span><br><span class="line"></span><br><span class="line">    protected $table = &#x27;exercise_types&#x27;;</span><br><span class="line"></span><br><span class="line">    public function exerciseRecords()</span><br><span class="line">    &#123;</span><br><span class="line">      return $this-&gt;hasMany(ExerciseRecord::class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="user的Model"><a href="#user的Model" class="headerlink" title="user的Model"></a>user的Model</h2><ul>
+<li>$hidden 設定</li>
+</ul>
+<p>user這是管控使用漲登入資訊的table，會有一些安全的機制</p>
+<p>像是 不會被序列化的欄位 $hidden</p>
+<p>這邊會規範哪些欄位不會被序列化，也就是無法轉換成JSON外傳</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected $hidden = [&#x27;password_hash&#x27;];</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="其他沒有提到的-Casts-型別轉換"><a href="#其他沒有提到的-Casts-型別轉換" class="headerlink" title="其他沒有提到的 Casts 型別轉換"></a>其他沒有提到的 Casts 型別轉換</h2><p>確保某些欄位，在寫入資料的時候會自動轉換型別</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">protected function casts(): array</span><br><span class="line">&#123;</span><br><span class="line">    return [</span><br><span class="line">        &#x27;last_login_at&#x27; =&gt; &#x27;datetime&#x27;,</span><br><span class="line">        &#x27;password_change_at&#x27; =&gt; &#x27;datetime&#x27;,</span><br><span class="line">        &#x27;weight&#x27; =&gt; &#x27;decimal:2&#x27;,</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/09/09/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part09/" data-id="cmfcay0qr0000jbbohb9v0kvm" data-title="請AI協助我開發-part09" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-請AI協助我開發-part08" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/08/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part08/" class="article-date">
@@ -656,71 +758,6 @@
 
 
   
-    <article id="post-請AI協助我開發-part01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/08/20/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part01/" class="article-date">
-  <time class="dt-published" datetime="2025-08-20T03:00:12.000Z" itemprop="datePublished">2025-08-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/08/20/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part01/">請AI協助我開發-part01</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="實作是最好的技術磨練"><a href="#實作是最好的技術磨練" class="headerlink" title="實作是最好的技術磨練"></a>實作是最好的技術磨練</h2><p>需求是進步的起點，我想要展現自己所學的技術，增進自己的價值，<br>但我應該如何呈現自身的價值，我試著問問AI能給予我些建議</p>
-<p>Q:我不知道要開發什麼，最好是可以讓我放在自己的履歷上的作品<br>A:</p>
-<p>履歷作品要達到什麼效果？</p>
-<p>能展現技術能力（不只是 Hello World）<br>有實際用途（讓 HR&#x2F;主管一眼看出來你真的做過完整專案）<br>代碼結構清晰、容易展示（最好有 Github Repo、線上 Demo）<br>有一點點亮點（比單純的 CRUD 多一點，像是搜尋、圖表、登入系統）</p>
-<p>這分析挺明確的，也點出了這方面的作品應該要有什麼樣的特點，<br>這也彌補了我的一些缺點，我大概知道要做什麼，但是為什麼要這樣做，<br>或是這能帶給自己有什麼好處我卻一蓋不知，只知道大家都這樣做，先跟著潮流走，<br>經過AI的分析，可以明確的知道<br>What should I do? and Why should I do?</p>
-<p>AI稱呼太麻煩了，中英切換有點懶，後續內文會用愛醬做稱呼</p>
-<p>接著愛醬給了我五個選項，分別是</p>
-<ol>
-<li>個人履歷網站（加後台管理）</li>
-<li>任務管理系統（Todo + 協作）</li>
-<li>部落格系統（有 Markdown 編輯器）</li>
-<li>小型電商網站</li>
-<li>資料視覺化平台</li>
-</ol>
-<p>並給予我製作的順序，1 &gt; 2&#x2F;3 &gt; 4&#x2F;5</p>
-<p>我想個人履歷網站，我目前對上面要放什麼東西在上面沒有明確的想法，<br>也許我沒有那麼明白自己能做到什麼程度，目前我還沒有把握將自己能力具體化呈現</p>
-<p>但是愛醬給了我一個很棒的方向，並結合我目前想要做的東西，<br>我想做一個減肥的紀錄網站，註冊需要輸入自己的身高體重等數據，之後每天上傳運動的內容，此時會計算消耗多少卡路里，<br>還可以更新自己的體重數據，可以新增運動的項目與消耗卡路里的量</p>
-<p>愛醬對於我決定的方向，分析優劣之後，並補上更完整的藍圖</p>
-<p>不過也建議我先做最小可行性版本(英語：minimum viable product, MVP)<br>先把下面的核心功能做出來</p>
-<ol>
-<li>註冊 &#x2F; 登入</li>
-<li>新增運動紀錄（消耗卡路里計算）</li>
-<li>體重輸入 + 折線圖顯示</li>
-</ol>
-<p>方向決定好了，之後就是逐步實作的環節。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/08/20/%E8%AB%8BAI%E5%8D%94%E5%8A%A9%E6%88%91%E9%96%8B%E7%99%BC-part01/" data-id="cmejmjhh40000a18z1un6cm22" data-title="請AI協助我開發-part01" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -771,6 +808,10 @@
       <ul>
         
           <li>
+            <a href="/2025/11/08/%E8%88%87%E9%81%B2%E5%88%B0%E5%A4%A7%E7%8E%8B%E7%9A%84%E9%AB%98%E9%9B%84%E9%81%8A/">與遲到大王的高雄遊</a>
+          </li>
+        
+          <li>
             <a href="/2025/11/07/%E9%96%8B%E5%A7%8B%E9%96%B1%E8%AE%80clean-code-part1/">開始閱讀clean code php- part1</a>
           </li>
         
@@ -784,10 +825,6 @@
         
           <li>
             <a href="/2025/11/01/%E4%BB%8A%E5%A4%A9%E5%8E%BB%E6%AD%A6%E8%81%96%E5%A4%9C%E5%B8%82/">今天去武聖夜市</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/">side project 近況報告</a>
           </li>
         
       </ul>
