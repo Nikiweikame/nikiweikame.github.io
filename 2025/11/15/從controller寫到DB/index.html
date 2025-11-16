@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>中秋吃完烤肉覺得滿足 | Niki的Blog</title>
+  <title>從controller寫到DB | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="好想工作室 夜。遊 焼き鳥 串燒酒場 烤肉活動昨天工作室辦了烤肉，在室內用火抽風機開好開滿，負責吃肉的我表示滿足">
+  <meta name="description" content="從controller寫到DB的五個步驟感覺這部分需要從MVC開始說起 view是前端的畫面model是屬於資料處理的部分，從商業邏輯到寫入DBcontroller則是串接view與model的橋樑 view-controller-model而controller-model又再往下細分Controller → Service → Repository → Model → DB Controlle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="中秋吃完烤肉覺得滿足">
-<meta property="og:url" content="https://nikiweikame.github.io/2025/10/08/%E4%B8%AD%E7%A7%8B%E5%90%83%E5%AE%8C%E7%83%A4%E8%82%89%E8%A6%BA%E5%BE%97%E6%BB%BF%E8%B6%B3/index.html">
+<meta property="og:title" content="從controller寫到DB">
+<meta property="og:url" content="https://nikiweikame.github.io/2025/11/15/%E5%BE%9Econtroller%E5%AF%AB%E5%88%B0DB/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="好想工作室 夜。遊 焼き鳥 串燒酒場 烤肉活動昨天工作室辦了烤肉，在室內用火抽風機開好開滿，負責吃肉的我表示滿足">
+<meta property="og:description" content="從controller寫到DB的五個步驟感覺這部分需要從MVC開始說起 view是前端的畫面model是屬於資料處理的部分，從商業邏輯到寫入DBcontroller則是串接view與model的橋樑 view-controller-model而controller-model又再往下細分Controller → Service → Repository → Model → DB Controlle">
 <meta property="og:locale">
-<meta property="article:published_time" content="2025-10-08T03:05:25.000Z">
-<meta property="article:modified_time" content="2025-10-13T05:11:53.608Z">
+<meta property="article:published_time" content="2025-11-15T08:25:30.000Z">
+<meta property="article:modified_time" content="2025-11-16T07:29:53.956Z">
 <meta property="article:author" content="Niki_wei">
 <meta property="article:tag" content="diary">
 <meta name="twitter:card" content="summary">
@@ -80,10 +80,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-中秋吃完烤肉覺得滿足" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-從controller寫到DB" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/10/08/%E4%B8%AD%E7%A7%8B%E5%90%83%E5%AE%8C%E7%83%A4%E8%82%89%E8%A6%BA%E5%BE%97%E6%BB%BF%E8%B6%B3/" class="article-date">
-  <time class="dt-published" datetime="2025-10-08T03:05:25.000Z" itemprop="datePublished">2025-10-08</time>
+    <a href="/2025/11/15/%E5%BE%9Econtroller%E5%AF%AB%E5%88%B0DB/" class="article-date">
+  <time class="dt-published" datetime="2025-11-15T08:25:30.000Z" itemprop="datePublished">2025-11-15</time>
 </a>
     
   </div>
@@ -94,7 +94,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      中秋吃完烤肉覺得滿足
+      從controller寫到DB
     </h1>
   
 
@@ -102,12 +102,19 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="好想工作室-夜。遊-焼き鳥-串燒酒場-烤肉活動"><a href="#好想工作室-夜。遊-焼き鳥-串燒酒場-烤肉活動" class="headerlink" title="好想工作室 夜。遊 焼き鳥 串燒酒場 烤肉活動"></a>好想工作室 夜。遊 焼き鳥 串燒酒場 烤肉活動</h2><p>昨天工作室辦了烤肉，在室內用火抽風機開好開滿，負責吃肉的我表示滿足</p>
+        <h1 id="從controller寫到DB的五個步驟"><a href="#從controller寫到DB的五個步驟" class="headerlink" title="從controller寫到DB的五個步驟"></a>從controller寫到DB的五個步驟</h1><p>感覺這部分需要從MVC開始說起</p>
+<p>view是前端的畫面<br>model是屬於資料處理的部分，從商業邏輯到寫入DB<br>controller則是串接view與model的橋樑</p>
+<p>view-controller-model<br>而controller-model又再往下細分<br>Controller → Service → Repository → Model → DB</p>
+<h2 id="Controller：流程、協調者"><a href="#Controller：流程、協調者" class="headerlink" title="Controller：流程、協調者"></a>Controller：流程、協調者</h2><p>不放商業邏輯<br>不處理資料庫<br>只負責「流程」與「接收／回傳」</p>
+<h2 id="Service：商業邏輯的核心"><a href="#Service：商業邏輯的核心" class="headerlink" title="Service：商業邏輯的核心"></a>Service：商業邏輯的核心</h2><p>處理流程中的複雜邏輯<br>例如：<br>計算運動熱量<br>比對使用者權限<br>交易流程（建立訂單、扣庫存、寄通知）<br>Controller 只叫 Service，以保持乾淨</p>
+<h2 id="Repository-的用途是："><a href="#Repository-的用途是：" class="headerlink" title="Repository 的用途是："></a>Repository 的用途是：</h2><p>專門處理 DB CRUD<br>讓 Service 不直接碰 ORM<br>將來換 DB（MySQL → MongoDB）也不用改 Service</p>
+<h2 id="Model（ORM）：資料模型"><a href="#Model（ORM）：資料模型" class="headerlink" title="Model（ORM）：資料模型"></a>Model（ORM）：資料模型</h2><p>負責操作 DB<br>包含關聯（hasMany、belongsTo…）<br>不能塞太多邏輯，避免膨脹</p>
+<h2 id="DB（資料庫）"><a href="#DB（資料庫）" class="headerlink" title="DB（資料庫）"></a>DB（資料庫）</h2><p>最後的儲存層</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/10/08/%E4%B8%AD%E7%A7%8B%E5%90%83%E5%AE%8C%E7%83%A4%E8%82%89%E8%A6%BA%E5%BE%97%E6%BB%BF%E8%B6%B3/" data-id="cmgoouuyi00000mbo6e4860nr" data-title="中秋吃完烤肉覺得滿足" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/11/15/%E5%BE%9Econtroller%E5%AF%AB%E5%88%B0DB/" data-id="cmi1eg2ff0000i8bohr6k996m" data-title="從controller寫到DB" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -119,19 +126,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2025/10/13/%E9%9B%99%E5%8D%81%E9%80%A3%E5%81%87%E7%B5%90%E6%9D%9F%E4%BA%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          雙十連假結束了
-        
-      </div>
-    </a>
   
-  
-    <a href="/2025/10/04/%E8%BD%89%E7%99%BC-%E5%A9%9A%E5%89%8D15%E5%95%8F/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2025/11/14/%E4%B9%85%E9%81%95%E7%9A%84%E9%9D%A2%E8%A9%A6%E7%B5%90%E6%9D%9F%E4%BA%86/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">轉發 婚前15問</div>
+      <div class="article-nav-title">久違的面試結束了</div>
     </a>
   
 </nav>

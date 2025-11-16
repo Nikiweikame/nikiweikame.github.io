@@ -79,6 +79,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-從controller寫到DB" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/11/15/%E5%BE%9Econtroller%E5%AF%AB%E5%88%B0DB/" class="article-date">
+  <time class="dt-published" datetime="2025-11-15T08:25:30.000Z" itemprop="datePublished">2025-11-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/11/15/%E5%BE%9Econtroller%E5%AF%AB%E5%88%B0DB/">從controller寫到DB</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="從controller寫到DB的五個步驟"><a href="#從controller寫到DB的五個步驟" class="headerlink" title="從controller寫到DB的五個步驟"></a>從controller寫到DB的五個步驟</h1><p>感覺這部分需要從MVC開始說起</p>
+<p>view是前端的畫面<br>model是屬於資料處理的部分，從商業邏輯到寫入DB<br>controller則是串接view與model的橋樑</p>
+<p>view-controller-model<br>而controller-model又再往下細分<br>Controller → Service → Repository → Model → DB</p>
+<h2 id="Controller：流程、協調者"><a href="#Controller：流程、協調者" class="headerlink" title="Controller：流程、協調者"></a>Controller：流程、協調者</h2><p>不放商業邏輯<br>不處理資料庫<br>只負責「流程」與「接收／回傳」</p>
+<h2 id="Service：商業邏輯的核心"><a href="#Service：商業邏輯的核心" class="headerlink" title="Service：商業邏輯的核心"></a>Service：商業邏輯的核心</h2><p>處理流程中的複雜邏輯<br>例如：<br>計算運動熱量<br>比對使用者權限<br>交易流程（建立訂單、扣庫存、寄通知）<br>Controller 只叫 Service，以保持乾淨</p>
+<h2 id="Repository-的用途是："><a href="#Repository-的用途是：" class="headerlink" title="Repository 的用途是："></a>Repository 的用途是：</h2><p>專門處理 DB CRUD<br>讓 Service 不直接碰 ORM<br>將來換 DB（MySQL → MongoDB）也不用改 Service</p>
+<h2 id="Model（ORM）：資料模型"><a href="#Model（ORM）：資料模型" class="headerlink" title="Model（ORM）：資料模型"></a>Model（ORM）：資料模型</h2><p>負責操作 DB<br>包含關聯（hasMany、belongsTo…）<br>不能塞太多邏輯，避免膨脹</p>
+<h2 id="DB（資料庫）"><a href="#DB（資料庫）" class="headerlink" title="DB（資料庫）"></a>DB（資料庫）</h2><p>最後的儲存層</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nikiweikame.github.io/2025/11/15/%E5%BE%9Econtroller%E5%AF%AB%E5%88%B0DB/" data-id="cmi1eg2ff0000i8bohr6k996m" data-title="從controller寫到DB" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-久違的面試結束了" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/11/14/%E4%B9%85%E9%81%95%E7%9A%84%E9%9D%A2%E8%A9%A6%E7%B5%90%E6%9D%9F%E4%BA%86/" class="article-date">
@@ -465,48 +513,6 @@
 
 
   
-    <article id="post-學習跟遊戲我一個都不想落下，至少我現在還能從遊戲中賺錢" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/14/%E5%AD%B8%E7%BF%92%E8%B7%9F%E9%81%8A%E6%88%B2%E6%88%91%E4%B8%80%E5%80%8B%E9%83%BD%E4%B8%8D%E6%83%B3%E8%90%BD%E4%B8%8B%EF%BC%8C%E8%87%B3%E5%B0%91%E6%88%91%E7%8F%BE%E5%9C%A8%E9%82%84%E8%83%BD%E5%BE%9E%E9%81%8A%E6%88%B2%E4%B8%AD%E8%B3%BA%E9%8C%A2/" class="article-date">
-  <time class="dt-published" datetime="2025-10-14T08:31:16.000Z" itemprop="datePublished">2025-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/14/%E5%AD%B8%E7%BF%92%E8%B7%9F%E9%81%8A%E6%88%B2%E6%88%91%E4%B8%80%E5%80%8B%E9%83%BD%E4%B8%8D%E6%83%B3%E8%90%BD%E4%B8%8B%EF%BC%8C%E8%87%B3%E5%B0%91%E6%88%91%E7%8F%BE%E5%9C%A8%E9%82%84%E8%83%BD%E5%BE%9E%E9%81%8A%E6%88%B2%E4%B8%AD%E8%B3%BA%E9%8C%A2/">學習跟遊戲我一個都不想落下，至少我現在還能從遊戲中賺錢</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="side-project-資料結構整理"><a href="#side-project-資料結構整理" class="headerlink" title="side project 資料結構整理"></a>side project 資料結構整理</h1><p>之前做了太多store，看起來很混亂，要好好的整理，把所有的components整理一遍<br>順便實作「全域前置守衛」，比想像中容易，只要在Router設定就好</p>
-<h1 id="遊戲活動結束了"><a href="#遊戲活動結束了" class="headerlink" title="遊戲活動結束了"></a>遊戲活動結束了</h1><p>這次遊戲的活動賺得不多只有1800<br>活動要結束，把些獎勵處理處理<br>我也想過什麼時候要把遊戲放掉，不過我想大概還會維持基本進度吧，當一個每日幫<br>目前沒有一個很明確的理由讓我將這個放下，畢竟這還能多少賺點小錢，隨然沒有很多，累積起來已經有幾萬了</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/10/14/%E5%AD%B8%E7%BF%92%E8%B7%9F%E9%81%8A%E6%88%B2%E6%88%91%E4%B8%80%E5%80%8B%E9%83%BD%E4%B8%8D%E6%83%B3%E8%90%BD%E4%B8%8B%EF%BC%8C%E8%87%B3%E5%B0%91%E6%88%91%E7%8F%BE%E5%9C%A8%E9%82%84%E8%83%BD%E5%BE%9E%E9%81%8A%E6%88%B2%E4%B8%AD%E8%B3%BA%E9%8C%A2/" data-id="cmgqb6ui20000g8boek4l5f26" data-title="學習跟遊戲我一個都不想落下，至少我現在還能從遊戲中賺錢" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -557,6 +563,10 @@
       <ul>
         
           <li>
+            <a href="/2025/11/15/%E5%BE%9Econtroller%E5%AF%AB%E5%88%B0DB/">從controller寫到DB</a>
+          </li>
+        
+          <li>
             <a href="/2025/11/14/%E4%B9%85%E9%81%95%E7%9A%84%E9%9D%A2%E8%A9%A6%E7%B5%90%E6%9D%9F%E4%BA%86/">久違的面試結束了</a>
           </li>
         
@@ -570,10 +580,6 @@
         
           <li>
             <a href="/2025/11/08/%E8%88%87%E9%81%B2%E5%88%B0%E5%A4%A7%E7%8E%8B%E7%9A%84%E9%AB%98%E9%9B%84%E9%81%8A/">與遲到大王的高雄遊</a>
-          </li>
-        
-          <li>
-            <a href="/2025/11/07/%E9%96%8B%E5%A7%8B%E9%96%B1%E8%AE%80clean-code-part1/">開始閱讀clean code php- part1</a>
           </li>
         
       </ul>
