@@ -67,10 +67,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nikiweikame.github.io"></form>
       </div>
     </div>
   </div>
@@ -101,22 +101,22 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="從controller寫到DB的五個步驟"><a href="#從controller寫到DB的五個步驟" class="headerlink" title="從controller寫到DB的五個步驟"></a>從controller寫到DB的五個步驟</h1><p>感覺這部分需要從MVC開始說起<br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MVC-Process.svg/1280px-MVC-Process.svg.png" alt="MVC組件之間的典型合作-wiki百科"><br>view是前端的畫面<br>model是屬於資料處理的部分，從商業邏輯到寫入DB<br>controller則是串接view與model的橋樑</p>
+        <h1 id="從controller寫到DB的五個步驟-Laravel為例"><a href="#從controller寫到DB的五個步驟-Laravel為例" class="headerlink" title="從controller寫到DB的五個步驟(Laravel為例)"></a>從controller寫到DB的五個步驟(Laravel為例)</h1><p>感覺這部分需要從MVC開始說起<br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MVC-Process.svg/1280px-MVC-Process.svg.png" alt="MVC組件之間的典型合作-wiki百科"><br>view是前端的畫面<br>model是屬於資料處理的部分，從商業邏輯到寫入DB<br>controller則是串接view與model的橋樑</p>
 <p>view-controller-model<br>而controller-model又再往下細分<br>Controller → Service → Repository → Model → DB</p>
 <h2 id="Controller：流程、協調者"><a href="#Controller：流程、協調者" class="headerlink" title="Controller：流程、協調者"></a>Controller：流程、協調者</h2><p>不放商業邏輯<br>不處理資料庫<br>只負責「流程」與「接收／回傳」</p>
 <h2 id="Service：商業邏輯的核心"><a href="#Service：商業邏輯的核心" class="headerlink" title="Service：商業邏輯的核心"></a>Service：商業邏輯的核心</h2><p>處理流程中的複雜邏輯<br>例如：<br>計算運動熱量<br>比對使用者權限<br>交易流程（建立訂單、扣庫存、寄通知）<br>Controller 只叫 Service，以保持乾淨</p>
 <h2 id="Repository-的用途是："><a href="#Repository-的用途是：" class="headerlink" title="Repository 的用途是："></a>Repository 的用途是：</h2><p>專門處理 DB CRUD<br>讓 Service 不直接碰 ORM<br>將來換 DB（MySQL → MongoDB）也不用改 Service</p>
-<h2 id="Model（ORM）：資料模型"><a href="#Model（ORM）：資料模型" class="headerlink" title="Model（ORM）：資料模型"></a>Model（ORM）：資料模型</h2><p>負責操作 DB<br>包含關聯（hasMany、belongsTo…）<br>不能塞太多邏輯，避免膨脹</p>
+<h2 id="Model：資料模型，有對資料直接訪問的權力"><a href="#Model：資料模型，有對資料直接訪問的權力" class="headerlink" title="Model：資料模型，有對資料直接訪問的權力"></a>Model：資料模型，有對資料直接訪問的權力</h2><p>負責操作 DB<br>包含關聯（hasMany、belongsTo…）<br>不能塞太多邏輯，避免膨脹<br>小型～中型專案：直接在 Model 或 Service 裡用 Eloquent 就好<br>大型／長壽命／需要換 DB 時，才引入 Repository 模式</p>
 <h2 id="DB（資料庫）"><a href="#DB（資料庫）" class="headerlink" title="DB（資料庫）"></a>DB（資料庫）</h2><p>最後的儲存層</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/11/15/%E5%BE%9Econtroller%E5%AF%AB%E5%88%B0DB/" data-id="cmi1eg2ff0000i8bohr6k996m" data-title="從controller寫到DB" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/11/15/%E5%BE%9Econtroller%E5%AF%AB%E5%88%B0DB/" data-id="cmi1eg2ff0000i8bohr6k996m" data-title="從controller寫到DB" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/back-end/" rel="tag">back-end</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
 
     </footer>
   </div>
@@ -154,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/11/14/%E4%B9%85%E9%81%95%E7%9A%84%E9%9D%A2%E8%A9%A6%E7%B5%90%E6%9D%9F%E4%BA%86/" data-id="cmhyqtp5n0000cqbo9f8maix1" data-title="久違的面試結束了" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/11/14/%E4%B9%85%E9%81%95%E7%9A%84%E9%9D%A2%E8%A9%A6%E7%B5%90%E6%9D%9F%E4%BA%86/" data-id="cmhyqtp5n0000cqbo9f8maix1" data-title="久違的面試結束了" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -195,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/11/11/%E6%B8%9B%E8%82%A5%E8%A8%88%E5%8A%83%E5%AF%A6%E8%A1%8C%E4%B8%AD/" data-id="cmhuc3l2n0000nhboco30aw50" data-title="減肥計劃實行中" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/11/11/%E6%B8%9B%E8%82%A5%E8%A8%88%E5%8A%83%E5%AF%A6%E8%A1%8C%E4%B8%AD/" data-id="cmhuc3l2n0000nhboco30aw50" data-title="減肥計劃實行中" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -236,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/11/10/%E7%AA%81%E7%84%B6%E6%94%B6%E5%88%B0%E5%8D%97%E7%A7%91%E7%9A%84%E9%9D%A2%E8%A9%A6%E9%82%80%E7%B4%84/" data-id="cmhsme4gt0000iebo1u1b677c" data-title="突然收到南科的面試邀約" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/11/10/%E7%AA%81%E7%84%B6%E6%94%B6%E5%88%B0%E5%8D%97%E7%A7%91%E7%9A%84%E9%9D%A2%E8%A9%A6%E9%82%80%E7%B4%84/" data-id="cmhsme4gt0000iebo1u1b677c" data-title="突然收到南科的面試邀約" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -278,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/11/08/%E8%88%87%E9%81%B2%E5%88%B0%E5%A4%A7%E7%8E%8B%E7%9A%84%E9%AB%98%E9%9B%84%E9%81%8A/" data-id="cmhqam2sx0000chbod1ru136n" data-title="與遲到大王的高雄遊" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/11/08/%E8%88%87%E9%81%B2%E5%88%B0%E5%A4%A7%E7%8E%8B%E7%9A%84%E9%AB%98%E9%9B%84%E9%81%8A/" data-id="cmhqam2sx0000chbod1ru136n" data-title="與遲到大王的高雄遊" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -320,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/11/07/%E9%96%8B%E5%A7%8B%E9%96%B1%E8%AE%80clean-code-part1/" data-id="cmhons1g00000jvbo6bkba89g" data-title="開始閱讀clean code php- part1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/11/07/%E9%96%8B%E5%A7%8B%E9%96%B1%E8%AE%80clean-code-part1/" data-id="cmhons1g00000jvbo6bkba89g" data-title="開始閱讀clean code php- part1" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -361,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/11/06/%E7%B5%82%E6%96%BC%E5%90%83%E5%88%B0%E8%8A%99%E8%93%89%E8%9B%8B%E5%A1%94%E4%BA%86/" data-id="cmhn496wr000040bof3cu2tn0" data-title="終於吃到芙蓉蛋塔了" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/11/06/%E7%B5%82%E6%96%BC%E5%90%83%E5%88%B0%E8%8A%99%E8%93%89%E8%9B%8B%E5%A1%94%E4%BA%86/" data-id="cmhn496wr000040bof3cu2tn0" data-title="終於吃到芙蓉蛋塔了" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -402,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/11/04/%E4%BC%91%E6%81%AF%E5%A4%A0%E4%B9%85%E4%BA%86%EF%BC%8C%E5%88%97%E4%B8%80%E4%BB%BD%E5%BE%85%E8%BE%A6%E6%B8%85%E5%96%AE%E5%90%A7/" data-id="cmhldfshq0000acbo2elbbuy1" data-title="休息夠久了，列一份待辦清單吧" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/11/04/%E4%BC%91%E6%81%AF%E5%A4%A0%E4%B9%85%E4%BA%86%EF%BC%8C%E5%88%97%E4%B8%80%E4%BB%BD%E5%BE%85%E8%BE%A6%E6%B8%85%E5%96%AE%E5%90%A7/" data-id="cmhldfshq0000acbo2elbbuy1" data-title="休息夠久了，列一份待辦清單吧" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -455,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/11/01/%E4%BB%8A%E5%A4%A9%E5%8E%BB%E6%AD%A6%E8%81%96%E5%A4%9C%E5%B8%82/" data-id="cmhldfsht0001acbohrcu90o9" data-title="今天去武聖夜市" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/11/01/%E4%BB%8A%E5%A4%A9%E5%8E%BB%E6%AD%A6%E8%81%96%E5%A4%9C%E5%B8%82/" data-id="cmhldfsht0001acbohrcu90o9" data-title="今天去武聖夜市" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -498,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/" data-id="cmgtbd2d60000gnbodx2l962t" data-title="side project 近況報告" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/10/16/%E8%BF%91%E6%B3%81%E5%A0%B1%E5%91%8A/" data-id="cmgtbd2d60000gnbodx2l962t" data-title="side project 近況報告" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -516,7 +516,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -547,7 +547,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li></ul>
     </div>
@@ -557,7 +557,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
