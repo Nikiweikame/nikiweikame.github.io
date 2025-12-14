@@ -4,20 +4,23 @@
   <meta charset="utf-8">
   
   
-  <title>前端頁面的pinia管理 | Niki的Blog</title>
+  <title>淺談chart.js | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="前端資料管理問題太多資料做了太多管理那些資料的store，後來想想這些應該要被整合花了點時間去整合他們目前就幾個主要的store管理使用者資料以及跟使用者有關的api，運動項目與運動紀錄的store，以及管控ui介面狀態的store 我還想進一步拆開api與前端的邏輯，這樣應該會比較好管理，">
+  <meta name="description" content="前言 - 我為什麼想介紹chartjs該說是心血來潮、還是謀劃許久，一切都必須從我最近應徵投履歷遇到得事情公司方開出的加分條件是希望應徵人員會">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端頁面的pinia管理">
-<meta property="og:url" content="https://nikiweikame.github.io/2025/10/13/%E5%89%8D%E7%AB%AF%E9%A0%81%E9%9D%A2%E7%9A%84pinia%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:title" content="淺談chart.js">
+<meta property="og:url" content="https://nikiweikame.github.io/2025/12/14/%E6%B7%BA%E8%AB%87chart-js/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="前端資料管理問題太多資料做了太多管理那些資料的store，後來想想這些應該要被整合花了點時間去整合他們目前就幾個主要的store管理使用者資料以及跟使用者有關的api，運動項目與運動紀錄的store，以及管控ui介面狀態的store 我還想進一步拆開api與前端的邏輯，這樣應該會比較好管理，">
+<meta property="og:description" content="前言 - 我為什麼想介紹chartjs該說是心血來潮、還是謀劃許久，一切都必須從我最近應徵投履歷遇到得事情公司方開出的加分條件是希望應徵人員會">
 <meta property="og:locale">
-<meta property="article:published_time" content="2025-10-13T10:02:49.000Z">
-<meta property="article:modified_time" content="2025-11-05T07:43:32.734Z">
+<meta property="og:image" content="https://www.chartjs.org/docs/latest/">
+<meta property="article:published_time" content="2025-12-14T06:39:45.000Z">
+<meta property="article:modified_time" content="2025-12-14T06:57:04.027Z">
 <meta property="article:author" content="Niki_wei">
-<meta property="article:tag" content="diary">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.chartjs.org/docs/latest/">
   
     <link rel="alternate" href="/atom.xml" title="Niki的Blog" type="application/atom+xml">
   
@@ -80,10 +83,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-前端頁面的pinia管理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-淺談chart-js" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/10/13/%E5%89%8D%E7%AB%AF%E9%A0%81%E9%9D%A2%E7%9A%84pinia%E7%AE%A1%E7%90%86/" class="article-date">
-  <time class="dt-published" datetime="2025-10-13T10:02:49.000Z" itemprop="datePublished">2025-10-13</time>
+    <a href="/2025/12/14/%E6%B7%BA%E8%AB%87chart-js/" class="article-date">
+  <time class="dt-published" datetime="2025-12-14T06:39:45.000Z" itemprop="datePublished">2025-12-14</time>
 </a>
     
   </div>
@@ -94,7 +97,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      前端頁面的pinia管理
+      淺談chart.js
     </h1>
   
 
@@ -102,17 +105,16 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="前端資料管理問題"><a href="#前端資料管理問題" class="headerlink" title="前端資料管理問題"></a>前端資料管理問題</h1><p>太多資料做了太多管理那些資料的store，後來想想這些應該要被整合<br>花了點時間去整合他們<br>目前就幾個主要的store<br>管理使用者資料以及跟使用者有關的api，運動項目與運動紀錄的store，以及管控ui介面狀態的store</p>
-<p>我還想進一步拆開api與前端的邏輯，這樣應該會比較好管理，</p>
+        <h1 id="前言-我為什麼想介紹chartjs"><a href="#前言-我為什麼想介紹chartjs" class="headerlink" title="前言 - 我為什麼想介紹chartjs"></a>前言 - 我為什麼想介紹chartjs</h1><p>該說是心血來潮、還是謀劃許久，<br>一切都必須從我最近應徵投履歷遇到得事情<br>公司方開出的加分條件是希望應徵人員會<img src="https://www.chartjs.org/docs/latest/" alt="chartjs"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nikiweikame.github.io/2025/10/13/%E5%89%8D%E7%AB%AF%E9%A0%81%E9%9D%A2%E7%9A%84pinia%E7%AE%A1%E7%90%86/" data-id="cmgoyzsm10000wlbo18knfins" data-title="前端頁面的pinia管理" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://nikiweikame.github.io/2025/12/14/%E6%B7%BA%E8%AB%87chart-js/" data-id="cmj5dh1jr0000rxbo05p96b6s" data-title="淺談chart.js" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
 
     </footer>
   </div>
@@ -120,19 +122,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2025/10/14/%E5%AD%B8%E7%BF%92%E8%B7%9F%E9%81%8A%E6%88%B2%E6%88%91%E4%B8%80%E5%80%8B%E9%83%BD%E4%B8%8D%E6%83%B3%E8%90%BD%E4%B8%8B%EF%BC%8C%E8%87%B3%E5%B0%91%E6%88%91%E7%8F%BE%E5%9C%A8%E9%82%84%E8%83%BD%E5%BE%9E%E9%81%8A%E6%88%B2%E4%B8%AD%E8%B3%BA%E9%8C%A2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          學習跟遊戲我一個都不想落下，至少我現在還能從遊戲中賺錢
-        
-      </div>
-    </a>
   
-  
-    <a href="/2025/10/13/%E9%9B%99%E5%8D%81%E9%80%A3%E5%81%87%E7%B5%90%E6%9D%9F%E4%BA%86/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2025/12/05/%E6%96%B0%E6%A6%82%E5%BF%B5%E8%88%87%E9%81%8E%E5%BA%A6%E8%A8%AD%E8%A8%88%E7%9A%84%E9%81%B8%E6%93%87/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">雙十連假結束了</div>
+      <div class="article-nav-title">新概念與過度設計的選擇</div>
     </a>
   
 </nav>
