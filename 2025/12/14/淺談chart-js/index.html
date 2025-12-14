@@ -6,15 +6,15 @@
   
   <title>淺談chart.js | Niki的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="前言 - 我為什麼想介紹 chartjs該說是心血來潮、還是謀劃許久，一切都必須從我最近應徵投履歷遇到得事情公司方開出的加分條件是希望應徵人員會chartjs 而在眾多 JavaScript 應用程式開發者圖表庫中，Chart.js 目前是最受歡迎的。 這就表示，如果將來碰到圖表庫，會有很高的機率接觸到 chartjs 安裝可以使用 npm 或是CDN(CDNJS、jsDelivr) 123456">
+  <meta name="description" content="前言 - 我為什麼想介紹 chartjs該說是心血來潮、還是謀劃許久，一切都必須從我最近應徵投履歷遇到得事情公司方開出的加分條件是希望應徵人員會chartjs 而在眾多 JavaScript 應用程式開發者圖表庫中，Chart.js 目前是最受歡迎的。 這就表示，如果將來碰到圖表庫，會有很高的機率接觸到 chartjs 安裝可以使用 npm 或是 CDN(CDNJS、jsDelivr) 12&#x2F;&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="淺談chart.js">
 <meta property="og:url" content="https://nikiweikame.github.io/2025/12/14/%E6%B7%BA%E8%AB%87chart-js/index.html">
 <meta property="og:site_name" content="Niki的Blog">
-<meta property="og:description" content="前言 - 我為什麼想介紹 chartjs該說是心血來潮、還是謀劃許久，一切都必須從我最近應徵投履歷遇到得事情公司方開出的加分條件是希望應徵人員會chartjs 而在眾多 JavaScript 應用程式開發者圖表庫中，Chart.js 目前是最受歡迎的。 這就表示，如果將來碰到圖表庫，會有很高的機率接觸到 chartjs 安裝可以使用 npm 或是CDN(CDNJS、jsDelivr) 123456">
+<meta property="og:description" content="前言 - 我為什麼想介紹 chartjs該說是心血來潮、還是謀劃許久，一切都必須從我最近應徵投履歷遇到得事情公司方開出的加分條件是希望應徵人員會chartjs 而在眾多 JavaScript 應用程式開發者圖表庫中，Chart.js 目前是最受歡迎的。 這就表示，如果將來碰到圖表庫，會有很高的機率接觸到 chartjs 安裝可以使用 npm 或是 CDN(CDNJS、jsDelivr) 12&#x2F;&#x2F;">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-12-14T06:39:45.000Z">
-<meta property="article:modified_time" content="2025-12-14T09:22:07.915Z">
+<meta property="article:modified_time" content="2025-12-14T09:39:46.688Z">
 <meta property="article:author" content="Niki_wei">
 <meta property="article:tag" content="js">
 <meta property="article:tag" content="JavaScript">
@@ -107,8 +107,12 @@
         <h1 id="前言-我為什麼想介紹-chartjs"><a href="#前言-我為什麼想介紹-chartjs" class="headerlink" title="前言 - 我為什麼想介紹 chartjs"></a>前言 - 我為什麼想介紹 chartjs</h1><p>該說是心血來潮、還是謀劃許久，<br>一切都必須從我最近應徵投履歷遇到得事情<br>公司方開出的加分條件是希望應徵人員會<a target="_blank" rel="noopener" href="https://www.chartjs.org/docs/latest/">chartjs</a></p>
 <p>而在眾多 JavaScript 應用程式開發者圖表庫中，Chart.js 目前是最受歡迎的。</p>
 <p>這就表示，如果將來碰到圖表庫，會有很高的機率接觸到 chartjs</p>
-<h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><p>可以使用 npm 或是CDN(<a target="_blank" rel="noopener" href="https://cdnjs.com/libraries/Chart.js">CDNJS</a>、<a target="_blank" rel="noopener" href="https://www.jsdelivr.com/package/npm/chart.js?path=dist">jsDelivr</a>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// npm</span><br><span class="line">npm install chart.js</span><br><span class="line">// CDN 2025/12/14</span><br><span class="line">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.min.js&quot; integrity=&quot;sha512-n/G+dROKbKL3GVngGWmWfwK0yPctjZQM752diVYnXZtD/48agpUKLIn0xDQL9ydZ91x6BiOmTIFwWjjFi2kEFg==&quot; crossorigin=&quot;anonymous&quot; referrerpolicy=&quot;no-referrer&quot;&gt;&lt;/script&gt;</span><br><span class="line">// jsDelivr</span><br><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><p>可以使用 npm 或是 CDN(<a target="_blank" rel="noopener" href="https://cdnjs.com/libraries/Chart.js">CDNJS</a>、<a target="_blank" rel="noopener" href="https://www.jsdelivr.com/package/npm/chart.js?path=dist">jsDelivr</a>)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// npm</span><br><span class="line">npm install chart.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// CDN 2025/12/14</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.min.js&quot;</span> <span class="attr">integrity</span>=<span class="string">&quot;sha512-n/G+dROKbKL3GVngGWmWfwK0yPctjZQM752diVYnXZtD/48agpUKLIn0xDQL9ydZ91x6BiOmTIFwWjjFi2kEFg==&quot;</span> <span class="attr">crossorigin</span>=<span class="string">&quot;anonymous&quot;</span> <span class="attr">referrerpolicy</span>=<span class="string">&quot;no-referrer&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">// jsDelivr</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>chatjs 主要作用在 canvas 這個 element 上，先是建立 canvas</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;myChart&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
